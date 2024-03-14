@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TerrainTools;
 
 public class DrawingComponent : MonoBehaviour
 {
@@ -10,15 +11,11 @@ public class DrawingComponent : MonoBehaviour
 
     #endregion
 
-    #region References
-
-    private LineRenderer _line;
-
-    #endregion
 
     #region Properties
 
     private Vector3 _lastPoint;
+    private Vector3[] _positions;
 
     #endregion
 
@@ -26,29 +23,46 @@ public class DrawingComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _line = GetComponent<LineRenderer>();
         _lastPoint = transform.position;
     }
 
-    private void NewPoint()
+    //Dibuja un trazo mientras se mantenga pulsado
+    public LineRenderer Paint(Vector3 newPoint)
     {
-        //Tomamos la nueva posición del ratón para crear un nuevo punto
-        Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        LineRenderer line = new LineRenderer();
+        line = GetComponent<LineRenderer>();
         newPoint.z = 0;
 
         //Si hay suficiente distancia entre los puntos, añadimos el punto nuevo en la línea
         if (Vector3.Distance(_lastPoint, newPoint) > _minDistance) 
         {
-            _line.positionCount++;
+            //Suma punto
+            line.positionCount++;
+            //Lo añade a la linea
+            line.SetPosition(line.positionCount - 1, newPoint); 
+            //El ultimo punto dibujado es el nuevo del cursor
+            _lastPoint = newPoint;
         }
 
+        return line;
+    }
 
-        Debug.Log(newPoint);
+    public void VariasLineas()
+    {
+        GameObject Lines = new GameObject();
+        Lines.AddComponent<LineRenderer>();
+        Lines.GetComponent<Transform>().parent = gameObject.GetComponent<Transform>();
+    }
+
+    //Saca los puntos de una línea
+    private void SacaPuntos(LineRenderer line)
+    {
+        line.GetPositions(_positions);
     }
 
     // Update is called once per frame
     void Update()
     {
-        NewPoint();
+
     }
 }
