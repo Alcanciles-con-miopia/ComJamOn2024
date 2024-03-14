@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -115,11 +116,15 @@ public class GameManager : MonoBehaviour
     // borra del array el nextDedo que debe de actualizarse siempre
     public GameObject[] QuitaDedo()
     {
-        // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
-        dedos[_nextDedo].active = false;
+        // Siempre y cuando el índice sea menor que dedos.Length...
+        if(_nextDedo < dedos.Length)
+        {
+            // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
+            dedos[_nextDedo].active = false;
 
-        // Siguiente dedo.
-        _nextDedo++;
+            // Siguiente dedo.
+            _nextDedo++;
+        }
 
         return dedos;
     }
@@ -138,13 +143,25 @@ public class GameManager : MonoBehaviour
             // si se guarda info en el gameManager y se ha de recargar
             DontDestroyOnLoad(this);
         }
+
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Se inicializa las vidas.
+        InicializaVidas();
+
         // para cuando exista el input 
         _input = GetComponent<InputManager>();
+
+        // Set active todos los dedalos.
+        for(int i = 0; i < dedos.Length; i++)
+        {
+            dedos[i].SetActive(true); 
+        }
+        
     }
 
     // Update is called once per frame
