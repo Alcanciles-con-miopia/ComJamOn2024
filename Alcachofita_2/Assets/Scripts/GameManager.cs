@@ -98,10 +98,10 @@ public class GameManager : MonoBehaviour
         dedos[4] = menique;
     }
 
-    public int[] QuitaDedo(int[] dedo)
-    {
+    //public int[] QuitaDedo(int[] dedo)
+    //{
         
-    }
+    //}
     #endregion
     private void Awake()
     {
