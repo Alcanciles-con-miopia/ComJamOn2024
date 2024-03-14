@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
                        MENIQUE,
                        VACIA;
 
+    // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
     #endregion
