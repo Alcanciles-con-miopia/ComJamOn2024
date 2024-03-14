@@ -27,7 +27,7 @@ public class DrawingComponent : MonoBehaviour
     }
 
     //Dibuja un trazo mientras se mantenga pulsado
-    public LineRenderer Paint(ref Vector3 newPoint)
+    public LineRenderer Paint(Vector3 newPoint)
     {
         LineRenderer line = new LineRenderer();
         line = GetComponent<LineRenderer>();
@@ -56,7 +56,7 @@ public class DrawingComponent : MonoBehaviour
 
         //Una vez que pintamos una línea
         _lineaNueva = GetComponent<LineRenderer>();
-        _lineaNueva.SetPositions(Paint().GetPositions(_positions));
+        //_lineaNueva.SetPositions(Paint().GetPositions(_positions));
     }
 
     //Saca los puntos de una línea
