@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Video;
 using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
     public enum GameStates { MAINMENU, GAME, END };
+    const int NUM_DEDOS = 5;
 
     #region parameters
-    public GameObject gameOver, indice, pulgar, corazon, anular, menique;
-    public static int dedos;
+    private GameObject gameOver, indice, pulgar, corazon, anular, menique;
+
+    // Actualmente hay 5 dedos.
+    private int numDedosActuales = 5;
+
+    // Inicialmente disponemos de 5 dedos.
+    private GameObject[] dedos = new GameObject[NUM_DEDOS];
     #endregion
 
     #region references
@@ -80,6 +88,21 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region methods
+    private void InicializaVidas()
+    {
+        dedos[0] = pulgar;
+        dedos[1] = indice;
+        dedos[2] = corazon;
+        dedos[3] = anular;
+        dedos[4] = menique;
+    }
+
+    public int[] QuitaDedo(int[] dedo)
+    {
+        
+    }
+    #endregion
     private void Awake()
     {
         // si ya existe instancia del gamemanager se destruye
@@ -100,9 +123,6 @@ public class GameManager : MonoBehaviour
     {
         // para cuando exista el input 
         //_input = GetComponent<InputManager>();
-
-        // Inicialmente disponemos de 5 dedos.
-        dedos = 5;
 
         // Todos los dedos están activos al comienzo.
         indice.gameObject.SetActive(true);
@@ -128,7 +148,7 @@ public class GameManager : MonoBehaviour
         // se actualiza el estado en el que se este
         updateState(_currentGameState);
 
-        while (dedos >= 0)
+        /*while (dedos >= 0)
         {
             switch(dedos)
             {
@@ -141,6 +161,8 @@ public class GameManager : MonoBehaviour
                     gameOver.gameObject.SetActive(true);
                     break; 
             }
-        }
+        }*/
+
+        
     }
 }
