@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     // ---- QuitaDedo ----
     // devuelve el array sin el ultimo dedo a cortar
-    // 
+    // borra del array el nextDedo que debe de actualizarse siempre
     public GameObject[] QuitaDedo(ref GameObject[] dedos)
     {
         return dedos;
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // para cuando exista el input 
-        //_input = GetComponent<InputManager>();
+        _input = GetComponent<InputManager>();
     }
 
     // Update is called once per frame
