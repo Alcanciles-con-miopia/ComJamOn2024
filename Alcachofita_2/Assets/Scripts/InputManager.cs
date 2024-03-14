@@ -47,5 +47,10 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("boton medio");
         }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            GameManager.Instance.QuitaDedo();
+            Debug.Log("Borra eso");
+        }
     }
 }

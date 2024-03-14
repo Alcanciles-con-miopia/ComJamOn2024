@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos
-    private GameObject[] dedos = new GameObject[NUM_DEDOS];
+    public GameObject[] dedos = new GameObject[NUM_DEDOS];
     #endregion
 
     #region references
@@ -113,13 +113,15 @@ public class GameManager : MonoBehaviour
     // ---- QuitaDedo ----
     // modifica el array sin el ultimo dedo a cortar
     // borra del array el nextDedo que debe de actualizarse siempre
-    public void QuitaDedo(GameObject[] dedos)
+    public GameObject[] QuitaDedo()
     {
         // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
         dedos[_nextDedo].active = false;
 
         // Siguiente dedo.
         _nextDedo++;
+
+        return dedos;
     }
 
     #endregion
