@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Video;
@@ -18,8 +19,7 @@ public class GameManager : MonoBehaviour
                        INDICE,
                        CORAZON,
                        ANULAR,
-                       MENIQUE,
-                       VACIA;
+                       MENIQUE;
 
     // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos
@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
     public GameStates NextState { get { return _nextGameState; } }
 
     // DEDOS
-    private GameObject _nextDedo;
-    public GameObject NextDedo { get { return _nextDedo; } }
+    private int _nextDedo;
+    public int NextDedo { get { return _nextDedo; } }
     #endregion
 
     #region METODOS DE ESTADOS
@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
     // en orden de cortado
     private void InicializaVidas()
     {
+        _nextDedo = 0;
         dedos[0] = PULGAR;
         dedos[1] = INDICE;
         dedos[2] = CORAZON;
@@ -110,11 +111,15 @@ public class GameManager : MonoBehaviour
     }
 
     // ---- QuitaDedo ----
-    // devuelve el array sin el ultimo dedo a cortar
+    // modifica el array sin el ultimo dedo a cortar
     // borra del array el nextDedo que debe de actualizarse siempre
-    public GameObject[] QuitaDedo(ref GameObject[] dedos)
+    public void QuitaDedo(GameObject[] dedos)
     {
-        return dedos;
+        // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
+        dedos[_nextDedo].active = false;
+
+        // Siguiente dedo.
+        _nextDedo++;
     }
 
     #endregion
