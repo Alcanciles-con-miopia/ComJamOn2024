@@ -11,12 +11,17 @@ public class GameManager : MonoBehaviour
     const int NUM_DEDOS = 5;
 
     #region parameters
-    private GameObject gameOver, indice, pulgar, corazon, anular, menique;
+    // dedos por orden de corte
+    // campo serializado para asignar los prefabs en el editor
+    [SerializeField] 
+    private GameObject PULGAR,
+                       INDICE,
+                       CORAZON,
+                       ANULAR,
+                       MENIQUE,
+                       VACIA;
 
-    // Actualmente hay 5 dedos.
-    private int numDedosActuales = 5;
-
-    // Inicialmente disponemos de 5 dedos.
+    // inicialmente se tienen 5 dedos
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
     #endregion
 
@@ -30,10 +35,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _gameManager; } }
 
     // INPUT
-    /*
     private InputManager _input;
     public InputManager Input { get { return _input; } }
-    */
 
     // ESTADOS
     private GameStates _currentGameState;
@@ -41,6 +44,10 @@ public class GameManager : MonoBehaviour
 
     private GameStates _nextGameState;
     public GameStates NextState { get { return _nextGameState; } }
+
+    // DEDOS
+    private GameObject _nextDedo;
+    public GameObject NextDedo { get { return _nextDedo; } }
     #endregion
 
     #region METODOS DE ESTADOS
@@ -88,20 +95,27 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region methods
+    #region METODOS DE DEDOS
+    // ---- InicializaVidas ----
+    // settea cada indice del array con su dedo correspondiente
+    // en orden de cortado
     private void InicializaVidas()
     {
-        dedos[0] = pulgar;
-        dedos[1] = indice;
-        dedos[2] = corazon;
-        dedos[3] = anular;
-        dedos[4] = menique;
+        dedos[0] = PULGAR;
+        dedos[1] = INDICE;
+        dedos[2] = CORAZON;
+        dedos[3] = ANULAR;
+        dedos[4] = MENIQUE;
     }
 
-    //public int[] QuitaDedo(int[] dedo)
-    //{
-        
-    //}
+    // ---- QuitaDedo ----
+    // devuelve el array sin el ultimo dedo a cortar
+    // 
+    public GameObject[] QuitaDedo(ref GameObject[] dedos)
+    {
+        return dedos;
+    }
+
     #endregion
     private void Awake()
     {
@@ -123,16 +137,6 @@ public class GameManager : MonoBehaviour
     {
         // para cuando exista el input 
         //_input = GetComponent<InputManager>();
-
-        // Todos los dedos están activos al comienzo.
-        indice.gameObject.SetActive(true);
-        pulgar.gameObject.SetActive(true);
-        corazon.gameObject.SetActive(true);
-        anular.gameObject.SetActive(true);
-        menique.gameObject.SetActive(true);
-
-        // No hay gameover al incio.
-        gameOver.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -147,22 +151,5 @@ public class GameManager : MonoBehaviour
 
         // se actualiza el estado en el que se este
         updateState(_currentGameState);
-
-        /*while (dedos >= 0)
-        {
-            switch(dedos)
-            {
-                case 4: pulgar.gameObject.SetActive(false); break;
-                case 3: indice.gameObject.SetActive(false); break;
-                case 2: corazon.gameObject.SetActive(false); break;
-                case 1: anular.gameObject.SetActive(false); break;
-                case 0: 
-                    menique.gameObject.SetActive(false);
-                    gameOver.gameObject.SetActive(true);
-                    break; 
-            }
-        }*/
-
-        
     }
 }
