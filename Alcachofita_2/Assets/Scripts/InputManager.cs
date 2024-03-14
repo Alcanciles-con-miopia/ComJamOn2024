@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("boton izquierdo");
+            Debug.Log("Mira mamá, sé pintar");
         }
         else if (Input.GetMouseButtonUp(1))
         {
