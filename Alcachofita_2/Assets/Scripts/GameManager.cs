@@ -5,10 +5,7 @@ using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
-<<<<<<< Updated upstream
     public enum GameStates { MAINMENU, GAME, END };
-=======
-    public enum GameStates { INTRO, GAME, END };
 
     #region parameters
     public GameObject gameOver, indice, pulgar, corazon, anular, menique;
@@ -18,7 +15,6 @@ public class GameManager : MonoBehaviour
     #region references
     // aun no hay nada je
     #endregion
->>>>>>> Stashed changes
 
     #region properties
     // GAMEMANAGER
@@ -102,10 +98,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< Updated upstream
         // para cuando exista el input 
         //_input = GetComponent<InputManager>();
-=======
+
         // Inicialmente disponemos de 5 dedos.
         dedos = 5;
 
@@ -118,13 +113,11 @@ public class GameManager : MonoBehaviour
 
         // No hay gameover al incio.
         gameOver.gameObject.SetActive(false);
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
         // si se debe cambiar de estado (next y current difieren)
         if (_nextGameState != _currentGameState)
         {
@@ -134,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         // se actualiza el estado en el que se este
         updateState(_currentGameState);
-=======
+
         while (dedos >= 0)
         {
             switch(dedos)
@@ -149,6 +142,5 @@ public class GameManager : MonoBehaviour
                     break; 
             }
         }
->>>>>>> Stashed changes
     }
 }
