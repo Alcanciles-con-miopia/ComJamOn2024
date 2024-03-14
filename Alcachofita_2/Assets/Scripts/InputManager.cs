@@ -32,12 +32,16 @@ public class InputManager : MonoBehaviour
             Application.Quit();
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            _drawingComponent.VariasLineas();
+        }
+
         if (Input.GetMouseButton(0))
         {
             Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _drawingComponent.Paint(newPoint);
             Debug.Log("Mira mamá, sé pintar");
-            _drawingComponent.VariasLineas();
         }
         else if (Input.GetMouseButtonUp(1))
         {
