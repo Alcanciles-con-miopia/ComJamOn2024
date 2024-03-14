@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
-    /*#region Parameters
+    #region Parameters
 
     [SerializeField] private LineRenderer _line;
 
@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         _drawingComponent = _line.GetComponent<DrawingComponent>();
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
@@ -32,12 +32,17 @@ public class InputManager : MonoBehaviour
             Application.Quit();
         }
 
-        /*if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
+        {
+            _drawingComponent.VariasLineas();
+        }
+
+        if (Input.GetMouseButton(0))
+
         {
             Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _drawingComponent.Paint(newPoint);
             Debug.Log("Mira mamá, sé pintar");
-            _drawingComponent.VariasLineas();
         }
         else if (Input.GetMouseButtonUp(1))
         {
@@ -46,7 +51,7 @@ public class InputManager : MonoBehaviour
         else if (Input.GetMouseButtonDown(2))
         {
             Debug.Log("boton medio");
-        }*/
+        }
         else if (Input.GetKeyDown(KeyCode.K))
         {
             GameManager.Instance.QuitaDedo();

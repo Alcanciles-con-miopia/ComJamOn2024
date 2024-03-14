@@ -11,11 +11,11 @@ public class DrawingComponent : MonoBehaviour
 
     #endregion
 
-
     #region Properties
 
     private Vector3 _lastPoint;
     private Vector3[] _positions;
+    private LineRenderer _lineaNueva;
 
     #endregion
 
@@ -49,9 +49,14 @@ public class DrawingComponent : MonoBehaviour
 
     public void VariasLineas()
     {
+        //Creamos un hijo por cada línea que pintemos
         GameObject Lines = new GameObject();
         Lines.AddComponent<LineRenderer>();
         Lines.GetComponent<Transform>().parent = gameObject.GetComponent<Transform>();
+
+        //Una vez que pintamos una línea
+        _lineaNueva = GetComponent<LineRenderer>();
+        //_lineaNueva.SetPositions(Paint().GetPositions(_positions));
     }
 
     //Saca los puntos de una línea
