@@ -1,10 +1,13 @@
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     // References
     [SerializeField] // sigue el orden de los estados del gamemanager
-    public GameObject[] menus;
+    private GameObject[] menus;
+    [SerializeField]
+    private TMP_Text percent;
 
     // Properties
     private GameManager.GameStates _activeMenu;
@@ -32,6 +35,8 @@ public class UIManager : MonoBehaviour
             // cambia de páginas
             GameManager.Instance.NextPage();
             Debug.Log(GameManager.Instance.CurrentPage);
+
+            percent.text = GameManager.Instance.GetPercent() + "%";
         }
     }
 

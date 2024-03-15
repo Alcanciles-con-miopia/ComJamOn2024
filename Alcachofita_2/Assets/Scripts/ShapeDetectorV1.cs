@@ -94,4 +94,12 @@ public class ShapeDetectorV1 : MonoBehaviour
         shapeInst.transform.position = drawingComponent.GetCenter(); 
 
     }
+
+    private void Awake()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterShapeDetector(this);
+        }
+    }
 }
