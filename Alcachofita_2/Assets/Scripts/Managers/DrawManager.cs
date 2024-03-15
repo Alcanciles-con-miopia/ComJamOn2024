@@ -53,8 +53,6 @@ public class DrawManager : MonoBehaviour
     /// <returns></returns>
     private void fuseArrays(Vector3[][] punteles, Vector3[] arrayfuses)
     {
-
-
         // Vector de puntos mezclados
 
         Debug.Log("Elementos x: " + punteles.Length + "elementos y: " + punteles[0].Length);
