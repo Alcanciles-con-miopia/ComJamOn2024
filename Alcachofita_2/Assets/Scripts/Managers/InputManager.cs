@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _drawingComponent = _line.GetComponent<DrawingComponent>();
+        if (_line != null) _drawingComponent = _line.GetComponent<DrawingComponent>();
     }
 
     // Update is called once per frame
