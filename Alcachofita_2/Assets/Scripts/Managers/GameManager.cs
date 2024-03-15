@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     // inicialmente se tienen 5 dedos
     [SerializeField]
     public GameObject[] dedos = new GameObject[NUM_DEDOS];
+
+    private UIManager _UIManager;
     #endregion
 
     #region properties
@@ -78,6 +80,8 @@ public class GameManager : MonoBehaviour
 
         // guarda el estado correspondiente en current
         _currentGameState = newState;
+
+        if (_UIManager != null) { _UIManager.SetMenu(newState); }
 
         Debug.Log("Nosss encontramoS en el eStado:" + _currentGameState);
     }
@@ -140,6 +144,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region METODOS DE PAGINAS
+    public void RegisterUIManager(UIManager uiManager)
+    {
+        _UIManager = uiManager;
+    }
+
     public void SetPage(int page) { _currentPage = page; }
     public void NextPage()
     {
@@ -186,6 +195,10 @@ public class GameManager : MonoBehaviour
 
         // inicializacion del numero de pagina actual
         _currentPage = 0;
+
+        // inducimos primer onEnter con valor dummy del estado
+        _currentGameState = GameStates.END;
+        _nextGameState = GameStates.MAINMENU; // valor real inicial
     }
 
     // Update is called once per frame

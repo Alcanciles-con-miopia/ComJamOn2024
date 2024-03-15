@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] // sigue el orden de los estados del gamemanager
     public GameObject[] menus;
 
+    // Properties
+    private GameManager.GameStates _activeMenu;
 
     #region ON CLICKS
     /// <param name="state"></param>
@@ -30,7 +32,6 @@ public class UIManager : MonoBehaviour
             // cambia de páginas
             GameManager.Instance.NextPage();
             Debug.Log(GameManager.Instance.CurrentPage);
-            // si ya ha hecho la última página pasa al estado final
         }
     }
 
@@ -48,10 +49,18 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    public void SetMenu(GameManager.GameStates newMenu)
+    {
+        menus[(int)_activeMenu].SetActive(false);
+        _activeMenu = newMenu;
+        menus[(int)_activeMenu].SetActive(true);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-
+        if (GameManager.Instance != null)
+            GameManager.Instance.RegisterUIManager(this);
     }
 
     // Update is called once per frame
