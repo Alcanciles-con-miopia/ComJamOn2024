@@ -99,7 +99,7 @@ public class DrawingComponent : MonoBehaviour
         return _centralPoint;
     }
 
-    public Vector3 GetMinPoint()
+    public float XSize()
     {
         Vector3 _minPoint = GetCenter();
         Vector3[][] punteles = GetPositions();
@@ -116,7 +116,7 @@ public class DrawingComponent : MonoBehaviour
 
     }
 
-    public Vector3 GetMaxPoint()
+    public float YSize()
     {
         Vector3 _maxPoint = GetCenter();
         Vector3[][] punteles = GetPositions();

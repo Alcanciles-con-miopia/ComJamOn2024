@@ -12,6 +12,9 @@ public class ShapeDetectorV1 : MonoBehaviour
     float cantDentro = 0;
     // Cantidad de puntos totales
     int cantPuntos;
+
+    [SerializeField] GameObject shape;
+
     /// <summary>
     /// Detecta si los puntos estan dentro de un collider y si lo estan aumenta en uno a puntos en rango, si el porcentaje de aciertos es superior al necesario se da por acertada el dibujo
     /// </summary>
@@ -37,6 +40,7 @@ public class ShapeDetectorV1 : MonoBehaviour
                 //Debug.Log(punteles[i]);
                 if (Raycast(punteles[i][j]))
                 {
+                    // Suma uno cuando el punto esta dentro del collider
                     cantDentro++;
                 }
             }
@@ -66,10 +70,12 @@ public class ShapeDetectorV1 : MonoBehaviour
         Debug.Log("not collidea");
         return false;
     }
-
     public float PorcentajeAcierto()
     {
         return (cantDentro / cantPuntos) * 100;
-
+}
+    void AdaptShape()
+    {
+        shape.GetComponent<spr>
     }
 }
