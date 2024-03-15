@@ -13,7 +13,7 @@ public class DrawManager : MonoBehaviour
     /// Metodo para juntar arrays de puntos y comprobar si se ha completado correctamente la runa
     /// </summary>
     /// <param name="punteles"> cantidad indeterminada de arrays de puntos Vectores3</param>
-    void EndDraw()
+    public void EndDraw()
     {
 
         int cantLineas = _drawingComponent.gameObject.GetComponent<Transform>().childCount;
