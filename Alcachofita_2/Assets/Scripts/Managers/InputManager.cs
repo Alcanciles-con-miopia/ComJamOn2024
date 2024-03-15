@@ -40,9 +40,6 @@ public class InputManager : MonoBehaviour
         // CCAMBIAR ANTES DE COMMITEAR !!!!!!!
 
         //Cada vez que se pulsa, empieza o termina el trazo
-        Debug.Log(GameManager.Instance != null);
-        Debug.Log(_drawingComponent != null);
-        Debug.Log(GameManager.Instance.CurrentState == GameManager.GameStates.GAME);
         if (Input.GetMouseButton(0))
         {
             if (GameManager.Instance != null
@@ -50,7 +47,7 @@ public class InputManager : MonoBehaviour
                 && GameManager.Instance.CurrentState == GameManager.GameStates.GAME)
             {
                 _drawingComponent.Paint(newPoint);
-                Debug.Log("COJONES");
+                //Debug.Log("COJONES");
             }
         }
         else if (Input.GetMouseButtonUp(1))

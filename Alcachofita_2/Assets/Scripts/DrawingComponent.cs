@@ -30,7 +30,7 @@ public class DrawingComponent : MonoBehaviour
     //Dibuja un trazo mientras se mantenga pulsado
     public LineRenderer Paint(Vector3 newPoint)
     {
-        newPoint.z = 0;
+        newPoint.z = 1;
 
         //Si hay suficiente distancia entre los puntos, a�adimos el punto nuevo en la l�nea
         if (Vector3.Distance(_lastPoint, newPoint) > _minDistance)
