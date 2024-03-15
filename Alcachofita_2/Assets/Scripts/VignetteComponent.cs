@@ -7,22 +7,25 @@ using Unity.VisualScripting;
 
 public class VignetteComponent : MonoBehaviour
 {
-    [SerializeField] private Image image;
-    public Color imageColor;
+    public RawImage _image;
+    private float _increaseFactor = 51f;
 
     void Start()
     {
-        imageColor = image.color;
+        _image = GetComponent<RawImage>();
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0);
     }
 
-    private void Update()
-    {
-        imageColor.a++;
-        Debug.Log("lalineasilalineano");
-    }
+
     public void ChangeIntensity()
     {
-        imageColor.a ++;
-        Debug.Log("lalineasilalineano");
+        if(_image.color.a < 255)
+        {
+            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, _increaseFactor);
+            Debug.Log(_increaseFactor);
+            Debug.Log(_image.color.a);
+            //_increaseFactor += 51f;
+        }
     }
+
 }
