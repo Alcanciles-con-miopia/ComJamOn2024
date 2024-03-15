@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfb60faf8ff141448f36423e60046ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _line: {fileID: 0}
+  _line: {fileID: 630702897}
 --- !u!4 &236803511
 Transform:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 880135149}
   - component: {fileID: 880135148}
   m_Layer: 0
-  m_Name: Line
+  m_Name: Lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

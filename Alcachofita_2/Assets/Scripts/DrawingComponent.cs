@@ -11,8 +11,7 @@ public class DrawingComponent : MonoBehaviour
     [SerializeField] Material _material;
     [SerializeField] float _startWidth = 0.5f;
     [SerializeField] float _endWidth = 0.5f;
-    Color _startColor = new Color(55, 0, 0);
-    Color _endColor = new Color(217, 13, 13);
+    Color _bloodColor = new Color(120, 2, 2, 255);
 
     #endregion
 
@@ -62,12 +61,8 @@ public class DrawingComponent : MonoBehaviour
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         //Color
-        Gradient colorGradient = new Gradient();
-        GradientColorKey[] colors = new GradientColorKey[2];
-        colors[0] = new GradientColorKey(_startColor, 0);
-        colors[1] = new GradientColorKey(_endColor, 1);
-        colorGradient.colorKeys = colors;
-        line.colorGradient = colorGradient;
+        line.startColor = _bloodColor;
+        line.endColor = _bloodColor;
 
         //Materiales
         List<Material> materials = new List<Material>();
