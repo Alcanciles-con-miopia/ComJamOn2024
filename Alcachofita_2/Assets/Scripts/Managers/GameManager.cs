@@ -15,15 +15,15 @@ public class GameManager : MonoBehaviour
     #region parameters
     // dedos por orden de corte
     // campo serializado para asignar los prefabs en el editor
-    [SerializeField] 
-    private GameObject PULGAR,
-                       INDICE,
-                       CORAZON,
-                       ANULAR,
-                       MENIQUE;
+    //private GameObject PULGAR,
+    //                   INDICE,
+    //                   CORAZON,
+    //                   ANULAR,
+    //                   MENIQUE;
 
     // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos
+    [SerializeField] 
     public GameObject[] dedos = new GameObject[NUM_DEDOS];
     #endregion
 
@@ -93,7 +93,23 @@ public class GameManager : MonoBehaviour
     // sobretodo para input y ui y cosas asi ?????
     public void updateState(GameStates state)
     {
-        
+        switch (state)
+        {
+            // ---- MAIN MENU ----
+            case GameStates.MAINMENU:   
+
+                break;
+
+            // ---- GAME ----
+            case GameStates.GAME:       
+
+                break;
+
+            // ---- END ----
+            case GameStates.END:        
+
+                break;
+        }
     }
     #endregion
 
@@ -103,12 +119,12 @@ public class GameManager : MonoBehaviour
     // en orden de cortado
     private void InicializaVidas()
     {
-        _nextDedo = 0;
-        dedos[0] = PULGAR;
-        dedos[1] = INDICE;
-        dedos[2] = CORAZON;
-        dedos[3] = ANULAR;
-        dedos[4] = MENIQUE;
+        _nextDedo = 0; 
+        //dedos[0] = PULGAR; // holaaaa soy cynthia he puesto que esta asignación sea en el serialize field que es el array directamente 
+        //dedos[1] = INDICE;
+        //dedos[2] = CORAZON;
+        //dedos[3] = ANULAR;
+        //dedos[4] = MENIQUE;
     }
 
     // ---- QuitaDedo ----
@@ -120,7 +136,7 @@ public class GameManager : MonoBehaviour
         if(_nextDedo < dedos.Length)
         {
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
-            dedos[_nextDedo].active = false;
+            dedos[_nextDedo].SetActive(false);
 
             // Siguiente dedo.
             _nextDedo++;
@@ -143,8 +159,6 @@ public class GameManager : MonoBehaviour
             // si se guarda info en el gameManager y se ha de recargar
             DontDestroyOnLoad(this);
         }
-
-        
     }
 
     // Start is called before the first frame update
