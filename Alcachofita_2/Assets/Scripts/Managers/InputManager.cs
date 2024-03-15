@@ -5,7 +5,7 @@ public class InputManager : MonoBehaviour
     #region Parameters
 
     [SerializeField] private GameObject _line;
-
+    private Vector3 mousePos = Vector3.zero;
     #endregion
 
     #region References
@@ -42,12 +42,14 @@ public class InputManager : MonoBehaviour
         //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
         {
-            Vector3 mousePos = Input.mousePosition;
+            mousePos = Input.mousePosition;
             if (GameManager.Instance != null
                 && _drawingComponent != null
                 && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
-                && mousePos.x > 500
-                && mousePos.y > 0)
+                && mousePos.x > 300
+                && mousePos.x < Screen.width - 100
+                && mousePos.y < Screen.height - 20
+                && mousePos.y > 80)
             {
                 _drawingComponent.Paint(newPoint);
                 //Debug.Log("COJONES");
