@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
             //dedos[_nextDedo].SetActive(false);
 
             _VignetteComponent.ChangeIntensity();
-            _ragdollComponent.SeparaDedo();
+            dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
 
             // Siguiente dedo a cortar.
             _nextDedo++;
