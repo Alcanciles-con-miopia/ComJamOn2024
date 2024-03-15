@@ -29,12 +29,13 @@ public class InputManager : MonoBehaviour
         {
             Application.Quit();
         }
-
+        /*
         //Al pulsar, se añade una línea
         if (Input.GetMouseButtonDown(0))
         {
             _drawingComponent.VariasLineas();
         }
+        */
 
         // CCAMBIAR ANTES DE COMMITEAR !!!!!!!
 

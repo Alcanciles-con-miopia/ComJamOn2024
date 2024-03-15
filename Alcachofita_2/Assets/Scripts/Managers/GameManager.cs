@@ -46,7 +46,8 @@ public class GameManager : MonoBehaviour
     private int _nextDedo;
     public int NextDedo { get { return _nextDedo; } }
 
-    // Nº PAGINA ACTUAL (RUNA ACTUAL)
+    // PAGINAS
+    // no. de pagina actual
     private int _currentPage;
     public int CurrentPage { get { return _currentPage; } }
     #endregion
@@ -122,14 +123,8 @@ public class GameManager : MonoBehaviour
     {
         _lastDedo = -1; // Inicialmente no hay ningún dedo cortado.
         _nextDedo = 0; // El próximo dedo a cortar es el dedos[0]
-        /*
-        dedos[0] = PULGAR; 
-        dedos[1] = INDICE;
-        dedos[2] = CORAZON;
-        dedos[3] = ANULAR;
-        dedos[4] = MENIQUE;
-        */
 
+        Debug.Log(dedos.Length);
         // Set active todos los dedalos.
         for (int i = 0; i < dedos.Length; i++)
         {
@@ -174,6 +169,7 @@ public class GameManager : MonoBehaviour
             requestSateChange(GameStates.END);
         }
     }
+
     public void LastPage() { _currentPage--; }
     #endregion
 
