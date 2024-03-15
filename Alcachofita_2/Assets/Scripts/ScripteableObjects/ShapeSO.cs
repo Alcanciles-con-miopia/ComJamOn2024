@@ -8,6 +8,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Shape", menuName = "Category/Shape", order = 1)]
 public class ShapeSO : ScriptableObject
 {
+
     public Vector2 centroide;
     public float minDistance;
     public float maxDistance;
