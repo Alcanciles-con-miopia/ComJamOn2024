@@ -27,6 +27,7 @@ public class DrawingComponent : MonoBehaviour
     void Start()
     {
         _lastPoint = transform.position;
+        if (GameManager.Instance != null ) { GameManager.Instance.RegisterDrawingComponent( this ); }
     }
 
     //Dibuja un trazo mientras se mantenga pulsado
