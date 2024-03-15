@@ -169,7 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkResolution: 1
   guessPercent: 0.7
-  collider: {fileID: 0}
+  shape: {fileID: 2677663687786981796, guid: 772f535b2a7054342848440d9b4009ca, type: 3}
+  drawingComponent: {fileID: 725787340}
 --- !u!1 &381279238
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawingComponent: {fileID: 725787340}
-  _shapeDetector: {fileID: 47139653}
 --- !u!4 &446527513
 Transform:
   m_ObjectHideFlags: 0
@@ -676,9 +676,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 446527512}
-        m_TargetAssemblyTypeName: DrawManager, Assembly-CSharp
-        m_MethodName: EndDraw
+      - m_Target: {fileID: 47139653}
+        m_TargetAssemblyTypeName: ShapeDetectorV1, Assembly-CSharp
+        m_MethodName: shapeDetected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

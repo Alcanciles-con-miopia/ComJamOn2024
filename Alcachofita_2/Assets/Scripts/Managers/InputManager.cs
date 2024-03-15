@@ -33,7 +33,19 @@ public class InputManager : MonoBehaviour
         //Al pulsar, se a�ade una l�nea
         if (Input.GetMouseButtonDown(0))
         {
-            _drawingComponent.VariasLineas();
+            mousePos = Input.mousePosition;
+            if (GameManager.Instance != null
+                && _drawingComponent != null
+                && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
+                && mousePos.x > 300
+                && mousePos.x < Screen.width - 100
+                && mousePos.y < Screen.height - 20
+                && mousePos.y > 80)
+            {
+                //_drawingComponent.Paint(newPoint);
+                _drawingComponent.VariasLineas();
+                //Debug.Log("COJONES");
+            }
         }
 
 
