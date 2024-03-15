@@ -28,7 +28,7 @@ public class VignetteComponent : MonoBehaviour
             _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, _increaseFactor);
             Debug.Log(_increaseFactor);
             Debug.Log(_image.color.a);
-            _increaseFactor += 0.25f;
+            _increaseFactor += 0.20f;
 
             _audioSource.clip = _arrancaDedo;
             _audioSource.Play();
