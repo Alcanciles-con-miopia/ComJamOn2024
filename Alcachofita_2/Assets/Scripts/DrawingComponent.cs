@@ -9,6 +9,7 @@ public class DrawingComponent : MonoBehaviour
     [SerializeField] Material _material;
     [SerializeField] float _startWidth = 0.5f;
     [SerializeField] float _endWidth = 0.5f;
+    [SerializeField] ShapeDetectorV1 _shapeDetector;
 
     #endregion
 
@@ -87,7 +88,7 @@ public class DrawingComponent : MonoBehaviour
         Vector3 positions = new Vector3();
         //Recorremos los puntos para hacer la media
         for (int i = 0; i < line.positionCount; i++)
-        {    
+        {
             positions += line.GetPosition(i);
         }
 
@@ -100,17 +101,34 @@ public class DrawingComponent : MonoBehaviour
 
     public Vector3 GetMinPoint()
     {
-        Vector3 _minPoint = new Vector3();
-        Vector3[] points = new Vector3[line.positionCount];
-        Mathf.Min(line.GetPositions(points));
+        Vector3 _minPoint = GetCenter();
+        Vector3[][] punteles = GetPositions();
+        for (int i = 0; i < punteles.Length; i++)
+        {
+            for (int j = 0; j < punteles[i].Length; j++)
+            {
+                if (Vector3.Distance(_minPoint, GetCenter()) > Vector3.Distance(punteles[i][j], GetCenter()))
+                    _minPoint = punteles[i][j];
+            }
+        }
+
         return _minPoint;
+
     }
 
     public Vector3 GetMaxPoint()
     {
-        Vector3 _maxPoint = new Vector3();
-        Vector3[] points = new Vector3[line.positionCount];
-        Mathf.Max(line.GetPositions(points));
+        Vector3 _maxPoint = GetCenter();
+        Vector3[][] punteles = GetPositions();
+        for (int i = 0; i < punteles.Length; i++)
+        {
+            for (int j = 0; j < punteles[i].Length; j++)
+            {
+                if (Vector3.Distance(_maxPoint, GetCenter()) < Vector3.Distance(punteles[i][j], GetCenter()))
+                    _maxPoint = punteles[i][j];
+            }
+        }
+
         return _maxPoint;
     }
 
@@ -139,5 +157,30 @@ public class DrawingComponent : MonoBehaviour
         }
 
         Debug.Log(transform.childCount);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    Vector3[][] GetPositions()
+    {
+        int cantLineas = gameObject.GetComponent<Transform>().childCount;
+
+        Debug.Log("Cant lineas: " + cantLineas);
+
+        Vector3[][] punteles = new Vector3[cantLineas][];
+
+
+        for (int i = 0; i < cantLineas; i++)
+        {
+            LineRenderer linerendrs = gameObject.GetComponent<Transform>().GetChild(i).GetComponent<LineRenderer>();
+            punteles[i] = new Vector3[linerendrs.positionCount];
+            for (int j = 0; j < punteles[i].Length; j++)
+            {
+                linerendrs.GetPositions(punteles[i]);
+            }
+
+        }
+        return punteles;
     }
 }

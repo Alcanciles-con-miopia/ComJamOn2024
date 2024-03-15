@@ -9,6 +9,9 @@ public class ShapeDetectorV1 : MonoBehaviour
     // Porcentaje a partir del que un dibujo se da por bueno.
     [SerializeField] private float guessPercent = 0.7f;
 
+    float cantDentro = 0;
+    // Cantidad de puntos totales
+    int cantPuntos;
     /// <summary>
     /// Detecta si los puntos estan dentro de un collider y si lo estan aumenta en uno a puntos en rango, si el porcentaje de aciertos es superior al necesario se da por acertada el dibujo
     /// </summary>
@@ -16,9 +19,11 @@ public class ShapeDetectorV1 : MonoBehaviour
     /// <returns></returns>
     public bool shapeDetected(Vector3[][] punteles)
     {
-        float cantDentro = 0;
+
+        cantDentro = 0;
         // Cantidad de puntos totales
-        int cantPuntos = punteles.Length;
+        cantPuntos = punteles.Length;
+
         for (int i = 0; i < punteles.Length; i++)
         {
             cantPuntos += punteles[i].Length;
@@ -45,7 +50,7 @@ public class ShapeDetectorV1 : MonoBehaviour
         return cantDentro / cantPuntos >= guessPercent;
     }
 
-    bool Raycast(Vector2 pos)
+    private bool Raycast(Vector2 pos)
     {
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
 
@@ -60,5 +65,11 @@ public class ShapeDetectorV1 : MonoBehaviour
         }
         Debug.Log("not collidea");
         return false;
+    }
+
+    public float PorcentajeAcierto()
+    {
+        return (cantDentro / cantPuntos) * 100;
+
     }
 }
