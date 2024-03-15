@@ -8,11 +8,13 @@ public class VignetteComponent : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.Instance != null)
+            GameManager.Instance.RegisterVignette(this);
+
         _image = GetComponent<Image>();
         _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0);
         _increaseFactor = 0.25f;
     }
-
 
     public void ChangeIntensity()
     {
