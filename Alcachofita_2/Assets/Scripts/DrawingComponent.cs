@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TerrainTools;
 
 public class DrawingComponent : MonoBehaviour
 {
@@ -34,12 +32,12 @@ public class DrawingComponent : MonoBehaviour
         newPoint.z = 0;
 
         //Si hay suficiente distancia entre los puntos, añadimos el punto nuevo en la línea
-        if (Vector3.Distance(_lastPoint, newPoint) > _minDistance) 
+        if (Vector3.Distance(_lastPoint, newPoint) > _minDistance)
         {
             //Suma punto
             line.positionCount++;
             //Lo añade a la linea
-            line.SetPosition(line.positionCount - 1, newPoint); 
+            line.SetPosition(line.positionCount - 1, newPoint);
             //El ultimo punto dibujado es el nuevo del cursor
             _lastPoint = newPoint;
         }
@@ -55,9 +53,9 @@ public class DrawingComponent : MonoBehaviour
 
         //Creamos una lista para añadir los puntos (luego lo pasamos a array)
         List<Vector3> puntos = new List<Vector3>();
-        
+
         //Añadimos los puntos a la lista
-        for (int i = 0 ; i < line.positionCount; i++) 
+        for (int i = 0; i < line.positionCount; i++)
         {
             puntos.Add(line.GetPosition(i));
         }

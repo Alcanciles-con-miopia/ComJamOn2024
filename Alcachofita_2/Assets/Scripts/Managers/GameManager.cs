@@ -1,18 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Video;
-using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
     public enum GameStates { MAINMENU, GAME, END };
     const int NUM_DEDOS = 5;
 
-    #region parameters
+    #region references
     // dedos por orden de corte
     // campo serializado para asignar los prefabs en el editor
     //private GameObject PULGAR,
@@ -23,12 +16,8 @@ public class GameManager : MonoBehaviour
 
     // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos
-    [SerializeField] 
+    [SerializeField]
     public GameObject[] dedos = new GameObject[NUM_DEDOS];
-    #endregion
-
-    #region references
-    // aun no hay nada je
     #endregion
 
     #region properties
@@ -50,6 +39,10 @@ public class GameManager : MonoBehaviour
     // DEDOS
     private int _nextDedo;
     public int NextDedo { get { return _nextDedo; } }
+
+    // Nº PAGINA ACTUAL (RUNA ACTUAL)
+    private int _currentPage;
+    public int CurrentPage { get { return _currentPage; } }
     #endregion
 
     #region METODOS DE ESTADOS
@@ -68,17 +61,17 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             // ---- MAIN MENU ----
-            case GameStates.MAINMENU:   
+            case GameStates.MAINMENU:
 
                 break;
 
             // ---- GAME ----
-            case GameStates.GAME:       
+            case GameStates.GAME:
 
                 break;
 
             // ---- END ----
-            case GameStates.END:        
+            case GameStates.END:
 
                 break;
         }
@@ -96,17 +89,17 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             // ---- MAIN MENU ----
-            case GameStates.MAINMENU:   
+            case GameStates.MAINMENU:
 
                 break;
 
             // ---- GAME ----
-            case GameStates.GAME:       
+            case GameStates.GAME:
 
                 break;
 
             // ---- END ----
-            case GameStates.END:        
+            case GameStates.END:
 
                 break;
         }
@@ -119,7 +112,7 @@ public class GameManager : MonoBehaviour
     // en orden de cortado
     private void InicializaVidas()
     {
-        _nextDedo = 0; 
+        _nextDedo = 0;
         //dedos[0] = PULGAR; // holaaaa soy cynthia he puesto que esta asignación sea en el serialize field que es el array directamente 
         //dedos[1] = INDICE;
         //dedos[2] = CORAZON;
@@ -133,7 +126,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] QuitaDedo()
     {
         // Siempre y cuando el índice sea menor que dedos.Length...
-        if(_nextDedo < dedos.Length)
+        if (_nextDedo < dedos.Length)
         {
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
             dedos[_nextDedo].SetActive(false);
@@ -144,8 +137,23 @@ public class GameManager : MonoBehaviour
 
         return dedos;
     }
-
     #endregion
+
+    #region METODOS DE PAGINAS
+    public void SetPage(int page) { _currentPage = page; }
+    public void NextPage()
+    {
+        //if (drawcomponent.comprobar etc...)
+        _currentPage++;
+
+        if (_currentPage >= 3)
+        {
+            requestSateChange(GameStates.END);
+        }
+    }
+    public void LastPage() { _currentPage--; }
+    #endregion
+
     private void Awake()
     {
         // si ya existe instancia del gamemanager se destruye
@@ -171,11 +179,13 @@ public class GameManager : MonoBehaviour
         _input = GetComponent<InputManager>();
 
         // Set active todos los dedalos.
-        for(int i = 0; i < dedos.Length; i++)
+        for (int i = 0; i < dedos.Length; i++)
         {
-            dedos[i].SetActive(true); 
+            dedos[i].SetActive(true);
         }
-        
+
+        // inicializacion del numero de pagina actual
+        _currentPage = 0;
     }
 
     // Update is called once per frame

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
@@ -55,7 +51,7 @@ public class InputManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            if (GameManager.Instance != null) 
+            if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();
             Debug.Log("Borra eso");
         }
