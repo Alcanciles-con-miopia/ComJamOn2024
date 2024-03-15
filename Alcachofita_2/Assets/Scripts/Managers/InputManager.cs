@@ -58,9 +58,9 @@ public class InputManager : MonoBehaviour
             if (GameManager.Instance != null
                 && _drawingComponent != null
                 && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
-                && mousePos.x > 300
-                && mousePos.x < Screen.width - 100
-                && mousePos.y < Screen.height - 20
+                && mousePos.x > 420
+                && mousePos.x < Screen.width - 170
+                && mousePos.y < Screen.height - 80
                 && mousePos.y > 80)
             {
                 if (_drawingComponent != null)  _drawingComponent.Paint(newPoint);
