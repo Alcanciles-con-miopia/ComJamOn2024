@@ -4,7 +4,7 @@ public class InputManager : MonoBehaviour
 {
     #region Parameters
 
-    [SerializeField] private LineRenderer _line;
+    [SerializeField] private GameObject _line;
 
     #endregion
 
