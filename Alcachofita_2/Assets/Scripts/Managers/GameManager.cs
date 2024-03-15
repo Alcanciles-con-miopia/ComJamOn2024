@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
+    private RagdollComponent _ragdollComponent;
 
     #endregion
     
@@ -126,6 +128,15 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region METODOS DE RAGDOLL
+
+    public void RegisterRagdoll(RagdollComponent ragdoll)
+    {
+        _ragdollComponent = ragdoll;
+    }
+
+    #endregion
+
     #region METODOS DE DEDOS
     // ---- InicializaDedos ----
     // settea cada indice del array con su dedo correspondiente
@@ -152,9 +163,10 @@ public class GameManager : MonoBehaviour
         if (_nextDedo < dedos.Length)
         {
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
-            dedos[_nextDedo].SetActive(false);
+            //dedos[_nextDedo].SetActive(false);
 
             _VignetteComponent.ChangeIntensity();
+            _ragdollComponent.SeparaDedo();
 
             // Siguiente dedo a cortar.
             _nextDedo++;
