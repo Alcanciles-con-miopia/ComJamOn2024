@@ -47,7 +47,7 @@ public class DrawingComponent : MonoBehaviour
         return line;
     }
 
-    public void VariasLineas(/*LineRenderer newLine*/)
+    public void VariasLineas()
     {
         //Creamos un hijo por cada l�nea que pintemos
         LineRenderer newLine = new GameObject().AddComponent<LineRenderer>();
