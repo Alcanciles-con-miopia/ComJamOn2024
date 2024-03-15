@@ -27,7 +27,7 @@ public class DrawingComponent : MonoBehaviour
     void Start()
     {
         _lastPoint = transform.position;
-        if (GameManager.Instance != null ) { GameManager.Instance.RegisterDrawingComponent( this ); }
+        if (GameManager.Instance != null) { GameManager.Instance.RegisterDrawingComponent(this); }
     }
 
     //Dibuja un trazo mientras se mantenga pulsado
@@ -87,18 +87,6 @@ public class DrawingComponent : MonoBehaviour
 
     public Vector3 GetCenter()
     {
-        /*Vector3 positions = new Vector3();
-        //Recorremos los puntos para hacer la media
-        for (int i = 0; i < line.positionCount; i++)
-        {
-            positions += line.GetPosition(i);
-        }
-
-        _centralPoint.x = positions.x / line.positionCount;
-        _centralPoint.y = positions.y / line.positionCount;
-        _centralPoint.z = 0;
-
-        return _centralPoint;*/
 
         Vector3 centerMax = Vector3.zero;
 
@@ -134,23 +122,22 @@ public class DrawingComponent : MonoBehaviour
 
     public float XSize()
     {
-        Vector3 _minPoint = GetCenter();
-        Vector3 _maxPoint = GetCenter();
-        //float size;
         Vector3[][] punteles = GetPositions();
+
+        Vector3 _minPoint = punteles[0][0];
+        Vector3 _maxPoint = punteles[0][0];
+        //float size;
 
         for (int i = 0; i < punteles.Length; i++)
         {
             for (int j = 0; j < punteles[i].Length; j++)
             {
-                if ((GetCenter().x - _minPoint.x) > (GetCenter().x - punteles[i][j].x))
-                    _maxPoint = punteles[i][j];
-                if ((_maxPoint.x - GetCenter().x) < (punteles[i][j].x - GetCenter().x))
+                if (punteles[i][j].x < _minPoint.x)
                     _minPoint = punteles[i][j];
+                if (punteles[i][j].x > _maxPoint.x)
+                    _maxPoint = punteles[i][j];
             }
         }
-
-        Debug.Log(_maxPoint.x - _minPoint.x);
 
         return _maxPoint.x - _minPoint.x;
 
@@ -158,19 +145,20 @@ public class DrawingComponent : MonoBehaviour
 
     public float YSize()
     {
-        Vector3 _minPoint = GetCenter();
-        Vector3 _maxPoint = GetCenter();
-        //float size;
         Vector3[][] punteles = GetPositions();
+
+        Vector3 _minPoint = punteles[0][0];
+        Vector3 _maxPoint = punteles[0][0];
+        //float size;
 
         for (int i = 0; i < punteles.Length; i++)
         {
             for (int j = 0; j < punteles[i].Length; j++)
             {
-                if ((GetCenter().y - _minPoint.y) > (GetCenter().y - punteles[i][j].y))
-                    _maxPoint = punteles[i][j];
-                if ((_maxPoint.y - GetCenter().y) < (punteles[i][j].y - GetCenter().y))
+                if (punteles[i][j].y < _minPoint.y)
                     _minPoint = punteles[i][j];
+                if (punteles[i][j].y > _maxPoint.y)
+                    _maxPoint = punteles[i][j];
             }
         }
 
@@ -203,7 +191,7 @@ public class DrawingComponent : MonoBehaviour
         }
 
 
-       // Debug.Log(transform.childCount);
+        // Debug.Log(transform.childCount);
 
     }
 
