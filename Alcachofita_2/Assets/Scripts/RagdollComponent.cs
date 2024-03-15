@@ -7,6 +7,7 @@ public class RagdollComponent : MonoBehaviour
     
     private Rigidbody2D _myRigidBody;
     private bool separa = false;
+    [SerializeField] Collider2D colision;
     
     [SerializeField] private float fuerzaDedalo = 100f;
     // Start is called before the first frame update
@@ -24,8 +25,12 @@ public class RagdollComponent : MonoBehaviour
         _myRigidBody.bodyType = RigidbodyType2D.Dynamic;
         _myRigidBody.AddForce(transform.up * fuerzaDedalo);
 
-
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameObject.SetActive(false);
+    }
+
 }
 

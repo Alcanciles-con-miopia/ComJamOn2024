@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShakeComponent : MonoBehaviour
 {
-    private float shakeSpeed = 3f;
+    private float shakeSpeed = 0f;
     [SerializeField] private float shakeFactor = 0.1f;
     private Vector3 originalPosition;
     // Start is called before the first frame update

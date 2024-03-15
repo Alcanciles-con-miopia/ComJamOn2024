@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
 
+    [SerializeField] private GameObject mano;
+
     // UIManager
     private UIManager _UIManager;
     // ShapeDetector
@@ -170,6 +172,7 @@ public class GameManager : MonoBehaviour
 
             _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
+            mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
             // Siguiente dedo a cortar.
             _nextDedo++;
