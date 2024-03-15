@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (_line != null) _drawingComponent = _line.GetComponent<DrawingComponent>();
+        _drawingComponent = _line.GetComponent<DrawingComponent>();
     }
 
     // Update is called once per frame
@@ -29,22 +29,25 @@ public class InputManager : MonoBehaviour
             Application.Quit();
         }
 
-        /*
+
         //Al pulsar, se a�ade una l�nea
         if (Input.GetMouseButtonDown(0))
         {
             _drawingComponent.VariasLineas();
         }
-        */
+
 
         // CCAMBIAR ANTES DE COMMITEAR !!!!!!!
 
         //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
         {
+            Vector3 mousePos = Input.mousePosition;
             if (GameManager.Instance != null
                 && _drawingComponent != null
-                && GameManager.Instance.CurrentState == GameManager.GameStates.GAME)
+                && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
+                && mousePos.x > 500
+                && mousePos.y)
             {
                 _drawingComponent.Paint(newPoint);
                 //Debug.Log("COJONES");
@@ -65,7 +68,7 @@ public class InputManager : MonoBehaviour
             // Existe el script GameManager puesto.
             if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();
-            
+
         }
     }
 }
