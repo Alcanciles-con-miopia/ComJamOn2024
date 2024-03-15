@@ -42,9 +42,12 @@ public class InputManager : MonoBehaviour
         //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
         {
+            Vector3 mousePos = Input.mousePosition;
             if (GameManager.Instance != null
                 && _drawingComponent != null
-                && GameManager.Instance.CurrentState == GameManager.GameStates.GAME)
+                && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
+                && mousePos.x > 500
+                && mousePos.y)
             {
                 _drawingComponent.Paint(newPoint);
                 //Debug.Log("COJONES");
