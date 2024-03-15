@@ -14,15 +14,15 @@ public class ShapeDetectorV1 : MonoBehaviour
     int cantPuntos;
 
     [SerializeField] GameObject shape;
+    [SerializeField] DrawingComponent drawingComponent;
 
     /// <summary>
     /// Detecta si los puntos estan dentro de un collider y si lo estan aumenta en uno a puntos en rango, si el porcentaje de aciertos es superior al necesario se da por acertada el dibujo
     /// </summary>
-    /// <param name="punteles">Array de puntos de un dibujo</param>
-    /// <returns></returns>
-    public bool shapeDetected(Vector3[][] punteles)
+    public void shapeDetected()
     {
-
+        Vector3[][] punteles = drawingComponent.GetPositions();
+        AdaptShape(punteles);
         cantDentro = 0;
         // Cantidad de puntos totales
         cantPuntos = punteles.Length;
@@ -51,7 +51,7 @@ public class ShapeDetectorV1 : MonoBehaviour
         Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
 
 
-        return cantDentro / cantPuntos >= guessPercent;
+       // return cantDentro / cantPuntos >= guessPercent;
     }
 
     private bool Raycast(Vector2 pos)
@@ -73,9 +73,33 @@ public class ShapeDetectorV1 : MonoBehaviour
     public float PorcentajeAcierto()
     {
         return (cantDentro / cantPuntos) * 100;
-}
-    void AdaptShape()
+    }
+    void AdaptShape(Vector3[][] Punteles)
     {
-       /// shape.GetComponent<spr>
+        //spriteRenderer.bounds.center.x - spriteRenderer.bounds.extents.x //Limite izquierdo sprite
+        //spriteRenderer.bounds.center.x + spriteRenderer.bounds.extents.x //Limite derecho spritez
+
+        //spriteRenderer.bounds.center.y - spriteRenderer.bounds.extents.y //Limite izquierdo sprite
+        //spriteRenderer.bounds.center.y + spriteRenderer.bounds.extents.y //Limite derecho spritez
+        GameObject shapeInst = Instantiate(shape, drawingComponent.GetCenter(), Quaternion.identity) ;
+
+        SpriteRenderer runaSPR = shape.GetComponent<SpriteRenderer>();
+
+
+        shapeInst.transform.localScale = new Vector3(
+            ((runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x))/drawingComponent.XSize(), 
+            ((runaSPR.bounds.center.y + runaSPR.bounds.extents.y) - (runaSPR.bounds.center.y - runaSPR.bounds.extents.y))/drawingComponent.YSize(), 
+            0);
+
+        shapeInst.transform.position = drawingComponent.GetCenter(); 
+
+    }
+
+    private void Awake()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterShapeDetector(this);
+        }
     }
 }

@@ -20,17 +20,20 @@ public class GameManager : MonoBehaviour
     // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos.
     [SerializeField]
-    public GameObject[] dedos = new GameObject[NUM_DEDOS];
+    private GameObject[] dedos = new GameObject[NUM_DEDOS];
 
     // UIManager
     private UIManager _UIManager;
+    // ShapeDetector
+    private ShapeDetectorV1 _ShapeDetector;
+    private DrawingComponent _drawingComp;
 
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
 
     #endregion
-    
+
     #region properties
     // GAMEMANAGER
     private static GameManager _gameManager;
@@ -166,7 +169,7 @@ public class GameManager : MonoBehaviour
             //dedos[_nextDedo].SetActive(false);
 
             _VignetteComponent.ChangeIntensity();
-            _ragdollComponent.SeparaDedo();
+            dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
 
             // Siguiente dedo a cortar.
             _nextDedo++;
@@ -191,6 +194,25 @@ public class GameManager : MonoBehaviour
         _UIManager = uiManager;
     }
 
+    public void RegisterShapeDetector(ShapeDetectorV1 shapeDetector)
+    {
+        _ShapeDetector = shapeDetector;
+    }
+
+    public void RegisterDrawingComponent(DrawingComponent drawComp)
+    {
+        _drawingComp = drawComp;
+    }
+
+    public float GetPercent()
+    {
+        if (_ShapeDetector != null)
+        {
+            return _ShapeDetector.PorcentajeAcierto();
+        }
+        return 0;
+    }
+
     public void SetPage(int page) { _currentPage = page; }
 
     public void NextPage()
@@ -200,6 +222,7 @@ public class GameManager : MonoBehaviour
 
         if (_currentPage >= 3)
         {
+            if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
             requestSateChange(GameStates.END);
         }
     }
