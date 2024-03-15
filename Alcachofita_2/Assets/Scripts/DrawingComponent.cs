@@ -47,16 +47,22 @@ public class DrawingComponent : MonoBehaviour
         return line;
     }
 
-    public void VariasLineas()
+    public void VariasLineas(LineRenderer line)
     {
         //Creamos un hijo por cada línea que pintemos
-        GameObject Lines = new GameObject();
-        Lines.AddComponent<LineRenderer>();
-        Lines.GetComponent<Transform>().parent = gameObject.GetComponent<Transform>();
+        LineRenderer Lines = new GameObject().AddComponent<LineRenderer>();
+        Lines.transform.SetParent(transform);
 
-        //Una vez que pintamos una línea
-        _lineaNueva = GetComponent<LineRenderer>();
-        //_lineaNueva.SetPositions(Paint().GetPositions(_positions));
+        //Creamos una lista para añadir los puntos (luego lo pasamos a array)
+        List<Vector3> puntos = new List<Vector3>();
+        
+        //Añadimos los puntos a la lista
+        for (int i = 0 ; i < line.positionCount; i++) 
+        {
+            puntos.Add(line.GetPosition(i));
+        }
+
+        line.SetPositions(puntos.ToArray());
     }
 
     //Saca los puntos de una línea

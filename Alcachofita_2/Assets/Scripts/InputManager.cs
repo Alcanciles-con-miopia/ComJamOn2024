@@ -34,15 +34,16 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _drawingComponent.VariasLineas();
+            Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _drawingComponent.VariasLineas(_drawingComponent.Paint(newPoint));
         }
 
+        //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
-
         {
             Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _drawingComponent.Paint(newPoint);
-            Debug.Log("Mira mamá, sé pintar");
+
         }
         else if (Input.GetMouseButtonUp(1))
         {
