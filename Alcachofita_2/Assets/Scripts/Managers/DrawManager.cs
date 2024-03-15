@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DrawManager : MonoBehaviour
@@ -43,7 +42,7 @@ public class DrawManager : MonoBehaviour
         */
 
         // True si esta en cositio
-        if (_shapeDetector != null) 
+        if (_shapeDetector != null)
             _shapeDetector.shapeDetected(punteles);
     }
 

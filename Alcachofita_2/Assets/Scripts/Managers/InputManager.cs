@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
             // Existe el script GameManager puesto.
             if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();
-            
+
         }
     }
 }

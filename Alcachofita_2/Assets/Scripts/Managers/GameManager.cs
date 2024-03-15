@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
     public enum GameStates { MAINMENU, GAME, END };
     const int NUM_DEDOS = 5;
 
+    // variable a actualizar cada vez que se corte un dedo
+    public bool ISDEAD = false;
+
     #region references
     // dedos por orden de corte.
     private GameObject PULGAR,
@@ -155,6 +158,17 @@ public class GameManager : MonoBehaviour
             // Siguiente dedo a cortar.
             _nextDedo++;
         }
+    }
+
+    // ---- isDead ----
+    // hace ISDEAD true si ya no quedan dedos
+    public void isDead()
+    {
+        if (_nextDedo >= 5)
+        {
+            ISDEAD = true;
+        }
+        else { ISDEAD = false; }
     }
     #endregion
 
