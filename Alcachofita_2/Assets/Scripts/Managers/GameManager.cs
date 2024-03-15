@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
+
     #endregion
 
     #region properties

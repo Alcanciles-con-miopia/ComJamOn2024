@@ -6,8 +6,13 @@ public class VignetteComponent : MonoBehaviour
     public Image _image;
     private float _increaseFactor;
 
+    [SerializeField] private AudioClip _arrancaDedo;
+    private AudioSource _audioSource;
+
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         if (GameManager.Instance != null)
             GameManager.Instance.RegisterVignette(this);
 
@@ -25,7 +30,8 @@ public class VignetteComponent : MonoBehaviour
             Debug.Log(_image.color.a);
             _increaseFactor += 0.25f;
 
-            GetComponentInParent<ShakeComponent>();
+            _audioSource.clip = _arrancaDedo;
+            _audioSource.Play();
         }
     }
 
