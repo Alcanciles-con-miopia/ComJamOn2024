@@ -21,18 +21,19 @@ public class GameManager : MonoBehaviour
     // inicialmente se tienen 5 dedos.
     [SerializeField]
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
-    
+
     // UIManager
     private UIManager _UIManager;
     // ShapeDetector
     private ShapeDetectorV1 _ShapeDetector;
+    private DrawingComponent _drawingComp;
 
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
 
     #endregion
-    
+
     #region properties
     // GAMEMANAGER
     private static GameManager _gameManager;
@@ -198,6 +199,11 @@ public class GameManager : MonoBehaviour
         _ShapeDetector = shapeDetector;
     }
 
+    public void RegisterDrawingComponent(DrawingComponent drawComp)
+    {
+        _drawingComp = drawComp;
+    }
+
     public float GetPercent()
     {
         if (_ShapeDetector != null)
@@ -216,7 +222,7 @@ public class GameManager : MonoBehaviour
 
         if (_currentPage >= 3)
         {
-            //if ()
+            if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
             requestSateChange(GameStates.END);
         }
     }
