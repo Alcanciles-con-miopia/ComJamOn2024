@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
                 && _drawingComponent != null
                 && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
                 && mousePos.x > 500
-                && mousePos.y)
+                && mousePos.y > 0)
             {
                 _drawingComponent.Paint(newPoint);
                 //Debug.Log("COJONES");
