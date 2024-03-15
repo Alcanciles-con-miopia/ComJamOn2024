@@ -9,9 +9,8 @@ public class InputManager : MonoBehaviour
     #endregion
 
     #region References
-
     private DrawingComponent _drawingComponent;
-
+    public DrawingComponent DrawingComponent { get { return _drawingComponent; } }
     #endregion
 
     // Start is called before the first frame update
@@ -30,7 +29,7 @@ public class InputManager : MonoBehaviour
             Application.Quit();
         }
 
-        //Al pulsar, se añade una línea
+        //Al pulsar, se aï¿½ade una lï¿½nea
         if (Input.GetMouseButtonDown(0))
         {
             _drawingComponent.VariasLineas();
@@ -41,15 +40,13 @@ public class InputManager : MonoBehaviour
         //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
         {
-
-            _drawingComponent.Paint(newPoint);
-        }
-        else if (Input.GetMouseButtonUp(1))
-        { 
-            if (GameManager.Instance != null 
+            if (GameManager.Instance != null
                 && _drawingComponent != null
                 && GameManager.Instance.CurrentState == GameManager.GameStates.GAME)
+            {
                 _drawingComponent.Paint(newPoint);
+                //Debug.Log("COJONES");
+            }
         }
         else if (Input.GetMouseButtonUp(1))
 
