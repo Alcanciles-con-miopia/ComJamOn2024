@@ -38,12 +38,21 @@ public class InputManager : MonoBehaviour
 
         // CCAMBIAR ANTES DE COMMITEAR !!!!!!!
 
-        /*//Cada vez que se pulsa, empieza o termina el trazo
+        //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
         {
+
             _drawingComponent.Paint(newPoint);
-        }*/
-        if (Input.GetMouseButtonUp(1))
+        }
+        else if (Input.GetMouseButtonUp(1))
+        { 
+            if (GameManager.Instance != null 
+                && _drawingComponent != null
+                && GameManager.Instance.CurrentState == GameManager.GameStates.GAME)
+                _drawingComponent.Paint(newPoint);
+        }
+        else if (Input.GetMouseButtonUp(1))
+
         {
             Debug.Log("boton derecho");
         }
