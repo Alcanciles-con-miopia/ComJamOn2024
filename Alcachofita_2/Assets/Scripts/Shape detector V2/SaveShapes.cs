@@ -1,6 +1,5 @@
-using UnityEngine;
 using System.IO;
-using System;
+using UnityEngine;
 
 public class SaveShapes : MonoBehaviour
 {

@@ -18,7 +18,7 @@ public class VignetteComponent : MonoBehaviour
 
     public void ChangeIntensity()
     {
-        if(_image.color.a < 1)
+        if (_image.color.a < 1)
         {
             _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, _increaseFactor);
             Debug.Log(_increaseFactor);
