@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DrawManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class DrawManager : MonoBehaviour
 
         int cantLineas = _drawingComponent.gameObject.GetComponent<Transform>().childCount;
 
+        Debug.Log("Cant lineas: " + cantLineas);
+
         Vector3[][] punteles = new Vector3[cantLineas][];
 
 
@@ -30,6 +33,15 @@ public class DrawManager : MonoBehaviour
 
         }
 
+        /* Vector3[] arrayfuses = new Vector3[cositas];
+         fuseArrays(punteles, arrayfuses);
+
+         for (int i = 0; i < arrayfuses.Length; i++)
+         {
+             Debug.Log(arrayfuses[i]);
+         }
+        */
+
         // True si esta en cositio
         if (_shapeDetector != null) 
             _shapeDetector.shapeDetected(fuseArrays(punteles));
@@ -40,27 +52,27 @@ public class DrawManager : MonoBehaviour
     /// </summary>
     /// <param name="punteles"> Array de arrays a fusionar</param>
     /// <returns></returns>
-    private Vector3[] fuseArrays(Vector3[][] punteles)
+    private void fuseArrays(Vector3[][] punteles, Vector3[] arrayfuses)
     {
-        // Cantidad de puntos totales
-        int cositas = punteles.Length;
-        for (int i = 0; i < punteles.Length; i++)
-        {
-            cositas += punteles[i].Length;
-        }
+
 
         // Vector de puntos mezclados
-        Vector3[] puntitos = new Vector3[cositas];
+
+        Debug.Log("Elementos x: " + punteles.Length + "elementos y: " + punteles[0].Length);
 
         for (int i = 0; i < punteles.Length; i++)
         {
             for (int j = 0; j < punteles[i].Length; j++)
             {
 
-                puntitos[i] = punteles[i][j];
+                // Debug.Log("Puntitos pochos: " + punteles[i][j]);
+                arrayfuses[i] = punteles[i][j];
+                Debug.Log("Puntitos: " + arrayfuses[i]);
             }
         }
 
-        return puntitos;
+        Debug.Log(punteles.Length);
+
+        // arrayfuses = puntitos;
     }
 }
