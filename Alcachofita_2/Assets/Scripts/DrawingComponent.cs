@@ -18,6 +18,7 @@ public class DrawingComponent : MonoBehaviour
 
     LineRenderer line = new LineRenderer();
     private Vector3 _lastPoint;
+    private Vector3 _centralPoint;
 
     #endregion
 
@@ -74,7 +75,7 @@ public class DrawingComponent : MonoBehaviour
         //Creamos una lista para a�adir los puntos (luego lo pasamos a array)
         List<Vector3> puntos = new List<Vector3>();
 
-        //A�adimos los puntos a la lista
+        //Añadimos los puntos a la lista
         for (int i = 0; i < newLine.positionCount; i++)
         {
             puntos.Add(newLine.GetPosition(i));
@@ -83,5 +84,36 @@ public class DrawingComponent : MonoBehaviour
         newLine.SetPositions(puntos.ToArray());
     }
 
+    public Vector3 GetCenter()
+    {
+        Vector3 positions = new Vector3();
+        //Recorremos los puntos para hacer la media
+        for (int i = 0; i < line.positionCount; i++)
+        {    
+            positions += line.GetPosition(i);
+        }
+
+        _centralPoint.x = positions.x / line.positionCount;
+        _centralPoint.y = positions.y / line.positionCount;
+        _centralPoint.z = 0;
+
+        return _centralPoint;
+    }
+
+    public Vector3 GetMinPoint()
+    {
+        Vector3 _minPoint = new Vector3();
+        Vector3[] points = new Vector3[line.positionCount];
+        Mathf.Min(line.GetPositions(points));
+        return _minPoint;
+    }
+
+    public Vector3 GetMaxPoint()
+    {
+        Vector3 _maxPoint = new Vector3();
+        Vector3[] points = new Vector3[line.positionCount];
+        Mathf.Max(line.GetPositions(points));
+        return _maxPoint;
+    }
 
 }
