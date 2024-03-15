@@ -23,23 +23,28 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
 
+        //Al pulsar, se añade una línea
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _drawingComponent.VariasLineas(_drawingComponent.Paint(newPoint));
+            _drawingComponent.StartLine(newPoint);
+        }
+        //Al dejar de pulsar, se deja de dibujar
+        if (Input.GetMouseButtonUp(0))
+        {
+            _drawingComponent.FinishLine();
         }
 
         //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
         {
-            Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _drawingComponent.Paint(newPoint);
-
         }
         else if (Input.GetMouseButtonUp(1))
         {
