@@ -22,6 +22,8 @@ public class VignetteComponent : MonoBehaviour
             Debug.Log(_increaseFactor);
             Debug.Log(_image.color.a);
             _increaseFactor += 0.25f;
+
+            GetComponentInParent<ShakeComponent>();
         }
     }
 
