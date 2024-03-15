@@ -35,6 +35,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ErasePage()
+    { // ESTO ES UNA PUTA MIERDA XD 
+        if (GameManager.Instance != null && GameManager.Instance.Input != null)
+        {
+            if (GameManager.Instance.Input.DrawingComponent != null)
+            {
+                GameManager.Instance.Input.DrawingComponent.EraseDrawing();
+            }
+        }
+    }
+
     /// Metodo para el onClick de los botones, para pasar al final del juego
     public void GoToEnding()
     {

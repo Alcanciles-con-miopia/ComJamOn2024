@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.TerrainTools;
 
 public class DrawingComponent : MonoBehaviour
 {
@@ -116,4 +114,22 @@ public class DrawingComponent : MonoBehaviour
         return _maxPoint;
     }
 
+        //Array to hold all child obj
+        GameObject[] allChildren = new GameObject[transform.childCount];
+
+        //Find all child obj and store to that array
+        foreach (Transform child in transform)
+        {
+            allChildren[i] = child.gameObject;
+            i += 1;
+        }
+
+        //Now destroy them
+        foreach (GameObject child in allChildren)
+        {
+            DestroyImmediate(child.gameObject);
+        }
+
+        Debug.Log(transform.childCount);
+    }
 }
