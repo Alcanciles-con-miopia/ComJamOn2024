@@ -44,7 +44,7 @@ public class DrawManager : MonoBehaviour
 
         // True si esta en cositio
         if (_shapeDetector != null) 
-            _shapeDetector.shapeDetected(fuseArrays(punteles));
+            _shapeDetector.shapeDetected(punteles);
     }
 
     /// <summary>
