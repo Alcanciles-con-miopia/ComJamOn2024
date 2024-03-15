@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -85,7 +86,7 @@ public class DrawingComponent : MonoBehaviour
 
     public Vector3 GetCenter()
     {
-        Vector3 positions = new Vector3();
+        /*Vector3 positions = new Vector3();
         //Recorremos los puntos para hacer la media
         for (int i = 0; i < line.positionCount; i++)
         {
@@ -96,41 +97,81 @@ public class DrawingComponent : MonoBehaviour
         _centralPoint.y = positions.y / line.positionCount;
         _centralPoint.z = 0;
 
-        return _centralPoint;
-    }
+        return _centralPoint;*/
 
-    public Vector3 XSize()
-    {
-        Vector3 _minPoint = GetCenter();
+        Vector3 centerMax = Vector3.zero;
+
         Vector3[][] punteles = GetPositions();
+
         for (int i = 0; i < punteles.Length; i++)
         {
             for (int j = 0; j < punteles[i].Length; j++)
             {
-                if (Vector3.Distance(_minPoint, GetCenter()) > Vector3.Distance(punteles[i][j], GetCenter()))
+                if (centerMax.x < punteles[i][j].x)
+                    centerMax.x = punteles[i][j].x;
+                if (centerMax.y < punteles[i][j].y)
+                    centerMax.y = punteles[i][j].y;
+            }
+        }
+
+        Vector3 centerMin = centerMax;
+        for (int i = 0; i < punteles.Length; i++)
+        {
+            for (int j = 0; j < punteles[i].Length; j++)
+            {
+                if (centerMin.x > punteles[i][j].x)
+                    centerMin.x = punteles[i][j].x;
+                if (centerMin.y > punteles[i][j].y)
+                    centerMin.y = punteles[i][j].y;
+            }
+        }
+        return new Vector3(
+            ((centerMax.x - centerMin.x) / 2) + centerMin.x,
+            ((centerMax.y - centerMin.y) / 2) + centerMin.y,
+            0);
+    }
+
+    public float XSize()
+    {
+        Vector3 _minPoint = GetCenter();
+        Vector3 _maxPoint = GetCenter();
+        //float size;
+        Vector3[][] punteles = GetPositions();
+
+        for (int i = 0; i < punteles.Length; i++)
+        {
+            for (int j = 0; j < punteles[i].Length; j++)
+            {
+                if ((GetCenter().x - _minPoint.x) > (GetCenter().x - punteles[i][j].x))
+                    _maxPoint = punteles[i][j];
+                if ((_maxPoint.x - GetCenter().x) < (punteles[i][j].x - GetCenter().x))
                     _minPoint = punteles[i][j];
             }
         }
 
-        return _minPoint;
+        return _maxPoint.x - _minPoint.x;
 
     }
 
-    public Vector3 YSize()
+    public float YSize()
     {
-        Vector3 _maxPoint = GetCenter();
         Vector3 _minPoint = GetCenter();
+        Vector3 _maxPoint = GetCenter();
+        //float size;
         Vector3[][] punteles = GetPositions();
+
         for (int i = 0; i < punteles.Length; i++)
         {
             for (int j = 0; j < punteles[i].Length; j++)
             {
-                if (Vector3.Distance(_maxPoint, GetCenter()) < Vector3.Distance(punteles[i][j], GetCenter()))
+                if ((GetCenter().y - _minPoint.y) > (GetCenter().y - punteles[i][j].y))
                     _maxPoint = punteles[i][j];
+                if ((_maxPoint.y - GetCenter().y) < (punteles[i][j].y - GetCenter().y))
+                    _minPoint = punteles[i][j];
             }
         }
 
-        return _maxPoint;
+        return _maxPoint.y - _minPoint.y;
     }
 
     public void EraseDrawing()
@@ -163,7 +204,7 @@ public class DrawingComponent : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    Vector3[][] GetPositions()
+    public Vector3[][] GetPositions()
     {
         int cantLineas = gameObject.GetComponent<Transform>().childCount;
 
@@ -171,7 +212,7 @@ public class DrawingComponent : MonoBehaviour
 
         Vector3[][] punteles = new Vector3[cantLineas][];
 
-
+        Debug.Log(cantLineas);
         for (int i = 0; i < cantLineas; i++)
         {
             LineRenderer linerendrs = gameObject.GetComponent<Transform>().GetChild(i).GetComponent<LineRenderer>();
