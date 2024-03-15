@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.TerrainTools;
 
 public class DrawingComponent : MonoBehaviour
@@ -15,7 +15,7 @@ public class DrawingComponent : MonoBehaviour
 
     private Vector3 _lastPoint;
     private Vector3[] _positions;
-    private LineRenderer _lineaNueva;
+    private Coroutine _drawing;
 
     #endregion
 
@@ -27,47 +27,69 @@ public class DrawingComponent : MonoBehaviour
     }
 
     //Dibuja un trazo mientras se mantenga pulsado
-    public LineRenderer Paint(Vector3 newPoint)
+    public IEnumerator Paint(Vector3 newPoint)
     {
         LineRenderer line = new LineRenderer();
         line = GetComponent<LineRenderer>();
         newPoint.z = 0;
 
-        //Si hay suficiente distancia entre los puntos, añadimos el punto nuevo en la línea
-        if (Vector3.Distance(_lastPoint, newPoint) > _minDistance) 
+        //Si hay suficiente distancia entre los puntos, aï¿½adimos el punto nuevo en la lï¿½nea
+        if (Vector3.Distance(_lastPoint, newPoint) > _minDistance)
         {
             //Suma punto
             line.positionCount++;
-            //Lo añade a la linea
-            line.SetPosition(line.positionCount - 1, newPoint); 
+            //Lo aï¿½ade a la linea
+            line.SetPosition(line.positionCount - 1, newPoint);
             //El ultimo punto dibujado es el nuevo del cursor
             _lastPoint = newPoint;
         }
 
-        return line;
+        //Creamos un hijo por cada lï¿½nea que pintemos
+        line = new GameObject().AddComponent<LineRenderer>();
+        line.transform.SetParent(transform);
+
+        //Creamos una lista para aï¿½adir los puntos (luego lo pasamos a array)
+        List<Vector3> puntos = new List<Vector3>();
+
+        //Aï¿½adimos los puntos a la lista
+        for (int i = 0; i < line.positionCount; i++)
+        {
+            puntos.Add(line.GetPosition(i));
+        }
+
+        line.SetPositions(puntos.ToArray());
+
+        yield return null;
     }
 
-    public void VariasLineas()
+    //public void VariasLineas(LineRenderer line)
+    //{
+    //    //Creamos un hijo por cada lï¿½nea que pintemos
+    //    line = new GameObject().AddComponent<LineRenderer>();
+    //    line.transform.SetParent(transform);
+
+    //    //Creamos una lista para aï¿½adir los puntos (luego lo pasamos a array)
+    //    List<Vector3> puntos = new List<Vector3>();
+        
+    //    //Aï¿½adimos los puntos a la lista
+    //    for (int i = 0 ; i < line.positionCount; i++) 
+    //    {
+    //        puntos.Add(line.GetPosition(i));
+    //    }
+
+    //    line.SetPositions(puntos.ToArray());
+    //}
+
+    public void StartLine(Vector3 newPoint)
     {
-        //Creamos un hijo por cada línea que pintemos
-        GameObject Lines = new GameObject();
-        Lines.AddComponent<LineRenderer>();
-        Lines.GetComponent<Transform>().parent = gameObject.GetComponent<Transform>();
-
-        //Una vez que pintamos una línea
-        _lineaNueva = GetComponent<LineRenderer>();
-        //_lineaNueva.SetPositions(Paint().GetPositions(_positions));
+        newPoint.z = 0;
+        _drawing = StartCoroutine(Paint(newPoint));
     }
 
-    //Saca los puntos de una línea
-    private void SacaPuntos(LineRenderer line)
+    public void FinishLine()
     {
-        line.GetPositions(_positions);
+        StopCoroutine(_drawing);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }

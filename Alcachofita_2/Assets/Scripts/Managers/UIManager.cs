@@ -1,0 +1,62 @@
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+    // References
+    [SerializeField] // sigue el orden de los estados del gamemanager
+    public GameObject[] menus;
+
+
+    #region ON CLICKS
+    /// <param name="state"></param>
+    public void RequestStateChange(GameManager.GameStates state)
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.requestSateChange(state);
+    }
+
+    /// Metodo para el onClick de los botones, para pasar al juego
+    public void GoToGame()
+    {
+        RequestStateChange(GameManager.GameStates.GAME); // referenciando al gamemanager (importante! si no no cambia de estado)
+        //...
+    }
+
+    // Metodo para pasar de pagina
+    public void TurnPage()
+    {
+        if (GameManager.Instance != null)
+        {
+            // cambia de páginas
+            GameManager.Instance.NextPage();
+            Debug.Log(GameManager.Instance.CurrentPage);
+            // si ya ha hecho la última página pasa al estado final
+        }
+    }
+
+    /// Metodo para el onClick de los botones, para pasar al final del juego
+    public void GoToEnding()
+    {
+        RequestStateChange(GameManager.GameStates.END); // referenciando al gamemanager (importante! si no no cambia de estado)
+        //...
+    }
+
+    /// Metodo para el onClick de los botones, para salir del juego
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+    #endregion
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}

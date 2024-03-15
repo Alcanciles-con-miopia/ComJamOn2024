@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
@@ -21,28 +17,34 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _drawingComponent = _line.GetComponent<DrawingComponent>();
+        if (_line != null) _drawingComponent = _line.GetComponent<DrawingComponent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
 
+        //Al pulsar, se añade una línea
         if (Input.GetMouseButtonDown(0))
         {
-            _drawingComponent.VariasLineas();
+            _drawingComponent.StartLine(newPoint);
+        }
+        //Al dejar de pulsar, se deja de dibujar
+        if (Input.GetMouseButtonUp(0))
+        {
+            _drawingComponent.FinishLine();
         }
 
+        //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
-
         {
-            Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _drawingComponent.Paint(newPoint);
-            Debug.Log("Mira mamá, sé pintar");
         }
         else if (Input.GetMouseButtonUp(1))
         {
@@ -54,7 +56,7 @@ public class InputManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            if (GameManager.Instance != null) 
+            if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();
             Debug.Log("Borra eso");
         }
