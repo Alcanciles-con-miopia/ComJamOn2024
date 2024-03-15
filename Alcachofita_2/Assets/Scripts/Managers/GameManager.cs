@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     // inicialmente se tienen 5 dedos
     [SerializeField]
     public GameObject[] dedos = new GameObject[NUM_DEDOS];
+
+    private UIManager _UIManager;
     #endregion
 
     #region properties
@@ -140,6 +142,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region METODOS DE PAGINAS
+    public void RegisterUIManager(UIManager uiManager)
+    {
+        _UIManager = uiManager;
+    }
+
     public void SetPage(int page) { _currentPage = page; }
     public void NextPage()
     {
