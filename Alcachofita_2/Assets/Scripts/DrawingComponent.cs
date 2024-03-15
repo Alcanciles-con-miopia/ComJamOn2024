@@ -11,7 +11,6 @@ public class DrawingComponent : MonoBehaviour
     [SerializeField] Material _material;
     [SerializeField] float _startWidth = 0.5f;
     [SerializeField] float _endWidth = 0.5f;
-    Color _bloodColor = new Color(120, 2, 2, 255);
 
     #endregion
 
@@ -19,7 +18,6 @@ public class DrawingComponent : MonoBehaviour
 
     LineRenderer line = new LineRenderer();
     private Vector3 _lastPoint;
-    private Vector3[] _positions;
 
     #endregion
 
@@ -61,14 +59,14 @@ public class DrawingComponent : MonoBehaviour
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         //Color
-        line.startColor = _bloodColor;
-        line.endColor = _bloodColor;
+        line.startColor = new Color(120, 2, 2, 255);
+        line.endColor = new Color(120, 2, 2, 255);
 
         //Materiales
         List<Material> materials = new List<Material>();
         materials.Add(_material);
         line.SetMaterials(materials);
-   
+
         //Tamaño
         line.startWidth = _startWidth;
         line.endWidth = _endWidth;
