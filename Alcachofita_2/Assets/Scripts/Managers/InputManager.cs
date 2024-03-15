@@ -63,7 +63,7 @@ public class InputManager : MonoBehaviour
                 && mousePos.y < Screen.height - 20
                 && mousePos.y > 80)
             {
-                _drawingComponent.Paint(newPoint);
+                if (_drawingComponent != null)  _drawingComponent.Paint(newPoint);
                 //Debug.Log("COJONES");
             }
         }

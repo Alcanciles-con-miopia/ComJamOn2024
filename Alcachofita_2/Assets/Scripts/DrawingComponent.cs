@@ -177,11 +177,9 @@ public class DrawingComponent : MonoBehaviour
     public void EraseDrawing()
     {
         List<Vector3> vacio = new List<Vector3>();
-        line.SetPositions(vacio.ToArray());
+        if (line != null) line.SetPositions(vacio.ToArray());
 
-        Debug.Log(transform.childCount);
         int i = 0;
-
         //Array to hold all child obj
         GameObject[] allChildren = new GameObject[transform.childCount];
 
@@ -197,8 +195,6 @@ public class DrawingComponent : MonoBehaviour
         {
             DestroyImmediate(child.gameObject);
         }
-
-        Debug.Log(transform.childCount);
     }
 
     /// <summary>
