@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject[] dedos = new GameObject[NUM_DEDOS];
 
+    // UIManager
     private UIManager _UIManager;
+
+    // VignetteComponent
+    private VignetteComponent _VignetteComponent;
     #endregion
 
     #region properties
@@ -38,10 +42,6 @@ public class GameManager : MonoBehaviour
     public GameStates NextState { get { return _nextGameState; } }
 
     // DEDOS
-    // Es el dedo que acabas de cortar.
-    private int _lastDedo;
-    public int LastDedo { get { return _lastDedo; } }
-
     // Es el próximo dedo que tiene que cortarse.
     private int _nextDedo;
     public int NextDedo { get { return _nextDedo; } }
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
 
-        Debug.Log("Nosss encontramoS en el eStado:" + _currentGameState);
+        Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
 
     // ---- updateState ----
@@ -115,16 +115,23 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region METODOS DE VIGNETTE
+    public void RegisterVignette(VignetteComponent vignette)
+    {
+        _VignetteComponent = vignette;
+    }
+    #endregion
+
     #region METODOS DE DEDOS
     // ---- InicializaDedos ----
     // settea cada indice del array con su dedo correspondiente
     // en orden de cortado
     private void InicializaDedos()
     {
-        _lastDedo = -1; // Inicialmente no hay ningún dedo cortado.
         _nextDedo = 0; // El próximo dedo a cortar es el dedos[0]
 
         Debug.Log(dedos.Length);
+
         // Set active todos los dedalos.
         for (int i = 0; i < dedos.Length; i++)
         {
@@ -143,11 +150,10 @@ public class GameManager : MonoBehaviour
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
             dedos[_nextDedo].SetActive(false);
 
+            _VignetteComponent.ChangeIntensity();
+
             // Siguiente dedo a cortar.
             _nextDedo++;
-
-            // El último dedo cortado.
-            _lastDedo++;
         }
     }
     #endregion
@@ -159,6 +165,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetPage(int page) { _currentPage = page; }
+
     public void NextPage()
     {
         //if (drawcomponent.comprobar etc...)
