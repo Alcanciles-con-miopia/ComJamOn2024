@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    void SetMenu(GameManager.GameStates newMenu)
+    public void SetMenu(GameManager.GameStates newMenu)
     {
         menus[(int)_activeMenu].SetActive(false);
         _activeMenu = newMenu;

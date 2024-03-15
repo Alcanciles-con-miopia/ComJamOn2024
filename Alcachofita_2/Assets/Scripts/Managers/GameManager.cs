@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         // guarda el estado correspondiente en current
         _currentGameState = newState;
 
+        if (_UIManager != null) { _UIManager.SetMenu(newState); }
+
         Debug.Log("Nosss encontramoS en el eStado:" + _currentGameState);
     }
 
@@ -193,6 +195,10 @@ public class GameManager : MonoBehaviour
 
         // inicializacion del numero de pagina actual
         _currentPage = 0;
+
+        // inducimos primer onEnter con valor dummy del estado
+        _currentGameState = GameStates.END;
+        _nextGameState = GameStates.MAINMENU; // valor real inicial
     }
 
     // Update is called once per frame
