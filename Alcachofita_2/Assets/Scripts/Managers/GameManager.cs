@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
             //dedos[_nextDedo].SetActive(false);
 
-            _VignetteComponent.ChangeIntensity();
+            //_VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
