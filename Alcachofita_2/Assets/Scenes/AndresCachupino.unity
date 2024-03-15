@@ -590,11 +590,11 @@ RectTransform:
   - {fileID: 924323012}
   m_Father: {fileID: 1362018836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 160.27, y: 30}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1436266771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,7 +850,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2585880681401994083
+--- !u!1001 &2134975547
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -860,15 +860,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2677663687786981796, guid: 772f535b2a7054342848440d9b4009ca, type: 3}
       propertyPath: m_Name
-      value: triangulo
+      value: RunaTriangulo
       objectReference: {fileID: 0}
     - target: {fileID: 3217701441522484409, guid: 772f535b2a7054342848440d9b4009ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.24
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 3217701441522484409, guid: 772f535b2a7054342848440d9b4009ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.55
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 3217701441522484409, guid: 772f535b2a7054342848440d9b4009ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -979,4 +979,4 @@ SceneRoots:
   - {fileID: 1362018836}
   - {fileID: 381279241}
   - {fileID: 1453682777}
-  - {fileID: 2585880681401994083}
+  - {fileID: 2134975547}

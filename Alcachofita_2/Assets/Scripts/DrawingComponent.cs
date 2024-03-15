@@ -150,6 +150,8 @@ public class DrawingComponent : MonoBehaviour
             }
         }
 
+        Debug.Log(_maxPoint.x - _minPoint.x);
+
         return _maxPoint.x - _minPoint.x;
 
     }
@@ -180,6 +182,9 @@ public class DrawingComponent : MonoBehaviour
         List<Vector3> vacio = new List<Vector3>();
         if (line != null) line.SetPositions(vacio.ToArray());
 
+
+        //Debug.Log(transform.childCount);
+
         int i = 0;
         //Array to hold all child obj
         GameObject[] allChildren = new GameObject[transform.childCount];
@@ -196,6 +201,10 @@ public class DrawingComponent : MonoBehaviour
         {
             DestroyImmediate(child.gameObject);
         }
+
+
+       // Debug.Log(transform.childCount);
+
     }
 
     /// <summary>
@@ -205,11 +214,11 @@ public class DrawingComponent : MonoBehaviour
     {
         int cantLineas = gameObject.GetComponent<Transform>().childCount;
 
-        Debug.Log("Cant lineas: " + cantLineas);
+        //Debug.Log("Cant lineas: " + cantLineas);
 
         Vector3[][] punteles = new Vector3[cantLineas][];
 
-        Debug.Log(cantLineas);
+        //Debug.Log(cantLineas);
         for (int i = 0; i < cantLineas; i++)
         {
             LineRenderer linerendrs = gameObject.GetComponent<Transform>().GetChild(i).GetComponent<LineRenderer>();

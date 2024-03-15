@@ -46,12 +46,12 @@ public class ShapeDetectorV1 : MonoBehaviour
             }
         }
 
-        Debug.Log("Puntos en la forma: " + cantDentro);
+       /* Debug.Log("Puntos en la forma: " + cantDentro);
         Debug.Log("Puntos totales: " + cantPuntos);
-        Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
+        Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));*/
 
-
-       // return cantDentro / cantPuntos >= guessPercent;
+        drawingComponent.EraseDrawing();
+        //return cantDentro / cantPuntos >= guessPercent;
     }
 
     private bool Raycast(Vector2 pos)
@@ -67,7 +67,7 @@ public class ShapeDetectorV1 : MonoBehaviour
             Debug.DrawRay(pos, forward, Color.green);
             return true;
         }
-        Debug.Log("not collidea");
+       // Debug.Log("not collidea");
         return false;
     }
     public float PorcentajeAcierto()
@@ -85,6 +85,7 @@ public class ShapeDetectorV1 : MonoBehaviour
 
         SpriteRenderer runaSPR = shape.GetComponent<SpriteRenderer>();
 
+       // shapeInst.GetComponent<PolygonCollider2D>().
 
         shapeInst.transform.localScale = new Vector3(
             ((runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x))/drawingComponent.XSize(), 
