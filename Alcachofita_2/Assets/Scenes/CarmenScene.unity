@@ -184,6 +184,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: mano
+      value: 
+      objectReference: {fileID: 1312388989}
+    - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: dedos.Array.data[0]
       value: 
       objectReference: {fileID: 1070323272}
@@ -240,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d04bc6fd52a37a47979f6a380081272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colision: {fileID: 1743194112}
   fuerzaDedalo: 250
 --- !u!50 &893988539
 Rigidbody2D:
@@ -545,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d04bc6fd52a37a47979f6a380081272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colision: {fileID: 1743194112}
   fuerzaDedalo: 250
 --- !u!50 &1070323275
 Rigidbody2D:
@@ -595,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d04bc6fd52a37a47979f6a380081272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colision: {fileID: 1743194112}
   fuerzaDedalo: 250
 --- !u!50 &1196038541
 Rigidbody2D:
@@ -633,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312388991}
   - component: {fileID: 1312388990}
+  - component: {fileID: 1312388992}
   m_Layer: 0
   m_Name: MANO
   m_TagString: Untagged
@@ -712,6 +720,19 @@ Transform:
   - {fileID: 1136486475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312388992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312388989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae0c0752d0e5e940be03808141f2f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeFactor: 0.2
 --- !u!1 &1520725840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7026102368778772360, guid: 5267d682616f8234e8aa5b4cde86319b, type: 3}
@@ -734,6 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d04bc6fd52a37a47979f6a380081272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colision: {fileID: 1743194112}
   fuerzaDedalo: 250
 --- !u!50 &1606696671
 Rigidbody2D:
@@ -762,6 +784,83 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1743194111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1743194113}
+  - component: {fileID: 1743194112}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1743194112
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743194111}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1743194113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743194111}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -12.11, z: -9.979114}
+  m_LocalScale: {x: -32.76, y: 2.64, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1749050149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9054816408287133281, guid: 5267d682616f8234e8aa5b4cde86319b, type: 3}
@@ -779,6 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d04bc6fd52a37a47979f6a380081272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colision: {fileID: 1743194112}
   fuerzaDedalo: 250
 --- !u!50 &1749050152
 Rigidbody2D:
@@ -1430,3 +1530,4 @@ SceneRoots:
   - {fileID: 99379168}
   - {fileID: 2093731604}
   - {fileID: 942840767}
+  - {fileID: 1743194113}
