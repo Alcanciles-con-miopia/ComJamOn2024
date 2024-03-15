@@ -8,6 +8,9 @@ public class DrawingComponent : MonoBehaviour
     #region Parameters
 
     [SerializeField] float _minDistance = 0.1f;
+    [SerializeField] Material _material;
+    [SerializeField] float _startWidth = 0.5f;
+    [SerializeField] float _endWidth = 0.5f;
 
     #endregion
 
@@ -15,7 +18,6 @@ public class DrawingComponent : MonoBehaviour
 
     LineRenderer line = new LineRenderer();
     private Vector3 _lastPoint;
-    private Vector3[] _positions;
 
     #endregion
 
@@ -51,8 +53,23 @@ public class DrawingComponent : MonoBehaviour
         LineRenderer newLine = new GameObject().AddComponent<LineRenderer>();
         newLine.transform.SetParent(transform);
         line = newLine.GetComponent<LineRenderer>();
+
+        //Guarrada para los dos primeros puntos
         line.SetPosition(0, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+        //Color
+        line.startColor = new Color(120, 2, 2, 255);
+        line.endColor = new Color(120, 2, 2, 255);
+
+        //Materiales
+        List<Material> materials = new List<Material>();
+        materials.Add(_material);
+        line.SetMaterials(materials);
+
+        //Tamaño
+        line.startWidth = _startWidth;
+        line.endWidth = _endWidth;
 
         //Creamos una lista para a�adir los puntos (luego lo pasamos a array)
         List<Vector3> puntos = new List<Vector3>();
