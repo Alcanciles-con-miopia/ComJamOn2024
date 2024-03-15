@@ -55,7 +55,8 @@ public class InputManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            GameManager.Instance.QuitaDedo();
+            if (GameManager.Instance != null) 
+                GameManager.Instance.QuitaDedo();
             Debug.Log("Borra eso");
         }
     }

@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc55a3891c035b341b2b68569dd0f36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: {fileID: 0}
-  indice: {fileID: 0}
-  pulgar: {fileID: 0}
-  corazon: {fileID: 0}
-  anular: {fileID: 0}
-  menique: {fileID: 0}
+  dedos:
+  - {fileID: 8271309608466317467, guid: 6595a9725f475874fb837014568e9264, type: 3}
+  - {fileID: 861456378075601537, guid: 9fb1f51342ee38449bbf23c2d3787131, type: 3}
+  - {fileID: 4600022985333422317, guid: b3659bf4d73eacd4e89d39621cef6adc, type: 3}
+  - {fileID: 7026102368778772360, guid: 5267d682616f8234e8aa5b4cde86319b, type: 3}
+  - {fileID: 5638118752531777183, guid: 5c0a022f4ff975e4180c3a03e3ac1b9d, type: 3}
 --- !u!114 &3847086077028035716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,3 +63,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfb60faf8ff141448f36423e60046ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _line: {fileID: 0}
