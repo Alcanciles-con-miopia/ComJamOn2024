@@ -25,8 +25,9 @@ public class DrawManager : MonoBehaviour
         */
 
         // True si esta en cositio
+        /*
         if (_shapeDetector != null)
-            _shapeDetector.shapeDetected(punteles);
+            _shapeDetector.shapeDetected(punteles);*/
     }
 
 }

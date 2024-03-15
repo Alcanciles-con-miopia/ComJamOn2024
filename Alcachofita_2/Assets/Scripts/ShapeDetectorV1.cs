@@ -76,6 +76,6 @@ public class ShapeDetectorV1 : MonoBehaviour
 }
     void AdaptShape()
     {
-        shape.GetComponent<spr>
+       /// shape.GetComponent<spr>
     }
 }
