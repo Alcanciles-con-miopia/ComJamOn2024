@@ -30,16 +30,16 @@ public class InputManager : MonoBehaviour
             Application.Quit();
         }
 
-        //Al pulsar, se añade una línea
-        if (Input.GetMouseButtonDown(0))
-        {
-            _drawingComponent.StartLine(newPoint);
-        }
-        //Al dejar de pulsar, se deja de dibujar
-        if (Input.GetMouseButtonUp(0))
-        {
-            _drawingComponent.FinishLine();
-        }
+        ////Al pulsar, se añade una línea
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    _drawingComponent.StartLine(newPoint);
+        //}
+        ////Al dejar de pulsar, se deja de dibujar
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    _drawingComponent.FinishLine();
+        //}
 
         //Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))

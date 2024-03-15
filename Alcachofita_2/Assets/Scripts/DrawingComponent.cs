@@ -27,7 +27,7 @@ public class DrawingComponent : MonoBehaviour
     }
 
     //Dibuja un trazo mientras se mantenga pulsado
-    public IEnumerator Paint(Vector3 newPoint)
+    public LineRenderer Paint(Vector3 newPoint)
     {
         LineRenderer line = new LineRenderer();
         line = GetComponent<LineRenderer>();
@@ -59,7 +59,7 @@ public class DrawingComponent : MonoBehaviour
 
         line.SetPositions(puntos.ToArray());
 
-        yield return null;
+        return line;
     }
 
     //public void VariasLineas(LineRenderer line)
@@ -80,16 +80,16 @@ public class DrawingComponent : MonoBehaviour
     //    line.SetPositions(puntos.ToArray());
     //}
 
-    public void StartLine(Vector3 newPoint)
-    {
-        newPoint.z = 0;
-        _drawing = StartCoroutine(Paint(newPoint));
-    }
+    //public void StartLine(Vector3 newPoint)
+    //{
+    //    newPoint.z = 0;
+    //    _drawing = StartCoroutine(Paint(newPoint));
+    //}
 
-    public void FinishLine()
-    {
-        StopCoroutine(_drawing);
-    }
+    //public void FinishLine()
+    //{
+    //    StopCoroutine(_drawing);
+    //}
 
 
 }
