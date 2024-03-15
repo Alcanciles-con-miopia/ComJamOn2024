@@ -114,6 +114,14 @@ public class DrawingComponent : MonoBehaviour
         return _maxPoint;
     }
 
+    public void EraseDrawing()
+    {
+        List<Vector3> vacio = new List<Vector3>();
+        line.SetPositions(vacio.ToArray());
+
+        Debug.Log(transform.childCount);
+        int i = 0;
+
         //Array to hold all child obj
         GameObject[] allChildren = new GameObject[transform.childCount];
 
