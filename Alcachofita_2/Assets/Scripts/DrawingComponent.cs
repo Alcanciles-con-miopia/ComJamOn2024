@@ -13,9 +13,9 @@ public class DrawingComponent : MonoBehaviour
 
     #region Properties
 
+    LineRenderer line = new LineRenderer();
     private Vector3 _lastPoint;
     private Vector3[] _positions;
-    private Coroutine _drawing;
 
     #endregion
 
@@ -29,8 +29,6 @@ public class DrawingComponent : MonoBehaviour
     //Dibuja un trazo mientras se mantenga pulsado
     public LineRenderer Paint(Vector3 newPoint)
     {
-        LineRenderer line = new LineRenderer();
-        line = GetComponent<LineRenderer>();
         newPoint.z = 0;
 
         //Si hay suficiente distancia entre los puntos, a�adimos el punto nuevo en la l�nea
@@ -44,52 +42,29 @@ public class DrawingComponent : MonoBehaviour
             _lastPoint = newPoint;
         }
 
+        return line;
+    }
+
+    public void VariasLineas(/*LineRenderer newLine*/)
+    {
         //Creamos un hijo por cada l�nea que pintemos
-        line = new GameObject().AddComponent<LineRenderer>();
-        line.transform.SetParent(transform);
+        LineRenderer newLine = new GameObject().AddComponent<LineRenderer>();
+        newLine.transform.SetParent(transform);
+        line = newLine.GetComponent<LineRenderer>();
+        line.SetPosition(0, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         //Creamos una lista para a�adir los puntos (luego lo pasamos a array)
         List<Vector3> puntos = new List<Vector3>();
 
         //A�adimos los puntos a la lista
-        for (int i = 0; i < line.positionCount; i++)
+        for (int i = 0; i < newLine.positionCount; i++)
         {
-            puntos.Add(line.GetPosition(i));
+            puntos.Add(newLine.GetPosition(i));
         }
 
-        line.SetPositions(puntos.ToArray());
-
-        return line;
+        newLine.SetPositions(puntos.ToArray());
     }
-
-    //public void VariasLineas(LineRenderer line)
-    //{
-    //    //Creamos un hijo por cada l�nea que pintemos
-    //    line = new GameObject().AddComponent<LineRenderer>();
-    //    line.transform.SetParent(transform);
-
-    //    //Creamos una lista para a�adir los puntos (luego lo pasamos a array)
-    //    List<Vector3> puntos = new List<Vector3>();
-        
-    //    //A�adimos los puntos a la lista
-    //    for (int i = 0 ; i < line.positionCount; i++) 
-    //    {
-    //        puntos.Add(line.GetPosition(i));
-    //    }
-
-    //    line.SetPositions(puntos.ToArray());
-    //}
-
-    //public void StartLine(Vector3 newPoint)
-    //{
-    //    newPoint.z = 0;
-    //    _drawing = StartCoroutine(Paint(newPoint));
-    //}
-
-    //public void FinishLine()
-    //{
-    //    StopCoroutine(_drawing);
-    //}
 
 
 }
