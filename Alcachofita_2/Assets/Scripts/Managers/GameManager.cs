@@ -6,16 +6,15 @@ public class GameManager : MonoBehaviour
     const int NUM_DEDOS = 5;
 
     #region references
-    // dedos por orden de corte
-    // campo serializado para asignar los prefabs en el editor
-    //private GameObject PULGAR,
-    //                   INDICE,
-    //                   CORAZON,
-    //                   ANULAR,
-    //                   MENIQUE;
+    // dedos por orden de corte.
+    private GameObject PULGAR,
+                       INDICE,
+                       CORAZON,
+                       ANULAR,
+                       MENIQUE;
 
     // ARRAY DE DEDALOS
-    // inicialmente se tienen 5 dedos
+    // inicialmente se tienen 5 dedos.
     [SerializeField]
     public GameObject[] dedos = new GameObject[NUM_DEDOS];
 
@@ -39,6 +38,11 @@ public class GameManager : MonoBehaviour
     public GameStates NextState { get { return _nextGameState; } }
 
     // DEDOS
+    // Es el dedo que acabas de cortar.
+    private int _lastDedo;
+    public int LastDedo { get { return _lastDedo; } }
+
+    // Es el próximo dedo que tiene que cortarse.
     private int _nextDedo;
     public int NextDedo { get { return _nextDedo; } }
 
@@ -111,23 +115,32 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region METODOS DE DEDOS
-    // ---- InicializaVidas ----
+    // ---- InicializaDedos ----
     // settea cada indice del array con su dedo correspondiente
     // en orden de cortado
-    private void InicializaVidas()
+    private void InicializaDedos()
     {
-        _nextDedo = 0;
-        //dedos[0] = PULGAR; // holaaaa soy cynthia he puesto que esta asignación sea en el serialize field que es el array directamente 
-        //dedos[1] = INDICE;
-        //dedos[2] = CORAZON;
-        //dedos[3] = ANULAR;
-        //dedos[4] = MENIQUE;
+        _lastDedo = -1; // Inicialmente no hay ningún dedo cortado.
+        _nextDedo = 0; // El próximo dedo a cortar es el dedos[0]
+        /*
+        dedos[0] = PULGAR; 
+        dedos[1] = INDICE;
+        dedos[2] = CORAZON;
+        dedos[3] = ANULAR;
+        dedos[4] = MENIQUE;
+        */
+
+        // Set active todos los dedalos.
+        for (int i = 0; i < dedos.Length; i++)
+        {
+            dedos[i].SetActive(true);
+        }
     }
 
     // ---- QuitaDedo ----
     // modifica el array sin el ultimo dedo a cortar
     // borra del array el nextDedo que debe de actualizarse siempre
-    public GameObject[] QuitaDedo()
+    public void QuitaDedo()
     {
         // Siempre y cuando el índice sea menor que dedos.Length...
         if (_nextDedo < dedos.Length)
@@ -135,11 +148,12 @@ public class GameManager : MonoBehaviour
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
             dedos[_nextDedo].SetActive(false);
 
-            // Siguiente dedo.
+            // Siguiente dedo a cortar.
             _nextDedo++;
-        }
 
-        return dedos;
+            // El último dedo cortado.
+            _lastDedo++;
+        }
     }
     #endregion
 
@@ -181,17 +195,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Se inicializa las vidas.
-        InicializaVidas();
+        // Se inicializa los dedos.
+        InicializaDedos();
 
         // para cuando exista el input 
         _input = GetComponent<InputManager>();
-
-        // Set active todos los dedalos.
-        for (int i = 0; i < dedos.Length; i++)
-        {
-            dedos[i].SetActive(true);
-        }
 
         // inicializacion del numero de pagina actual
         _currentPage = 0;

@@ -36,12 +36,14 @@ public class InputManager : MonoBehaviour
             _drawingComponent.VariasLineas();
         }
 
-        //Cada vez que se pulsa, empieza o termina el trazo
+        // CCAMBIAR ANTES DE COMMITEAR !!!!!!!
+
+        /*//Cada vez que se pulsa, empieza o termina el trazo
         if (Input.GetMouseButton(0))
         {
             _drawingComponent.Paint(newPoint);
-        }
-        else if (Input.GetMouseButtonUp(1))
+        }*/
+        if (Input.GetMouseButtonUp(1))
         {
             Debug.Log("boton derecho");
         }
@@ -51,9 +53,11 @@ public class InputManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
+            Debug.Log("Borra eso");
+            // Existe el script GameManager puesto.
             if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();
-            Debug.Log("Borra eso");
+            
         }
     }
 }
