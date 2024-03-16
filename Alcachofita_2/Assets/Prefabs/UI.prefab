@@ -843,7 +843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1169508517592523241
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2682,12 +2682,24 @@ PrefabInstance:
       value: -5.63
       objectReference: {fileID: 0}
     - target: {fileID: 8974711164732915964, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974711164732915964, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974711164732915964, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974711164732915964, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -447.50186
+      value: -448.4
       objectReference: {fileID: 0}
     - target: {fileID: 8974711164732915964, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -159.98691
+      value: -63
       objectReference: {fileID: 0}
     - target: {fileID: 8974711164732915964, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2721,7 +2733,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8974711164732915964, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5260978846464548175, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2731,6 +2748,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 36215782367065350, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9209002997645131516}
+    - targetCorrespondingSourceObject: {fileID: 36215782367065350, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7045311746731253201}
+    - targetCorrespondingSourceObject: {fileID: 36215782367065350, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8568807374508392590}
   m_SourcePrefab: {fileID: 100100000, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
 --- !u!1 &848003729332480083 stripped
 GameObject:
@@ -2783,6 +2806,63 @@ BoxCollider2D:
   m_Size: {x: 0.67, y: 1.11}
   m_EdgeRadius: 0
 --- !u!114 &9209002997645131516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848003729332480083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae6a5e5bfc0a6a44bbbf66c555e2b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &7045311746731253201
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848003729332480083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.7, y: 1.52}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.67, y: 1.11}
+  m_EdgeRadius: 0
+--- !u!114 &8568807374508392590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
