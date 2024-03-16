@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EyeComponent : MonoBehaviour
 {
@@ -16,14 +18,14 @@ public class EyeComponent : MonoBehaviour
 
     #region Reference
 
-    private SpriteRenderer _spriteRenderer; 
+    private Image _image; 
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _image = GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -34,17 +36,17 @@ public class EyeComponent : MonoBehaviour
             //Bad Ending
             if (_shapeDetector.guessPercent <= 50)
             {
-                _spriteRenderer.color = _badPercentage;
+                _image.color = _badPercentage;
             }
             //Medium Ending
             else if (_shapeDetector.guessPercent > 50 && _shapeDetector.guessPercent <= 75)
             {
-                _spriteRenderer.color = _mediumPercentage;
+                _image.color = _mediumPercentage;
             }
             //Good Ending
             else if (_shapeDetector.guessPercent > 75)
             {
-                _spriteRenderer.color = _goodPercentage;
+                _image.color = _goodPercentage;
             }
         }
 
