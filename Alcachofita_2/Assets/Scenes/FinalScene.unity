@@ -336,7 +336,7 @@ PrefabInstance:
       objectReference: {fileID: 1126673088}
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: runas.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: dedos.Array.data[0]
@@ -361,9 +361,13 @@ PrefabInstance:
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: runas.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: d4e660dd43d2c0242ab59d718a8b0d94, type: 2}
+      objectReference: {fileID: 11400000, guid: fc4b795186aefd94d9477efc1cee8e50, type: 2}
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: runas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d4e660dd43d2c0242ab59d718a8b0d94, type: 2}
+    - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: runas.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 150ab70b25d828948a45c014b7652357, type: 2}
     m_RemovedComponents: []
@@ -498,7 +502,7 @@ PrefabInstance:
     - target: {fileID: 2381994950946660503, guid: aa638a75a95932b4cabc6a6a3c760f92, type: 3}
       propertyPath: shape
       value: 
-      objectReference: {fileID: 2110911627758629380, guid: f3bc2e46de7b5e34ea15e3d22e3631eb, type: 3}
+      objectReference: {fileID: 5551246869172639985, guid: 4e2ec1cdb24c6a846bef5a3e588b8a59, type: 3}
     - target: {fileID: 2381994950946660503, guid: aa638a75a95932b4cabc6a6a3c760f92, type: 3}
       propertyPath: drawingComponent
       value: 
@@ -750,6 +754,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6676343131550958121, guid: 54dffe69f2c11814190adfda3c07acbf, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676343131550958121, guid: 54dffe69f2c11814190adfda3c07acbf, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a2b8e8c7bcdef3469f1b5c393dec673, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
