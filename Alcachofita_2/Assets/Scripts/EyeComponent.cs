@@ -31,7 +31,7 @@ public class EyeComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.CurrentState == GameManager.GameStates.GAME)
+        if (GameManager.Instance.CurrentState == GameManager.GameStates.GAME && _image != null && _shapeDetector != null)
         {
             //Bad Ending
             if (_shapeDetector.guessPercent <= 50)
