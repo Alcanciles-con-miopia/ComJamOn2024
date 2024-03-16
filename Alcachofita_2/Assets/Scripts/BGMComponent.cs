@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
@@ -69,54 +67,54 @@ public class BGMComponent : MonoBehaviour
     {
         if (Instance != null)
         {
-                /*
-            switch (Instance.CurrentState) // Diferentes comportamientos según estado al que se entra
-            {
-                case GameStates.LOGO:                       //      *LOGO*
-                    _nextBGM = 6;
-                    _playAmbience = false;
-                    break;
-                case GameStates.START:                       //     *MENÚ INICIAL*
-                    _nextBGM = 2;
-                    _playAmbience = false;
-                    break;
-                case GameStates.INTRO:
-                    _nextBGM = 0; // es 0 realmente pero esta asi para probar el fade out
-                    _playAmbience = true;
-                    break;
-                case GameStates.GAME:                        //     *JUEGO*
-                    _nextBGM = 1;
-                    _playAmbience = true;
-                    break;
-                case GameStates.PAUSE:                       //     *PAUSA*
-                    _nextBGM = 3;
-                    _playAmbience = false;
-                    break;
-                case GameStates.GAMEOVER:                    //     *FIN DEL JUEGO*
-                    _nextBGM = 4;
-                    _playAmbience = false;
-                    break;
-                case GameStates.SCORE:
-                    _nextBGM = 3;
-                    _playAmbience = false;
-                    break;
-                case GameStates.LEVELSELECTOR:
-                    _nextBGM = 3;
-                    _playAmbience = false;
-                    break;
-                case GameStates.CONTROLES:                   //     *CONTROLES*
-                    _nextBGM = 3;
-                    _playAmbience = false;
-                    break;
-                case GameStates.OPCIONES:                   //      *OPCIONES*
-                    _nextBGM = 3;
-                    _playAmbience = false;
-                    break;
-                case GameStates.CREDITS:
-                    _nextBGM = 5;
-                    _playAmbience = false;
-                    break;
-            }*/
+            /*
+        switch (Instance.CurrentState) // Diferentes comportamientos según estado al que se entra
+        {
+            case GameStates.LOGO:                       //      *LOGO*
+                _nextBGM = 6;
+                _playAmbience = false;
+                break;
+            case GameStates.START:                       //     *MENÚ INICIAL*
+                _nextBGM = 2;
+                _playAmbience = false;
+                break;
+            case GameStates.INTRO:
+                _nextBGM = 0; // es 0 realmente pero esta asi para probar el fade out
+                _playAmbience = true;
+                break;
+            case GameStates.GAME:                        //     *JUEGO*
+                _nextBGM = 1;
+                _playAmbience = true;
+                break;
+            case GameStates.PAUSE:                       //     *PAUSA*
+                _nextBGM = 3;
+                _playAmbience = false;
+                break;
+            case GameStates.GAMEOVER:                    //     *FIN DEL JUEGO*
+                _nextBGM = 4;
+                _playAmbience = false;
+                break;
+            case GameStates.SCORE:
+                _nextBGM = 3;
+                _playAmbience = false;
+                break;
+            case GameStates.LEVELSELECTOR:
+                _nextBGM = 3;
+                _playAmbience = false;
+                break;
+            case GameStates.CONTROLES:                   //     *CONTROLES*
+                _nextBGM = 3;
+                _playAmbience = false;
+                break;
+            case GameStates.OPCIONES:                   //      *OPCIONES*
+                _nextBGM = 3;
+                _playAmbience = false;
+                break;
+            case GameStates.CREDITS:
+                _nextBGM = 5;
+                _playAmbience = false;
+                break;
+        }*/
         }
     }
 

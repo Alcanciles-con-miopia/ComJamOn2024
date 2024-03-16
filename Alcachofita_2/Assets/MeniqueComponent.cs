@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeniqueComponent : MonoBehaviour
@@ -14,6 +12,6 @@ public class MeniqueComponent : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 }
