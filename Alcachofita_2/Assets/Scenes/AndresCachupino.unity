@@ -862,6 +862,10 @@ PrefabInstance:
       propertyPath: drawingComponent
       value: 
       objectReference: {fileID: 725787340}
+    - target: {fileID: 2381994950946660503, guid: aa638a75a95932b4cabc6a6a3c760f92, type: 3}
+      propertyPath: magicosidadDeLaEscala
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4116345566550476770, guid: aa638a75a95932b4cabc6a6a3c760f92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.30412984
