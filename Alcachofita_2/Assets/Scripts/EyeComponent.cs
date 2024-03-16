@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +16,7 @@ public class EyeComponent : MonoBehaviour
 
     #region Reference
 
-    private Image _image; 
+    private Image _image;
 
     #endregion
 

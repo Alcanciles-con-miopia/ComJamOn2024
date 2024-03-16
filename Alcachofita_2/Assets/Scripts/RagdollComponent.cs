@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RagdollComponent : MonoBehaviour
 {
-    
+
     private Rigidbody2D _myRigidBody;
     private bool separa = false;
     [SerializeField] Collider2D colision;
-    
+
     [SerializeField] private float fuerzaDedalo = 100f;
     // Start is called before the first frame update
     void Start()

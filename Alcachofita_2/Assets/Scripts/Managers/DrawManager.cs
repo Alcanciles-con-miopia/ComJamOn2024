@@ -13,7 +13,7 @@ public class DrawManager : MonoBehaviour
     public void EndDraw()
     {
 
-       
+
 
         /* Vector3[] arrayfuses = new Vector3[cositas];
          fuseArrays(punteles, arrayfuses);
