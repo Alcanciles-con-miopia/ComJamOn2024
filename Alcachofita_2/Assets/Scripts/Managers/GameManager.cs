@@ -65,12 +65,7 @@ public class GameManager : MonoBehaviour
     {
         // guarda el estado correspondiente en next
         _nextGameState = newState;
-        eraseDrawing();
-    }
-
-    public void eraseDrawing()
-    {
-        _drawingComp.EraseDrawing();
+        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
     }
 
     // ---- onStateEnter ----
@@ -232,7 +227,7 @@ public class GameManager : MonoBehaviour
 
     public void NextPage()
     {
-        if (_ShapeDetector.shapeDetected()) // si es valide
+        if (_ShapeDetector != null && _ShapeDetector.shapeDetected() && _ShapeDetector.CantidadPuntosDibujados() > 0) // si es valide
         {
             _currentPage++; // siguiente runa
 
