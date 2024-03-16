@@ -8,21 +8,15 @@ public class GameManager : MonoBehaviour
 
     // variable a actualizar cada vez que se corte un dedo
     public bool ISDEAD = false;
+    public bool ISWIN = false;
 
     #region references
-    // dedos por orden de corte.
-    private GameObject PULGAR,
-                       INDICE,
-                       CORAZON,
-                       ANULAR,
-                       MENIQUE;
-
     // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos.
     [SerializeField]
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
-
-    [SerializeField] private GameObject mano;
+    [SerializeField] 
+    private GameObject mano;
 
     // UIManager
     private UIManager _UIManager;
@@ -90,13 +84,20 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
-
+                if (ISWIN)
+                {
+                    // uimanager.... para setear lo que sea del gameover
+                }
+                else
+                {
+                    // uimanager.... para setear lo que sea del gameover
+                }
                 break;
         }
 
         // guarda el estado correspondiente en current
         _currentGameState = newState;
-
+        if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
 
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
@@ -170,12 +171,16 @@ public class GameManager : MonoBehaviour
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
             //dedos[_nextDedo].SetActive(false);
 
-            //_VignetteComponent.ChangeIntensity();
+            if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
             // Siguiente dedo a cortar.
             _nextDedo++;
+        }
+        else
+        {
+            ISDEAD = true;
         }
     }
 
@@ -220,13 +225,29 @@ public class GameManager : MonoBehaviour
 
     public void NextPage()
     {
-        //if (drawcomponent.comprobar etc...)
-        _currentPage++;
-
-        if (_currentPage >= 3)
+        if (_ShapeDetector != null) // si es valide
         {
+            _currentPage++; // siguiente runa
+
+            // aquí habría que cambiar la pista de fondo
+
+            if (_currentPage >= 3) // si ya ha llegado al final
+            {
+                if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
+                requestSateChange(GameStates.END);
+                ISWIN = true; // gana ! gloria ! orbe catatonico
+            }
+        }
+        else // si no es dibujo válide
+        {
+            QuitaDedo();
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
-            requestSateChange(GameStates.END);
+            isDead();
+            if (ISDEAD)
+            {
+                if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
+                requestSateChange(GameStates.END);
+            }
         }
     }
 

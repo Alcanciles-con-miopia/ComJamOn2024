@@ -3,9 +3,13 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     #region Parameters
-
     [SerializeField] private GameObject _line;
     private Vector3 mousePos = Vector3.zero;
+
+    private int LEFT_OFFSET = Screen.width / 2 + Screen.width/100;
+    private int RIGHT_OFFSET = Screen.width / 5;
+    private int UP_OFFSET = Screen.height / 5;
+    private int DOWN_OFFSET = Screen.height / 5;
     #endregion
 
     #region References
@@ -37,10 +41,10 @@ public class InputManager : MonoBehaviour
             if (GameManager.Instance != null
                 && _drawingComponent != null
                 && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
-                && mousePos.x > 300
-                && mousePos.x < Screen.width - 100
-                && mousePos.y < Screen.height - 20
-                && mousePos.y > 80)
+                && mousePos.x > LEFT_OFFSET
+                && mousePos.x < Screen.width - RIGHT_OFFSET
+                && mousePos.y < Screen.height - UP_OFFSET
+                && mousePos.y > DOWN_OFFSET)
             {
                 //_drawingComponent.Paint(newPoint);
                 _drawingComponent.VariasLineas();
@@ -58,10 +62,10 @@ public class InputManager : MonoBehaviour
             if (GameManager.Instance != null
                 && _drawingComponent != null
                 && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
-                && mousePos.x > 420
-                && mousePos.x < Screen.width - 170
-                && mousePos.y < Screen.height - 80
-                && mousePos.y > 80)
+                && mousePos.x > LEFT_OFFSET
+                && mousePos.x < Screen.width - RIGHT_OFFSET
+                && mousePos.y < Screen.height - UP_OFFSET
+                && mousePos.y > DOWN_OFFSET)
             {
                 if (_drawingComponent != null)  _drawingComponent.Paint(newPoint);
                 //Debug.Log("COJONES");
