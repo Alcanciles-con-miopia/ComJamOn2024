@@ -358,6 +358,10 @@ PrefabInstance:
       propertyPath: dedos.Array.data[4]
       value: 
       objectReference: {fileID: 1572605476}
+    - target: {fileID: 7125390331825883942, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: _cursorImage
+      value: 
+      objectReference: {fileID: 6478737327690431344, guid: ee34cd07d189f7040b168e971cb4acee, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
