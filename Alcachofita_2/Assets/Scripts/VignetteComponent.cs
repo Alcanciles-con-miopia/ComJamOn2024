@@ -26,8 +26,6 @@ public class VignetteComponent : MonoBehaviour
         if (_image.color.a < 1)
         {
             _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, _increaseFactor);
-            Debug.Log(_increaseFactor);
-            Debug.Log(_image.color.a);
             _increaseFactor += 0.20f;
 
             _audioSource.clip = _arrancaDedo;
@@ -35,4 +33,11 @@ public class VignetteComponent : MonoBehaviour
         }
     }
 
+    public void ResetIntensity()
+    {
+        if (_image != null)
+        {
+            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0);
+        }
+    }
 }

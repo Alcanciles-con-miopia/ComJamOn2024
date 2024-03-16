@@ -1,3 +1,4 @@
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,21 +9,15 @@ public class GameManager : MonoBehaviour
 
     // variable a actualizar cada vez que se corte un dedo
     public bool ISDEAD = false;
+    public bool ISWIN = false;
 
     #region references
-    // dedos por orden de corte.
-    private GameObject PULGAR,
-                       INDICE,
-                       CORAZON,
-                       ANULAR,
-                       MENIQUE;
-
     // ARRAY DE DEDALOS
     // inicialmente se tienen 5 dedos.
     [SerializeField]
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
-
-    [SerializeField] private GameObject mano;
+    [SerializeField]
+    private GameObject mano;
 
     // UIManager
     private UIManager _UIManager;
@@ -33,6 +28,10 @@ public class GameManager : MonoBehaviour
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
+
+    // Array de runas
+    [SerializeField]
+    private GameObject runas;
 
     #endregion
 
@@ -70,6 +69,7 @@ public class GameManager : MonoBehaviour
     {
         // guarda el estado correspondiente en next
         _nextGameState = newState;
+        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
     }
 
     // ---- onStateEnter ----
@@ -90,13 +90,20 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
-
+                if (ISWIN)
+                {
+                    // uimanager.... para setear lo que sea del gameover
+                }
+                else
+                {
+                    // uimanager.... para setear lo que sea del gameover
+                }
                 break;
         }
 
         // guarda el estado correspondiente en current
         _currentGameState = newState;
-
+        if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
 
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
@@ -170,12 +177,16 @@ public class GameManager : MonoBehaviour
             // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
             //dedos[_nextDedo].SetActive(false);
 
-            _VignetteComponent.ChangeIntensity();
+            if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
             // Siguiente dedo a cortar.
             _nextDedo++;
+        }
+        else
+        {
+            ISDEAD = true;
         }
     }
 
@@ -220,13 +231,28 @@ public class GameManager : MonoBehaviour
 
     public void NextPage()
     {
-        //if (drawcomponent.comprobar etc...)
-        _currentPage++;
-
-        if (_currentPage >= 3)
+        if (_ShapeDetector != null && _ShapeDetector.shapeDetected()) // si es valide
         {
+            _currentPage++; // siguiente runa
+
+            // aquí habría que cambiar la pista de fondo
+
+            if (_currentPage >= 3) // si ya ha llegado al final
+            {
+                requestSateChange(GameStates.END);
+                ISWIN = true; // gana ! gloria ! orbe catatonico
+            }
+        }
+        else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo válide
+        {
+            QuitaDedo();
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
-            requestSateChange(GameStates.END);
+            isDead();
+            if (ISDEAD)
+            {
+                if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
+                //requestSateChange(GameStates.END);
+            }
         }
     }
 
@@ -244,7 +270,7 @@ public class GameManager : MonoBehaviour
             _gameManager = this;
 
             // si se guarda info en el gameManager y se ha de recargar
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
     }
 
@@ -253,6 +279,9 @@ public class GameManager : MonoBehaviour
     {
         // Se inicializa los dedos.
         InicializaDedos();
+        ISDEAD = false;
+        ISWIN = false;
+        _currentPage = 0;
 
         // para cuando exista el input 
         _input = GetComponent<InputManager>();

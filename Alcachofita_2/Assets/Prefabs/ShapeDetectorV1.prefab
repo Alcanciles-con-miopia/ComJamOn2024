@@ -46,5 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkResolution: 1
   guessPercent: 0.7
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   shape: {fileID: 2677663687786981796, guid: 772f535b2a7054342848440d9b4009ca, type: 3}
   drawingComponent: {fileID: 0}
+  magicosidadDeLaEscala: 1
