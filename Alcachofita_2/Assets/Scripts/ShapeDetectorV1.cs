@@ -67,6 +67,8 @@ public class ShapeDetectorV1 : MonoBehaviour
             cantPuntos += punteles[i].Length;
         }
 
+        Debug.Log("Punteles:" + cantPuntos);
+
         return cantPuntos;
     }
 

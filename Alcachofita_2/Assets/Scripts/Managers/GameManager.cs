@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     // inicialmente se tienen 5 dedos.
     [SerializeField]
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
-    [SerializeField] 
+    [SerializeField]
     private GameObject mano;
 
     // UIManager
@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
+
+    // Array de runas
+    [SerializeField]
+    private GameObject runas;
 
     #endregion
 
@@ -227,7 +231,7 @@ public class GameManager : MonoBehaviour
 
     public void NextPage()
     {
-        if (_ShapeDetector != null && _ShapeDetector.shapeDetected() && _ShapeDetector.CantidadPuntosDibujados() > 0) // si es valide
+        if (_ShapeDetector != null && _ShapeDetector.shapeDetected()) // si es valide
         {
             _currentPage++; // siguiente runa
 
@@ -239,7 +243,7 @@ public class GameManager : MonoBehaviour
                 ISWIN = true; // gana ! gloria ! orbe catatonico
             }
         }
-        else // si no es dibujo válide
+        else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo válide
         {
             QuitaDedo();
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
