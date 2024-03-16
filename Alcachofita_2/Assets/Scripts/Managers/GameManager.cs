@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     // Array de runas
     [SerializeField]
-    private GameObject runas;
+    private GameObject[] runas;
 
     #endregion
 
@@ -236,6 +236,9 @@ public class GameManager : MonoBehaviour
             _currentPage++; // siguiente runa
 
             // aquí habría que cambiar la pista de fondo
+
+            // cambia la runa a comprobar
+            _ShapeDetector.ChangeRune(runas[Random.Range(0, runas.Length)]);
 
             if (_currentPage >= 3) // si ya ha llegado al final
             {
