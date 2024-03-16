@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 
@@ -7,7 +8,7 @@ public class ShapeDetectorV1 : MonoBehaviour
     // Cantidad de puntos entre este parametro son los puntos a comprobar.
     [SerializeField] private int checkResolution = 1;
     // Porcentaje a partir del que un dibujo se da por bueno.
-    [SerializeField] private float guessPercent = 0.7f;
+    [SerializeField] public float guessPercent = 0.7f;
     [SerializeField] LayerMask layerMask;
 
     float cantDentro = 0;
@@ -35,6 +36,7 @@ public class ShapeDetectorV1 : MonoBehaviour
         // Adapta el collider
         AdaptShape(punteles);
 
+        CheckCollisions(punteles);
 
         cantDentro = 0; // Cantidad de puntos en la forma        
         cantPuntos = punteles.Length; // Cantidad de puntos totales
@@ -45,20 +47,6 @@ public class ShapeDetectorV1 : MonoBehaviour
             cantPuntos += punteles[i].Length;
         }
 
-        //Comprueba una colision cada ciertos puntos
-        for (int i = 0; i < punteles.Length; i++)
-        {
-            for (int j = 0; j < punteles[i].Length; j += checkResolution)
-            {
-                //Debug.Log(punteles[i]);
-                if (Raycast(punteles[i][j]))
-                {
-                    // Suma uno cuando el punto esta dentro del collider
-                    cantDentro++;
-                }
-            }
-        }
-
         Debug.Log("Puntos en la forma: " + cantDentro);
         Debug.Log("Puntos totales: " + cantPuntos);
         Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
@@ -67,9 +55,27 @@ public class ShapeDetectorV1 : MonoBehaviour
         //return cantDentro / cantPuntos >= guessPercent;
     }
 
+    void CheckCollisions(Vector3[][] punteles)
+    {
+        //Comprueba una colision cada ciertos puntos
+        for (int i = 0; i < punteles.Length; i++)
+        {
+            for (int j = 0; j < punteles[i].Length; j += checkResolution)
+            {
+                //Debug.Log(punteles[i]);
+                if (Raycast(punteles[i][j]))
+                {
+                    Debug.Log("TU PUTA MADRE");
+                    // Suma uno cuando el punto esta dentro del collider
+                    cantDentro++;
+                }
+            }
+        }
+    }
+
     private bool Raycast(Vector2 pos)
     {
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
 
         //Colision en general, habra que comprobar con el collider concreto mediante layers (?)
         if (hit.collider != null)
@@ -95,9 +101,11 @@ public class ShapeDetectorV1 : MonoBehaviour
         //spriteRenderer.bounds.center.y - spriteRenderer.bounds.extents.y //Limite izquierdo sprite
         //spriteRenderer.bounds.center.y + spriteRenderer.bounds.extents.y //Limite derecho spritez
         GameObject shapeInst = Instantiate(shape, drawingComponent.GetCenter(), Quaternion.identity);
+
+
         shapeInst.transform.parent = transform;
 
-        SpriteRenderer runaSPR = shape.GetComponent<SpriteRenderer>();
+        SpriteRenderer runaSPR = shapeInst.GetComponent<SpriteRenderer>();
 
         // shapeInst.GetComponent<PolygonCollider2D>().
 
@@ -106,11 +114,27 @@ public class ShapeDetectorV1 : MonoBehaviour
 
 
         Debug.Log("Ancho sprite Antes: " + ancho);
-        shapeInst.transform.localScale = new Vector3(
+        Vector2 scale = new Vector2(
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
-            (drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto,
-            0);
+            (drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto);
         ancho = (runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x);
+
+        //shapeInst.transform.localScale = scale;
+
+        Vector2[] colliderPoints = shapeInst.GetComponent<PolygonCollider2D>().points;
+
+        // Creamos un nuevo array para almacenar los puntos escalados
+        Vector2[] puntosEscalados = new Vector2[colliderPoints.Length];
+
+        // Escalamos cada punto
+        for (int i = 0; i < colliderPoints.Length; i++)
+        {
+            puntosEscalados[i] = new Vector2(colliderPoints[i].x * scale.x, colliderPoints[i].y * scale.y);
+        }
+
+        // Asignamos los puntos escalados al collider
+        shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
+
         Debug.Log("Ancho sprite Despues: " + drawingComponent.XSize());
 
         shapeInst.transform.position = drawingComponent.GetCenter();
