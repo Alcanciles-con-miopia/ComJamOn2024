@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
             Application.Quit();
         }
 
-
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameManager.GameStates.GAME) {
         //Al pulsar, se a�ade una l�nea
         if (Input.GetMouseButtonDown(0))
         {
@@ -59,9 +59,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             mousePos = Input.mousePosition;
-            if (GameManager.Instance != null
-                && _drawingComponent != null
-                && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
+            if (_drawingComponent != null
                 && mousePos.x > LEFT_OFFSET
                 && mousePos.x < Screen.width - RIGHT_OFFSET
                 && mousePos.y < Screen.height - UP_OFFSET
@@ -72,7 +70,6 @@ public class InputManager : MonoBehaviour
             }
         }
         else if (Input.GetMouseButtonUp(1))
-
         {
             Debug.Log("boton derecho");
         }
@@ -87,6 +84,7 @@ public class InputManager : MonoBehaviour
             if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();
 
+        }
         }
     }
 }

@@ -1,3 +1,4 @@
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -265,7 +266,7 @@ public class GameManager : MonoBehaviour
             _gameManager = this;
 
             // si se guarda info en el gameManager y se ha de recargar
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
     }
 
@@ -274,6 +275,9 @@ public class GameManager : MonoBehaviour
     {
         // Se inicializa los dedos.
         InicializaDedos();
+        ISDEAD = false;
+        ISWIN = false;
+        _currentPage = 0;
 
         // para cuando exista el input 
         _input = GetComponent<InputManager>();
@@ -283,7 +287,7 @@ public class GameManager : MonoBehaviour
 
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
-        _nextGameState = GameStates.GAME; // valor real inicial
+        _nextGameState = GameStates.MAINMENU; // valor real inicial
     }
 
     // Update is called once per frame

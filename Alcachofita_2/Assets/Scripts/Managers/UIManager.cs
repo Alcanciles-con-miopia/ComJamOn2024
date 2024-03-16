@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -55,7 +56,12 @@ public class UIManager : MonoBehaviour
     public void GoToEnding()
     {
         RequestStateChange(GameManager.GameStates.END); // referenciando al gamemanager (importante! si no no cambia de estado)
-        //...
+    }
+
+    /// Metodo para el onClick de los botones, para reintar 
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     /// Metodo para el onClick de los botones, para salir del juego
