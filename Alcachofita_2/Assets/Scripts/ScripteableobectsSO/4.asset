@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e3d0891fce04814f8b2e593e4f95661, type: 3}
-  m_Name: Teta
+  m_Name: 4
   m_EditorClassIdentifier: 
   nAcertijo: 0
-  runa: {fileID: 1455597809982645819, guid: 24d18af54258df345aa0eccafaf4f591, type: 3}
-  probabilidadExito: 0.7
+  runa: {fileID: 0}
+  probabilidadExito: 0
