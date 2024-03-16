@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     // Array de runas
     [SerializeField]
-    private GameObject[] runas;
+    private ShapeSO[] runas;
 
     #endregion
 
