@@ -14,6 +14,7 @@ public class ShapeDetectorV1 : MonoBehaviour
     float cantDentro = 0;
     // Cantidad de puntos totales
     int cantPuntos;
+    Vector3[][] punteles;
 
     [SerializeField] GameObject shape;
     [SerializeField] DrawingComponent drawingComponent;
@@ -24,22 +25,40 @@ public class ShapeDetectorV1 : MonoBehaviour
     /// </summary>
     public bool shapeDetected()
     {
-        // Elimina hijos
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Destroy(transform.GetChild(i).gameObject);
-        }
-
-        // Consigue los puntos a evaluar
-        Vector3[][] punteles = drawingComponent.GetPositions();
-
-        // Adapta el collider
-        AdaptShape(punteles);
-        
         cantDentro = 0; // Cantidad de puntos en la forma        
+                        // Consigue los puntos a evaluar
+        punteles = drawingComponent.GetPositions();
+        CantidadPuntosDibujados(); //Cantidad puntos dibujados
 
-        CheckCollisions(punteles);
+        if (cantPuntos > 0)
+        {
+            // Elimina hijos
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
 
+
+            // Adapta el collider
+            AdaptShape();
+
+
+
+            CheckCollisions();
+
+            Debug.Log("Puntos en la forma: " + cantDentro);
+            Debug.Log("Puntos totales: " + cantPuntos);
+            Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
+
+            drawingComponent.EraseDrawing();
+
+            return cantDentro / cantPuntos >= guessPercent;
+        }
+        return false;
+    }
+
+    public int CantidadPuntosDibujados()
+    {
         cantPuntos = punteles.Length; // Cantidad de puntos totales
 
         //Cuenta todos los puntos en el dibujo
@@ -48,16 +67,12 @@ public class ShapeDetectorV1 : MonoBehaviour
             cantPuntos += punteles[i].Length;
         }
 
-        Debug.Log("Puntos en la forma: " + cantDentro);
-        Debug.Log("Puntos totales: " + cantPuntos);
-        Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
+        Debug.Log("Punteles:" + cantPuntos);
 
-        drawingComponent.EraseDrawing();
-
-        return cantDentro / cantPuntos >= guessPercent;
+        return cantPuntos;
     }
 
-    void CheckCollisions(Vector3[][] punteles)
+    void CheckCollisions()
     {
         //Comprueba una colision cada ciertos puntos
         for (int i = 0; i < punteles.Length; i++)
@@ -95,7 +110,7 @@ public class ShapeDetectorV1 : MonoBehaviour
     {
         return (cantDentro / cantPuntos) * 100;
     }
-    void AdaptShape(Vector3[][] Punteles)
+    void AdaptShape()
     {
         //spriteRenderer.bounds.center.x - spriteRenderer.bounds.extents.x //Limite izquierdo sprite
         //spriteRenderer.bounds.center.x + spriteRenderer.bounds.extents.x //Limite derecho spritez
@@ -119,7 +134,7 @@ public class ShapeDetectorV1 : MonoBehaviour
         Vector2 scale = new Vector2(
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho);
-            //(drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto);
+        //(drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto);
         ancho = (runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x);
 
         //shapeInst.transform.localScale = scale;
