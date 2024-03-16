@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.NextPage();
             Debug.Log(GameManager.Instance.CurrentPage);
 
-            percent.text = GameManager.Instance.GetPercent() + "%";
+            //percent.text = GameManager.Instance.GetPercent() + "%";
         }
     }
 
