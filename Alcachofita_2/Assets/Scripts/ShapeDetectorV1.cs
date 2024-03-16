@@ -16,8 +16,11 @@ public class ShapeDetectorV1 : MonoBehaviour
     int cantPuntos;
     Vector3[][] punteles;
 
+    // Runa a comprobar
     [SerializeField] GameObject shape;
     [SerializeField] DrawingComponent drawingComponent;
+
+    // Para ampliar el collider si hace falta
     [SerializeField] float magicosidadDeLaEscala = 1;
 
     /// <summary>
@@ -156,8 +159,18 @@ public class ShapeDetectorV1 : MonoBehaviour
 
         shapeInst.transform.position = drawingComponent.GetCenter();
         shapeInst.transform.localScale = scale;
-        shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
+        //shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
 
+    }
+
+    /// <summary>
+    /// Cambia la runa a comprobar a la que le pasas por parametro
+    /// </summary>
+    /// <param name="newRune"></param>
+    public void ChangeRune(GameObject newRune)
+    {
+        //shape = newRune;
+        Debug.Log("AAAAAAaa");
     }
 
     private void Awake()
