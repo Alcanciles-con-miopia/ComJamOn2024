@@ -122,9 +122,10 @@ public class ShapeDetectorV1 : MonoBehaviour
         //spriteRenderer.bounds.center.y + spriteRenderer.bounds.extents.y //Limite derecho spritez
         GameObject shapeInst = Instantiate(shape, drawingComponent.GetCenter(), Quaternion.identity);
 
-        shapeInst.transform.position = drawingComponent.GetCenter();
 
         shapeInst.transform.parent = transform;
+
+        shapeInst.transform.position = drawingComponent.GetCenter();
 
         SpriteRenderer runaSPR = shapeInst.GetComponent<SpriteRenderer>();
 
@@ -134,10 +135,10 @@ public class ShapeDetectorV1 : MonoBehaviour
         float alto = (runaSPR.bounds.center.y + runaSPR.bounds.extents.y) - (runaSPR.bounds.center.y - runaSPR.bounds.extents.y);
 
 
-        Debug.Log("Ancho sprite: " + ancho);/*
+        Debug.Log("Ancho sprite: " + ancho);
         Vector2 scale = new Vector2(
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
-            (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho);*/
+            (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho);
         //(drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto);
         //ancho = (runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x);
 
@@ -152,8 +153,8 @@ public class ShapeDetectorV1 : MonoBehaviour
         for (int i = 0; i < colliderPoints.Length; i++)
         {
             puntosEscalados[i] = new Vector2(
-                    colliderPoints[i].x * (1f / drawingComponent.XSize()),
-                    colliderPoints[i].y * (1f / drawingComponent.YSize())
+                    (drawingComponent.XSize() / colliderPoints[i].x),
+                    (drawingComponent.XSize()/ colliderPoints[i].x)
                 );
         }
 
@@ -161,8 +162,8 @@ public class ShapeDetectorV1 : MonoBehaviour
 
         Debug.Log("Ancho dibujo: " + drawingComponent.XSize());
 
-        //shapeInst.transform.localScale = scale;
-        shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
+        shapeInst.transform.localScale = scale;
+        //shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
 
     }
 
