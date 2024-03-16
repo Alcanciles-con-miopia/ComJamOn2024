@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
 
     public void NextPage()
     {
-        if (_ShapeDetector != null) // si es valide
+        if (_ShapeDetector.shapeDetected()) // si es valide
         {
             _currentPage++; // siguiente runa
 

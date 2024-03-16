@@ -384,8 +384,8 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 1048246823701294440, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
-      propertyPath: Pan2D
-      value: 1
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2907751386422770266, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: _drawingComponent
@@ -907,8 +907,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4775746943996182554, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
