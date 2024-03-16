@@ -82,7 +82,7 @@ public class InputManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("Borra eso");
+            //Debug.Log("Borra eso");
             // Existe el script GameManager puesto.
             if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();

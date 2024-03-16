@@ -246,7 +246,7 @@ public class GameManager : MonoBehaviour
             if (ISDEAD)
             {
                 if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
-                requestSateChange(GameStates.END);
+                //requestSateChange(GameStates.END);
             }
         }
     }
