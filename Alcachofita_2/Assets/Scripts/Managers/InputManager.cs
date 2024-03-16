@@ -10,8 +10,8 @@ public class InputManager : MonoBehaviour
 
     private int LEFT_OFFSET = Screen.width / 2 + Screen.width/100;
     private int RIGHT_OFFSET = Screen.width / 5;
-    private int UP_OFFSET = Screen.height / 5;
-    private int DOWN_OFFSET = Screen.height / 5;
+    private int UP_OFFSET = Screen.height / 5 - Screen.width/100;
+    private int DOWN_OFFSET = Screen.height / 6;
     #endregion
 
     #region References

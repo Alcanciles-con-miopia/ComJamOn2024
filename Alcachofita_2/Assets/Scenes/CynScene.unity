@@ -801,11 +801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696894676693126566, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3070724939167163620, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3296848938929180193, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_Constraints

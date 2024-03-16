@@ -124,6 +124,7 @@ public class DrawingComponent : MonoBehaviour
     {
         Vector3[][] punteles = GetPositions();
 
+
         Vector3 _minPoint = punteles[0][0];
         Vector3 _maxPoint = punteles[0][0];
         //float size;
@@ -140,7 +141,6 @@ public class DrawingComponent : MonoBehaviour
         }
 
         return _maxPoint.x - _minPoint.x;
-
     }
 
     public float YSize()
