@@ -43,8 +43,7 @@ public class InputManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 mousePos = Input.mousePosition;
-                if (GameManager.Instance != null
-                    && _drawingComponent != null
+                if (_drawingComponent != null
                     && GameManager.Instance.CurrentState == GameManager.GameStates.GAME
                     && mousePos.x > LEFT_OFFSET
                     && mousePos.x < Screen.width - RIGHT_OFFSET
@@ -71,7 +70,7 @@ public class InputManager : MonoBehaviour
                     && mousePos.y > DOWN_OFFSET)
                 {
                     if (_drawingComponent != null) _drawingComponent.Paint(newPoint);
-                    if (!_audioSource.isPlaying) _audioSource.Play();
+                    if (_audioSource != null && !_audioSource.isPlaying) _audioSource.Play();
 
                 }
             }
