@@ -419,6 +419,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1126673088}
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: runas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: dedos.Array.data[0]
       value: 
       objectReference: {fileID: 1077958748}
@@ -438,6 +442,14 @@ PrefabInstance:
       propertyPath: dedos.Array.data[4]
       value: 
       objectReference: {fileID: 1572605476}
+    - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: runas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d4e660dd43d2c0242ab59d718a8b0d94, type: 2}
+    - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: runas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 150ab70b25d828948a45c014b7652357, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -738,6 +750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2381994950946660503, guid: aa638a75a95932b4cabc6a6a3c760f92, type: 3}
+      propertyPath: shape
+      value: 
+      objectReference: {fileID: 2110911627758629380, guid: f3bc2e46de7b5e34ea15e3d22e3631eb, type: 3}
     - target: {fileID: 2381994950946660503, guid: aa638a75a95932b4cabc6a6a3c760f92, type: 3}
       propertyPath: drawingComponent
       value: 

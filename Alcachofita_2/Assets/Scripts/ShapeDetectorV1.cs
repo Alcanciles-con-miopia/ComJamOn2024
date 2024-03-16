@@ -48,9 +48,10 @@ public class ShapeDetectorV1 : MonoBehaviour
 
             CheckCollisions();
 
+            /*
             Debug.Log("Puntos en la forma: " + cantDentro);
             Debug.Log("Puntos totales: " + cantPuntos);
-            Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
+            Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));*/
 
             drawingComponent.EraseDrawing();
 
@@ -86,7 +87,7 @@ public class ShapeDetectorV1 : MonoBehaviour
                 {
                     // Suma uno cuando el punto esta dentro del collider
                     cantDentro++;
-                    Debug.Log("TU PUTA MADRE" + cantDentro);
+                    //Debug.Log("TU PUTA MADRE" + cantDentro);
                 }
             }
         }
@@ -121,6 +122,7 @@ public class ShapeDetectorV1 : MonoBehaviour
         //spriteRenderer.bounds.center.y + spriteRenderer.bounds.extents.y //Limite derecho spritez
         GameObject shapeInst = Instantiate(shape, drawingComponent.GetCenter(), Quaternion.identity);
 
+        shapeInst.transform.position = drawingComponent.GetCenter();
 
         shapeInst.transform.parent = transform;
 
@@ -132,12 +134,12 @@ public class ShapeDetectorV1 : MonoBehaviour
         float alto = (runaSPR.bounds.center.y + runaSPR.bounds.extents.y) - (runaSPR.bounds.center.y - runaSPR.bounds.extents.y);
 
 
-        //Debug.Log("Ancho sprite Antes: " + ancho);
+        Debug.Log("Ancho sprite: " + ancho);/*
         Vector2 scale = new Vector2(
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
-            (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho);
+            (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho);*/
         //(drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto);
-        ancho = (runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x);
+        //ancho = (runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x);
 
         //shapeInst.transform.localScale = scale;
 
@@ -149,16 +151,18 @@ public class ShapeDetectorV1 : MonoBehaviour
         // Escalamos cada punto
         for (int i = 0; i < colliderPoints.Length; i++)
         {
-            puntosEscalados[i] = new Vector2(colliderPoints[i].x * scale.x, colliderPoints[i].y * scale.y);
+            puntosEscalados[i] = new Vector2(
+                    colliderPoints[i].x * (1f / drawingComponent.XSize()),
+                    colliderPoints[i].y * (1f / drawingComponent.YSize())
+                );
         }
 
         // Asignamos los puntos escalados al collider
 
-        //Debug.Log("Ancho sprite Despues: " + drawingComponent.XSize());
+        Debug.Log("Ancho dibujo: " + drawingComponent.XSize());
 
-        shapeInst.transform.position = drawingComponent.GetCenter();
-        shapeInst.transform.localScale = scale;
-        //shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
+        //shapeInst.transform.localScale = scale;
+        shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
 
     }
 
@@ -166,10 +170,11 @@ public class ShapeDetectorV1 : MonoBehaviour
     /// Cambia la runa a comprobar a la que le pasas por parametro
     /// </summary>
     /// <param name="newRune"></param>
-    public void ChangeRune(GameObject newRune)
+    public void ChangeRune(ShapeSO newRune)
     {
-        //shape = newRune;
-        Debug.Log("AAAAAAaa");
+        shape = newRune.runa;
+        guessPercent = newRune.probabilidadExito;
+        //Debug.Log("AAAAAAaa");
     }
 
     private void Awake()
