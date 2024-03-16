@@ -511,7 +511,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.67, y: 1.11}
+    oldSize: {x: 0.7, y: 1.52}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -799,6 +799,10 @@ PrefabInstance:
       propertyPath: m_OverrideSorting
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2696894676693126566, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3070724939167163620, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -902,6 +906,30 @@ PrefabInstance:
     - target: {fileID: 8450930322544901374, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631298944815766953, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631298944815766953, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631298944815766953, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631298944815766953, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -448.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631298944815766953, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631298944815766953, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4775746943996182554, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
