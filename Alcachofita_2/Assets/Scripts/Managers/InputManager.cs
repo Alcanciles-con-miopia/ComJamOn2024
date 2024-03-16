@@ -4,7 +4,9 @@ public class InputManager : MonoBehaviour
 {
     #region Parameters
     [SerializeField] private GameObject _line;
+    [SerializeField] private AudioClip _escribeSound;
     private Vector3 mousePos = Vector3.zero;
+    private AudioSource _audioSource;
 
     private int LEFT_OFFSET = Screen.width / 2 + Screen.width/100;
     private int RIGHT_OFFSET = Screen.width / 5;
@@ -21,6 +23,8 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         _drawingComponent = _line.GetComponent<DrawingComponent>();
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.clip = _escribeSound;
     }
 
     // Update is called once per frame
@@ -66,7 +70,8 @@ public class InputManager : MonoBehaviour
                 && mousePos.y > DOWN_OFFSET)
             {
                 if (_drawingComponent != null)  _drawingComponent.Paint(newPoint);
-                //Debug.Log("COJONES");
+                if (!_audioSource.isPlaying) _audioSource.Play();
+                
             }
         }
         else if (Input.GetMouseButtonUp(1))
@@ -84,6 +89,11 @@ public class InputManager : MonoBehaviour
             if (GameManager.Instance != null)
                 GameManager.Instance.QuitaDedo();
 
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            _audioSource.Stop();
         }
         }
     }

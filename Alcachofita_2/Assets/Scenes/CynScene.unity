@@ -282,6 +282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1048246823701294440, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2907751386422770266, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: _drawingComponent
       value: 
@@ -682,6 +686,10 @@ PrefabInstance:
     - target: {fileID: 475997849942756954, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_OverrideSorting
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070724939167163620, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3296848938929180193, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_Constraints

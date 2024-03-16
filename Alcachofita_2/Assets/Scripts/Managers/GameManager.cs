@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     {
         // guarda el estado correspondiente en next
         _nextGameState = newState;
+        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
     }
 
     // ---- onStateEnter ----
@@ -234,7 +235,6 @@ public class GameManager : MonoBehaviour
 
             if (_currentPage >= 3) // si ya ha llegado al final
             {
-                if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
                 requestSateChange(GameStates.END);
                 ISWIN = true; // gana ! gloria ! orbe catatonico
             }

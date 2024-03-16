@@ -84,10 +84,4 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance != null)
             GameManager.Instance.RegisterUIManager(this);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
