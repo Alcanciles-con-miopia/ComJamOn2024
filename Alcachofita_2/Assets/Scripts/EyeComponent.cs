@@ -29,20 +29,25 @@ public class EyeComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Bad Ending
-        if (_shapeDetector.guessPercent <= 50)
+        while (GameManager.Instance.CurrentState == GameManager.GameStates.GAME)
         {
-            _spriteRenderer.color = _badPercentage;
+            //Bad Ending
+            if (_shapeDetector.guessPercent <= 50)
+            {
+                _spriteRenderer.color = _badPercentage;
+            }
+            //Medium Ending
+            else if (_shapeDetector.guessPercent > 50 && _shapeDetector.guessPercent <= 75)
+            {
+                _spriteRenderer.color = _mediumPercentage;
+            }
+            //Good Ending
+            else if (_shapeDetector.guessPercent > 75)
+            {
+                _spriteRenderer.color = _goodPercentage;
+            }
         }
-        //Medium Ending
-        else if (_shapeDetector.guessPercent > 50 && _shapeDetector.guessPercent <= 75)
-        {
-            _spriteRenderer.color = _mediumPercentage;
-        }
-        //Good Ending
-        else if (_shapeDetector.guessPercent > 75)
-        {
-            _spriteRenderer.color = _goodPercentage;
-        }
+
+
     }
 }
