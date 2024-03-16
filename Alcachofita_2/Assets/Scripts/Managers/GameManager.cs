@@ -65,7 +65,12 @@ public class GameManager : MonoBehaviour
     {
         // guarda el estado correspondiente en next
         _nextGameState = newState;
-        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
+        eraseDrawing();
+    }
+
+    public void eraseDrawing()
+    {
+        _drawingComp.EraseDrawing();
     }
 
     // ---- onStateEnter ----
