@@ -22,7 +22,7 @@ public class ShapeDetectorV1 : MonoBehaviour
     /// <summary>
     /// Detecta si los puntos estan dentro de un collider y si lo estan aumenta en uno a puntos en rango, si el porcentaje de aciertos es superior al necesario se da por acertada el dibujo
     /// </summary>
-    public void shapeDetected()
+    public bool shapeDetected()
     {
         // Elimina hijos
         for (int i = 0; i < transform.childCount; i++)
@@ -53,7 +53,8 @@ public class ShapeDetectorV1 : MonoBehaviour
         Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
 
         drawingComponent.EraseDrawing();
-        //return cantDentro / cantPuntos >= guessPercent;
+
+        return cantDentro / cantPuntos >= guessPercent;
     }
 
     void CheckCollisions(Vector3[][] punteles)
