@@ -116,6 +116,8 @@ public class GameManager : MonoBehaviour
         _currentGameState = newState;
         if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
+        if (_fadeComponent != null) _fadeComponent.Transicion();
+
 
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
@@ -128,6 +130,7 @@ public class GameManager : MonoBehaviour
         {
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
+                
 
                 break;
 
@@ -316,14 +319,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Inicialmente no hay animacion de fade.
-
-        if(_fadeComponent != null)
-        {
-            _fadeComponent.Transicion();
-        }
-        
-
         if (_fadeComponent != null) _fadeComponent.Transicion();
 
 
@@ -354,8 +349,7 @@ public class GameManager : MonoBehaviour
         // si se debe cambiar de estado (next y current difieren)
         if (_nextGameState != _currentGameState)
         {
-            // se cambia y transiciona.
-            _fadeComponent.Transicion();
+            // se cambia
             onStateEnter(_nextGameState);
         }
 
