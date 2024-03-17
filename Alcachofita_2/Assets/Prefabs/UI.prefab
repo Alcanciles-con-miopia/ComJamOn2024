@@ -2458,9 +2458,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "cyntriiiiiiissssstttt por qu\xE9 \ntuvisteee que cyntrearteee\nmis patatas
-    \nqu\xE9 clase de cyntrist\ncyntrist cyntrist\ncyntrist\nes tan deleznable\ntu
-    me cyntreaste jam\xE1s\nte disculpaste \ncyntriiiiiisstttttt\nde verdad me quieres"
+  m_text: "Cr\xE9ditos\r\n\r\n----DISE\xD1O Y PROGRAMACI\xD3N----\r\nAndr\xE9s Garc\xEDa
+    Navarro\r\nAriadna Alicia Ruiz Castillo\r\nCynthia Trist\xE1n \xC1lvarez\r\nDenisa
+    Juarranz Berindea\r\nJose Tom\xE1s G\xF3mez Becerra\r\nNieves Alonso Gilsanz\r\n\r\n----CONCEPT
+    ART Y BOCETOS----\r\nJose Tom\xE1s G\xF3mez Becerra\r\n\r\n----ARTE DIGITAL----\r\nNieves
+    Alonso Gilsanz\r\n\r\n----ANIMACI\xD3N----\r\nAndr\xE9s Garc\xEDa Navarro\r\n\r\n----M\xDASICA----\r\nAriadna
+    Alicia Ruiz Castillo\r\n\r\n*REFERENCIAS MUSICALES*\r\n\r\nVetusta Morla - Al
+    respirar\r\nCarmen Boza- La mansi\xF3n de los espejos\r\nLos Chichos- Quiero
+    ser libre\r\n\r\n*AGRADECIMIENTOS*\r\nA Santi Alonso Gilsanz por el pr\xE9stamo
+    de instrumentos\r\nA los padres de Nieves por el permiso de invasi\xF3n de vivienda\r\nAl
+    kebab de Tres Cantos\r\nA Cyntrist por Cyntrear las patatas y ser tan deleznable\r\nA
+    Luis Parres por superar la gripe espa\xF1ola y permitir que sea documentado\r\nA
+    todos los compa\xF1eros y profesores que han colaborado con el QA\r\nA LAG y
+    a la FDI por organizar la ComJamOn\ntu me cyntreaste jam\xE1s\nte disculpaste
+    \ncyntriiiiiisstttttt\nde verdad me quieres"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47e45944ef17d0f429fcf09e8324d79f, type: 2}
   m_sharedMaterial: {fileID: 3793805038524089453, guid: 47e45944ef17d0f429fcf09e8324d79f, type: 2}
