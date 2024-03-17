@@ -33,7 +33,7 @@ public class EyeComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
 
 
     }
@@ -43,23 +43,20 @@ public class EyeComponent : MonoBehaviour
         if (GameManager.Instance.CurrentState == GameManager.GameStates.GAME && _image != null && _shapeDetector != null)
         {
             //Bad Ending
-            if (porcentaje > _shapeDetector.guessPercent)
-            {
-                Debug.Log("Porcentaje ojete: " + porcentaje);
-                _image.color = _goodPercentage;
-            }
-            //Medium Ending
-            else if (porcentaje > (_shapeDetector.guessPercent / 2))
-            {
-                _image.color = _mediumPercentage;
-            }
-            else
-            //Good Ending
+            if (_shapeDetector.PorcentajeAcierto() <= 50)
             {
                 _image.color = _badPercentage;
             }
-
-            StartCoroutine(ColorBase());
+            //Medium Ending
+            else if (_shapeDetector.PorcentajeAcierto() > 50 && _shapeDetector.PorcentajeAcierto() <= _shapeDetector.guessPercent)
+            {
+                _image.color = _mediumPercentage;
+            }
+            //Good Ending
+            else if (_shapeDetector.PorcentajeAcierto() > _shapeDetector.guessPercent)
+            {
+                _image.color = _goodPercentage;
+            }
         }
     }
 

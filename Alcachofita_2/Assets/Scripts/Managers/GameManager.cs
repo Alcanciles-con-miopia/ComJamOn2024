@@ -40,9 +40,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int[] runasUsadas;
 
-    [SerializeField]
-    EyeComponent _eyeComponent;
-
     #endregion
 
     #region properties
@@ -238,7 +235,7 @@ public class GameManager : MonoBehaviour
             if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
-            cursor.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
+            //cursor.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
             // Siguiente dedo a cortar.
             _nextDedo++;
@@ -282,6 +279,15 @@ public class GameManager : MonoBehaviour
         _pistaComp = pistaComp;
     }
 
+    public float GetPercent()
+    {
+        if (_ShapeDetector != null)
+        {
+            return _ShapeDetector.PorcentajeAcierto();
+        }
+        return 0;
+    }
+
     public void SetPage(int page) { _currentPage = page; }
 
     public void NextPage()
@@ -312,8 +318,6 @@ public class GameManager : MonoBehaviour
             isDead();
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
-
-        _eyeComponent.ChangeColor(_ShapeDetector.PorcentajeAcierto());
     }
     int UsarRuna()
     {

@@ -2495,6 +2495,7 @@ GameObject:
   - component: {fileID: 2717072560132734706}
   - component: {fileID: 1931590222325041962}
   - component: {fileID: 4585512871481241857}
+  - component: {fileID: 6571017726989102692}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -2590,6 +2591,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6571017726989102692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5560286067465875454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0727372d3122b4a84985d437342797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6102455505169773972
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,6 +3577,7 @@ GameObject:
   - component: {fileID: 4771422996100404025}
   - component: {fileID: 4493867557426190759}
   - component: {fileID: 2106429871328508491}
+  - component: {fileID: 6300681143473055693}
   m_Layer: 0
   m_Name: Bichito
   m_TagString: Untagged
@@ -3599,7 +3613,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 47c33eeb604658e48afbe3952b0cee6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -3659,6 +3673,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6300681143473055693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116529143869534200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0727372d3122b4a84985d437342797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8234844272541386416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,6 +3888,7 @@ MonoBehaviour:
   - {fileID: 454660484167045055}
   - {fileID: 3886157608989344145}
   acertijo_number: {fileID: 7292396680051333993}
+  runa: {fileID: 0}
   winScreen: {fileID: 7811981256393013581}
   winText: {fileID: 1738532973051431010}
   overText: {fileID: 3845129182062534294}
