@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d0891fce04814f8b2e593e4f95661, type: 3}
   m_Name: 3EscarabajoSO
   m_EditorClassIdentifier: 
-  nAcertijo: 0
-  runa: {fileID: 0}
-  probabilidadExito: 0
+  nAcertijo: 3
+  runa: {fileID: 7810170197566954630, guid: f7942c686ee0b3d4ba185257e6f00f51, type: 3}
+  probabilidadExito: 0.7

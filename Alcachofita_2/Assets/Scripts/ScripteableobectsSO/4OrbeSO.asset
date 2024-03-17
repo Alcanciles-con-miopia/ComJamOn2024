@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d0891fce04814f8b2e593e4f95661, type: 3}
   m_Name: 4OrbeSO
   m_EditorClassIdentifier: 
-  nAcertijo: 0
-  runa: {fileID: 0}
+  nAcertijo: 4
+  runa: {fileID: 2975156257463832267, guid: 8318a88297f35a74ab38942f75a82dc1, type: 3}
   probabilidadExito: 0.7

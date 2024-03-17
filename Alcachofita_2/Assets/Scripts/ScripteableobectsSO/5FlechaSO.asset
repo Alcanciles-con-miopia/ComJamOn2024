@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d0891fce04814f8b2e593e4f95661, type: 3}
   m_Name: 5FlechaSO
   m_EditorClassIdentifier: 
-  nAcertijo: 0
-  runa: {fileID: 0}
-  probabilidadExito: 0
+  nAcertijo: 5
+  runa: {fileID: 2360364687468592864, guid: a5f652363a6f09145a201552cf51a323, type: 3}
+  probabilidadExito: 0.7
