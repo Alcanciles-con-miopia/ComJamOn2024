@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
         if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
-         if (_animator != null)_animator.ResetTrigger("FadeTrigger");
+        //if (_animator != null)_animator.ResetTrigger("FadeTrigger");
         //Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
 
@@ -419,7 +419,7 @@ public class GameManager : MonoBehaviour
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
 
-        _nextGameState = GameStates.INTRO; // valor real inicial. 
+        _nextGameState = GameStates.CREDITS; // valor real inicial. 
 
 
     }
