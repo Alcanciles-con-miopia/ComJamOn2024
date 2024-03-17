@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
     const int NUM_DEDOS = 5;
 
     // variable a actualizar cada vez que se corte un dedo
-    public bool ISDEAD = false;
-    public bool ISWIN = false;
+    public bool ISDEAD;
+    public bool ISWIN;
 
     #region references
     // ARRAY DE DEDALOS
@@ -17,11 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject mano;
 
-    // UIManager
     private UIManager _UIManager;
-    // ShapeDetector
+    [SerializeField]
     private ShapeDetectorV1 _ShapeDetector;
     private DrawingComponent _drawingComp;
+    [SerializeField]
+    private PistaComponent _pistaComp;
 
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
@@ -66,8 +67,9 @@ public class GameManager : MonoBehaviour
     public void requestSateChange(GameStates newState)
     {
         // guarda el estado correspondiente en next
-        _nextGameState = newState;
         if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
+        if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
+        _nextGameState = newState;
     }
 
     // ---- onStateEnter ----
@@ -83,18 +85,20 @@ public class GameManager : MonoBehaviour
 
             // ---- GAME ----
             case GameStates.GAME:
+                // cambia la runa a comprobar
+                int nextRune = Random.Range(0, runas.Length);
+                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
+                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)   nextRune);
+                if (runas.Length > 0 && _ShapeDetector != null) { _ShapeDetector.ChangeRune(runas[nextRune]); }
 
                 break;
 
             // ---- END ----
             case GameStates.END:
+                if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN)
                 {
-                    // uimanager.... para setear lo que sea del gameover
-                }
-                else
-                {
-                    // uimanager.... para setear lo que sea del gameover
+                    if (_UIManager != null) _UIManager.SetWin();
                 }
                 break;
         }
@@ -216,6 +220,11 @@ public class GameManager : MonoBehaviour
         _drawingComp = drawComp;
     }
 
+    public void RegisterPistaComponent(PistaComponent pistaComp)
+    {
+        _pistaComp = pistaComp;
+    }
+
     public float GetPercent()
     {
         if (_ShapeDetector != null)
@@ -236,7 +245,9 @@ public class GameManager : MonoBehaviour
             // aquí habría que cambiar la pista de fondo
 
             // cambia la runa a comprobar
-            _ShapeDetector.ChangeRune(runas[Random.Range(0, runas.Length)]);
+            int nextRune = Random.Range(0, runas.Length);
+            _ShapeDetector.ChangeRune(runas[nextRune]);
+            _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
 
             if (_currentPage >= 3) // si ya ha llegado al final
             {
@@ -247,13 +258,8 @@ public class GameManager : MonoBehaviour
         else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo válide
         {
             QuitaDedo();
-            if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
             isDead();
-            if (ISDEAD)
-            {
-                if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
-                //requestSateChange(GameStates.END);
-            }
+            if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
     }
 
@@ -299,8 +305,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameStates.END;
         _nextGameState = GameStates.MAINMENU; // valor real inicial
 
-        // cambia la runa a comprobar
-        _ShapeDetector.ChangeRune(runas[Random.Range(0, runas.Length)]);
+        
     }
 
     // Update is called once per frame

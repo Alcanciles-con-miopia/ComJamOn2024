@@ -186,7 +186,7 @@ public class DrawingComponent : MonoBehaviour
         //Now destroy them
         foreach (GameObject child in allChildren)
         {
-            DestroyImmediate(child.gameObject);
+            Destroy(child.gameObject);
         }
 
 
