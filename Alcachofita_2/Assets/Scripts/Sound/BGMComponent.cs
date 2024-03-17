@@ -28,7 +28,7 @@ public class BGMComponent : MonoBehaviour
     public void PlayBGM(int i)
     {
         // si existe en el array lo pone
-        if (_bgm[i] != null)
+        if (i < _bgm.Length && _bgm[i] != null)
         {
             _bgm[i].Play();
         }

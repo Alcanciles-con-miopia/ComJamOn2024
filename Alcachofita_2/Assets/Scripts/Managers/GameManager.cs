@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     // Array de runas
     [SerializeField]
     private ShapeSO[] runas;
-    private ShapeSO[] runausAUsar;
+    [SerializeField]
+    private int[] runasUsadas;
 
     //musica
     private BGMComponent _bGMComponent;
@@ -97,14 +98,22 @@ public class GameManager : MonoBehaviour
             // ---- GAME ----
             case GameStates.GAME:
                 // Poner todas las runas a usar como todas las runas
-                runausAUsar = runas;
+                runasUsadas = new int[runas.Length];
+                for (int i = 0; i < runasUsadas.Length; i++)
+                {
+                    runasUsadas[i] = -1;
+                }
 
                 // cambia la runa a comprobar
-                int nextRune = Random.Range(0, runausAUsar.Length);
+                int nextRune = UsarRuna();
                 if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
                 if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
-                if (runas.Length > 0 && runausAUsar.Length > 0 && _ShapeDetector != null) { _ShapeDetector.ChangeRune(runausAUsar[nextRune]); }
-                UsarRuna(nextRune);
+                if (runas.Length > 0 && _ShapeDetector != null)
+                {
+                    
+                    Debug.Log(runas[nextRune]);
+                    _ShapeDetector.ChangeRune(runas[nextRune]);
+                }
 
                 break;
 
@@ -144,7 +153,7 @@ public class GameManager : MonoBehaviour
 
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
-                
+
 
                 break;
 
@@ -292,13 +301,11 @@ public class GameManager : MonoBehaviour
             // aqu� habr�a que cambiar la pista de fondo
 
             // cambia la runa a comprobar
-            int nextRune = Random.Range(0, runausAUsar.Length);
+            int nextRune = UsarRuna();
 
-            _ShapeDetector.ChangeRune(runausAUsar[nextRune]);
+            _ShapeDetector.ChangeRune(runas[nextRune]);
 
             _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
-
-            UsarRuna(nextRune);
 
 
             if (_currentPage >= 3) // si ya ha llegado al final
@@ -314,20 +321,34 @@ public class GameManager : MonoBehaviour
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
     }
-    void UsarRuna(int idRuna)
+    int UsarRuna()
     {
-        ShapeSO[] newRunasAUsar = new ShapeSO[runausAUsar.Length - 1];
-        int j = 0;
-        for (int i = 0; i < runausAUsar.Length; i++)
+        bool usable = true;
+        int i = 0;
+
+        int nextId = Random.Range(0, 5);
+
+        while (i < runas.Length && usable)
         {
-            if (i != idRuna && i < newRunasAUsar.Length)
+            if(nextId==runasUsadas[i])
             {
-                newRunasAUsar[i] = runausAUsar[j];
-                j++;
+                usable = false;
+                nextId = Random.Range(0, runas.Length);
             }
+            i++;
         }
 
-        runausAUsar = newRunasAUsar;
+        i = 0;
+
+        while (i < runas.Length && runasUsadas[i] != -1)
+        {
+            
+            i++;
+        }
+
+        runasUsadas[i] = nextId;
+
+        return nextId;
     }
     public void LastPage() { _currentPage--; }
     #endregion
@@ -355,7 +376,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (_bGMComponent != null)   _bGMComponent.StopAll();
+        if (_bGMComponent != null) _bGMComponent.StopAll();
         if (SFXComponent.Instance != null) SFXComponent.Instance.StopAll();
 
         // Inicialmente no hay animacion de fade.
