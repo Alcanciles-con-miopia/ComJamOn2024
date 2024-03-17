@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int[] runasUsadas;
 
+    [SerializeField]
+    EyeComponent _eyeComponent;
+
     #endregion
 
     #region properties
@@ -309,6 +312,8 @@ public class GameManager : MonoBehaviour
             isDead();
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
+
+        _eyeComponent.ChangeColor(_ShapeDetector.PorcentajeAcierto());
     }
     int UsarRuna()
     {
