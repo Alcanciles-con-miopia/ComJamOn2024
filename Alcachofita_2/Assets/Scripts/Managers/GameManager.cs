@@ -407,7 +407,7 @@ public class GameManager : MonoBehaviour
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
 
-        _nextGameState = GameStates.LORE; // valor real inicial. 
+        _nextGameState = GameStates.INTRO; // valor real inicial. 
 
 
     }
