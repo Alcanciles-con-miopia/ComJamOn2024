@@ -55,7 +55,7 @@ public class ShapeDetectorV1 : MonoBehaviour
             /*
             Debug.Log("Puntos en la forma: " + cantDentro);
             Debug.Log("Puntos totales: " + cantPuntos);*/
-            Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
+            //Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
 
             drawingComponent.EraseDrawing();
 
@@ -74,7 +74,7 @@ public class ShapeDetectorV1 : MonoBehaviour
             cantPuntos += punteles[i].Length;
         }
 
-        Debug.Log("Punteles:" + cantPuntos);
+        //Debug.Log("Punteles:" + cantPuntos);
 
         return cantPuntos;
     }
@@ -139,7 +139,7 @@ public class ShapeDetectorV1 : MonoBehaviour
         float alto = (runaSPR.bounds.center.y + runaSPR.bounds.extents.y) - (runaSPR.bounds.center.y - runaSPR.bounds.extents.y);
 
 
-        Debug.Log("Ancho sprite: " + ancho);
+        //Debug.Log("Ancho sprite: " + ancho);
         Vector3 scale = new Vector3(
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
@@ -147,7 +147,7 @@ public class ShapeDetectorV1 : MonoBehaviour
         //(drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto);
         //ancho = (runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x);
 
-        Debug.Log("Ancho dibujo: " + drawingComponent.XSize());
+        //Debug.Log("Ancho dibujo: " + drawingComponent.XSize());
         #region modificacion de puntos
         /*
         //shapeInst.transform.localScale = scale;
