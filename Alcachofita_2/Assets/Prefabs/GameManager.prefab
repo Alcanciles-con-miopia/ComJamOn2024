@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   mano: {fileID: 0}
+  cursor: {fileID: 0}
   _ShapeDetector: {fileID: 0}
   _pistaComp: {fileID: 0}
   runas:
@@ -67,6 +68,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9fd29e3adb023314bbeea6d48540b657, type: 2}
   - {fileID: 11400000, guid: 117d42e6461d5a54f9c605a7a2bcc74e, type: 2}
   - {fileID: 11400000, guid: 8483ea84bbf866846907db672dd05274, type: 2}
+  runasUsadas: 
 --- !u!114 &3847086077028035716
 MonoBehaviour:
   m_ObjectHideFlags: 0

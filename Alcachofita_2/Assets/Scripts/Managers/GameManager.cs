@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private DrawingComponent _drawingComp;
     [SerializeField]
     private PistaComponent _pistaComp;
+    [SerializeField]
+    private BGMComponent _bGMComponent;
 
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
@@ -37,9 +39,6 @@ public class GameManager : MonoBehaviour
     private ShapeSO[] runas;
     [SerializeField]
     private int[] runasUsadas;
-
-    //musica
-    private BGMComponent _bGMComponent;
 
     #endregion
 
@@ -90,16 +89,13 @@ public class GameManager : MonoBehaviour
         {
             // ---- INTRO ----
             case GameStates.INTRO:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(0);
                 break;
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(1);
                 break;
 
             // ---- GAME ----
             case GameStates.GAME:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(2);
 
                 // Poner todas las runas a usar como todas las runas
                 runasUsadas = new int[runas.Length];
@@ -123,14 +119,12 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(3);
                 if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN) { if (_UIManager != null) _UIManager.SetWin(); }
                 break;
 
             // ---- CREDITS ----
             case GameStates.CREDITS:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(4);
                 break;
         }
 
@@ -140,7 +134,7 @@ public class GameManager : MonoBehaviour
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
         if (_fadeComponent != null) _fadeComponent.Transicion();
         if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
-
+        Debug.Log(_bGMComponent == null);
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
 
@@ -204,7 +198,7 @@ public class GameManager : MonoBehaviour
 
     public void RegisterBGM(BGMComponent bgm)
     {
-        _bGMComponent = bgm;
+        //_bGMComponent = bgm;
     }
 
     #endregion
