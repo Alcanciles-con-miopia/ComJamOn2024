@@ -56,11 +56,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   mano: {fileID: 0}
+  _ShapeDetector: {fileID: 0}
+  _pistaComp: {fileID: 0}
   runas:
   - {fileID: 11400000, guid: d4e660dd43d2c0242ab59d718a8b0d94, type: 2}
   - {fileID: 11400000, guid: 150ab70b25d828948a45c014b7652357, type: 2}
   - {fileID: 11400000, guid: fc4b795186aefd94d9477efc1cee8e50, type: 2}
   - {fileID: 11400000, guid: 396e78176a4d28b48b4f91b9040e7118, type: 2}
+  - {fileID: 11400000, guid: 41e978ac4c086b643b758c6eb7e59c31, type: 2}
+  - {fileID: 11400000, guid: 9fd29e3adb023314bbeea6d48540b657, type: 2}
+  - {fileID: 11400000, guid: 117d42e6461d5a54f9c605a7a2bcc74e, type: 2}
+  - {fileID: 11400000, guid: 8483ea84bbf866846907db672dd05274, type: 2}
 --- !u!114 &3847086077028035716
 MonoBehaviour:
   m_ObjectHideFlags: 0
