@@ -60,7 +60,8 @@ public class BGMComponent : MonoBehaviour
     private void BGMManager()
     {
         if (Instance != null)
-        {            switch (Instance.CurrentState) // Diferentes comportamientos según estado al que se entra
+        {   
+            switch (Instance.CurrentState) // Diferentes comportamientos según estado al que se entra
             {
             case GameStates.MAINMENU:                    //      *MENU INICIAL*
                 _nextBGM = 1;
@@ -88,11 +89,6 @@ public class BGMComponent : MonoBehaviour
         
         if (_currentBGM != _nextBGM)
         {
-
-            for(int i = 0; i < _bgm.Length; i++)
-            {
-                _bgm[i].Stop();
-            }
             StopBGM(_currentBGM);
             _currentBGM = _nextBGM;
             if (_currentBGM >= 0)
