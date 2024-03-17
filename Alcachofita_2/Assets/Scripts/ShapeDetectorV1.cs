@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -54,6 +55,8 @@ public class ShapeDetectorV1 : MonoBehaviour
             //Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
 
             drawingComponent.EraseDrawing();
+
+            GameManager.Instance.ChangeEyeColor(cantDentro / cantPuntos, guessPercent);
 
             return cantDentro / cantPuntos >= guessPercent;
         }

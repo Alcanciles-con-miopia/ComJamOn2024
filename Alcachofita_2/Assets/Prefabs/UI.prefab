@@ -1144,8 +1144,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fbf30a61deaf4b468ee1514ffd77f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0, g: 0, b: 0, a: 0}
+  _baseColor: {r: 0.2830189, g: 0.14017445, b: 0.24480978, a: 1}
   _badPercentage: {r: 0.49019608, g: 0.039215688, b: 0.039215688, a: 1}
   _mediumPercentage: {r: 0.48235294, g: 0.33333334, b: 0.09411765, a: 1}
   _goodPercentage: {r: 0.08627451, g: 0.28235295, b: 0.023529412, a: 1}
@@ -4767,7 +4767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7608839110236931575
 RectTransform:
   m_ObjectHideFlags: 0

@@ -338,8 +338,14 @@ public class GameManager : MonoBehaviour
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
 
-        _eyeComponent.ChangeColor(_ShapeDetector.PorcentajeAcierto());
+        
     }
+
+    public void ChangeEyeColor(float percentage, float guess)
+    {
+        _eyeComponent.ChangeColor(percentage, guess);
+    }
+
     int UsarRuna()
     {
         bool usable = true;

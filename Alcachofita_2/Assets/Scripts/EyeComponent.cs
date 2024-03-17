@@ -38,18 +38,18 @@ public class EyeComponent : MonoBehaviour
 
     }
 
-    public void ChangeColor(float porcentaje)
+    public void ChangeColor(float porcentaje, float guessPercent)
     {
+        Debug.Log("Porcentaje ojete: " + porcentaje);
         if (GameManager.Instance.CurrentState == GameManager.GameStates.GAME && _image != null && _shapeDetector != null)
         {
             //Bad Ending
-            if (porcentaje > _shapeDetector.guessPercent)
+            if (porcentaje > guessPercent)
             {
-                Debug.Log("Porcentaje ojete: " + porcentaje);
                 _image.color = _goodPercentage;
             }
             //Medium Ending
-            else if (porcentaje > (_shapeDetector.guessPercent / 2))
+            else if (porcentaje > (guessPercent / 2))
             {
                 _image.color = _mediumPercentage;
             }
@@ -60,6 +60,10 @@ public class EyeComponent : MonoBehaviour
             }
 
             StartCoroutine(ColorBase());
+        }
+        else
+        {
+            _image.color = _baseColor;
         }
     }
 
