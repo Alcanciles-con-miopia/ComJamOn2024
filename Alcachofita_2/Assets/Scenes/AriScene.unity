@@ -219,8 +219,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7410382462852989434, guid: edef9447c4bbb9e47adb564420e34961, type: 3}
+      propertyPath: _arrancaDedo
+      value: 
+      objectReference: {fileID: 8300000, guid: 107acab1891a2a142a070eb4463ebacb, type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 391226907747747366, guid: edef9447c4bbb9e47adb564420e34961, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edef9447c4bbb9e47adb564420e34961, type: 3}
@@ -616,6 +621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1048246823701294440, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1cd91b8f8c41e5d4da974d6ffb51e8b5, type: 3}
     - target: {fileID: 2907751386422770266, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: _drawingComponent
       value: 
@@ -835,6 +844,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2787099233916219491, guid: 434073d7e91535e4daa2de41ac7e5032, type: 3}
   m_PrefabInstance: {fileID: 1889230922}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4038256828473104298
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.2051854
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2081008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.049308
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660692114737653171, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -846,3 +912,4 @@ SceneRoots:
   - {fileID: 1111805840}
   - {fileID: 96762811}
   - {fileID: 1559910825}
+  - {fileID: 4038256828473104298}
