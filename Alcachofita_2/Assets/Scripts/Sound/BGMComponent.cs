@@ -32,7 +32,10 @@ public class BGMComponent : MonoBehaviour
     {
         for (int i = 0; i < _bgm.Length; i++)
         {
-            _audioSource.Stop();
+            if(_audioSource != null)
+            {
+                _audioSource.Stop();
+            }
         }
     }
 

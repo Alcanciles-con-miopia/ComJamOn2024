@@ -682,6 +682,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1111805846}
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: _bGMComponent
+      value: 
+      objectReference: {fileID: 2101292477}
+    - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: runas.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -848,6 +852,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2787099233916219491, guid: 434073d7e91535e4daa2de41ac7e5032, type: 3}
   m_PrefabInstance: {fileID: 1889230922}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2101292477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5122404333417809068, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+  m_PrefabInstance: {fileID: 4038256828473104298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b259e4514d53e944835627313f40911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4038256828473104298
 PrefabInstance:
   m_ObjectHideFlags: 0

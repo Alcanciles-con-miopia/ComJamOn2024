@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
             case GameStates.END:
                 //if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (_bGMComponent != null) _bGMComponent.PlayBGM(3);
-                if (_UIManager != null) { _UIManager.DisableRune(); }
+                //if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN) { if (_UIManager != null) _UIManager.SetWin(); }
                 break;
 
