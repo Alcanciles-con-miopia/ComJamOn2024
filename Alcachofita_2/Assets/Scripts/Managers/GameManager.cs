@@ -325,7 +325,7 @@ public class GameManager : MonoBehaviour
 
             _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
 
-            if (_currentPage >= 4) // si ya ha llegado al final
+            if (_currentPage >= 5) // si ya ha llegado al final
             {
                 requestSateChange(GameStates.END);
                 ISWIN = true; // gana ! gloria ! orbe catatonico
