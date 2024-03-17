@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
                 int nextRune = UsarRuna();
                 if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
                 if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
-                if (runas.Length > 0 && _ShapeDetector != null)
+                if (runas.Length > 0 && _ShapeDetector != null && nextRune <= runas.Length)
                 {
                     
                     Debug.Log(runas[nextRune]);
