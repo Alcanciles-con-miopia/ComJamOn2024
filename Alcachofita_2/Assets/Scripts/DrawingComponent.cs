@@ -18,6 +18,8 @@ public class DrawingComponent : MonoBehaviour
     LineRenderer line = new LineRenderer();
     private Vector3 _lastPoint;
     private Vector3 _centralPoint;
+    [SerializeField] private AudioClip _borra;
+    private AudioSource _audioSource;
 
     #endregion
 
@@ -27,6 +29,7 @@ public class DrawingComponent : MonoBehaviour
     {
         _lastPoint = transform.position;
         if (GameManager.Instance != null) { GameManager.Instance.RegisterDrawingComponent(this); }
+        _audioSource = GetComponent<AudioSource>();
     }
 
     //Dibuja un trazo mientras se mantenga pulsado
@@ -189,7 +192,8 @@ public class DrawingComponent : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-
+        _audioSource.clip = _borra;
+        _audioSource.Play();
         // Debug.Log(transform.childCount);
 
     }
