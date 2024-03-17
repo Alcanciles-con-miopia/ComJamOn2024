@@ -92,22 +92,23 @@ public class GameManager : MonoBehaviour
         {
             // ---- INTRO ----
             case GameStates.INTRO:
-                cursor.SetActive(false);
+                cursor.GetComponent<SpriteRenderer>().enabled = false;
                 break;
 
             // ---- LORE ----
             case GameStates.LORE:
-                cursor.SetActive(false);
+                Cursor.visible = true;
+                cursor.GetComponent<SpriteRenderer>().enabled = false;
             break;
 
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
-                cursor.SetActive(true);
+                cursor.GetComponent<SpriteRenderer>().enabled = true;
                 break;
 
             // ---- GAME ----
             case GameStates.GAME:
-                cursor.SetActive(true);
+                cursor.GetComponent<SpriteRenderer>().enabled = true;
 
                 // Poner todas las runas a usar como todas las runas
                 runasUsadas = new int[runas.Length];
@@ -131,7 +132,8 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
-                cursor.SetActive(false);
+                Cursor.visible = true;
+                cursor.GetComponent<SpriteRenderer>().enabled = false;
 
                 if (_bGMComponent != null) _bGMComponent.PlayBGM(3);
                 if (ISWIN) { if (_UIManager != null) _UIManager.SetWin(); }
@@ -139,7 +141,7 @@ public class GameManager : MonoBehaviour
 
             // ---- CREDITS ----
             case GameStates.CREDITS:
-                cursor.SetActive(false);
+                cursor.GetComponent<SpriteRenderer>().enabled = false;
                 break;
         }
 
@@ -405,7 +407,7 @@ public class GameManager : MonoBehaviour
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
 
-        _nextGameState = GameStates.INTRO; // valor real inicial. 
+        _nextGameState = GameStates.LORE; // valor real inicial. 
 
 
     }
