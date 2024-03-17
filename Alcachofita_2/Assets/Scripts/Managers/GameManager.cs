@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     private PistaComponent _pistaComp;
     [SerializeField]
     private BGMComponent _bGMComponent;
+    [SerializeField]
+    private Animator _animator;
 
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
         if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
+        //_animator.SetTrigger("FadeTrigger");
     }
 
     // ---- onStateEnter ----
@@ -157,7 +160,7 @@ public class GameManager : MonoBehaviour
         if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
         if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
-
+         if (_animator != null)_animator.ResetTrigger("FadeTrigger");
         //Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
 
