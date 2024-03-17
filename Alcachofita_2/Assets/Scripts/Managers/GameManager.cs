@@ -343,11 +343,11 @@ public class GameManager : MonoBehaviour
     {
         // Inicialmente no hay animacion de fade.
 
-        if(_fadeComponent != null)
+        if (_fadeComponent != null)
         {
             _fadeComponent.Transicion();
         }
-        
+
 
         if (_fadeComponent != null) _fadeComponent.Transicion();
 
@@ -368,25 +368,24 @@ public class GameManager : MonoBehaviour
 
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
-        
+
         _nextGameState = GameStates.MAINMENU; // valor real inicial. 
 
-        
+
     }
 
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
+    {
+        // si se debe cambiar de estado (next y current difieren)
+        if (_nextGameState != _currentGameState)
         {
-            // si se debe cambiar de estado (next y current difieren)
-            if (_nextGameState != _currentGameState)
-            {
-                // se cambia y transiciona.
-                _fadeComponent.Transicion();
-                onStateEnter(_nextGameState);
-            }
-
-            // se actualiza el estado en el que se este
-            updateState(_currentGameState);
+            // se cambia y transiciona.
+            _fadeComponent.Transicion();
+            onStateEnter(_nextGameState);
         }
+
+        // se actualiza el estado en el que se este
+        updateState(_currentGameState);
     }
 }
