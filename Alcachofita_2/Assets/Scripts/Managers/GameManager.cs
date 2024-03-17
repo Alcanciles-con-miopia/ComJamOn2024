@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.Collections.Unicode;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     // Array de runas
     [SerializeField]
     private ShapeSO[] runas;
+    private ShapeSO[] runausAUsar;
 
     //musica
     private BGMComponent _bGMComponent;
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
     public GameStates NextState { get { return _nextGameState; } }
 
     // DEDOS
-    // Es el próximo dedo que tiene que cortarse.
+    // Es el prï¿½ximo dedo que tiene que cortarse.
     private int _nextDedo;
     public int NextDedo { get { return _nextDedo; } }
 
@@ -94,11 +96,15 @@ public class GameManager : MonoBehaviour
 
             // ---- GAME ----
             case GameStates.GAME:
+                // Poner todas las runas a usar como todas las runas
+                runausAUsar = runas;
+
                 // cambia la runa a comprobar
-                int nextRune = Random.Range(0, runas.Length);
+                int nextRune = Random.Range(0, runausAUsar.Length);
                 if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
-                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)   nextRune);
-                if (runas.Length > 0 && _ShapeDetector != null) { _ShapeDetector.ChangeRune(runas[nextRune]); }
+                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
+                if (runas.Length > 0 && runausAUsar.Length > 0 && _ShapeDetector != null) { _ShapeDetector.ChangeRune(runausAUsar[nextRune]); }
+                UsarRuna(nextRune);
 
                 break;
 
@@ -186,7 +192,7 @@ public class GameManager : MonoBehaviour
     // en orden de cortado
     private void InicializaDedos()
     {
-        _nextDedo = 0; // El próximo dedo a cortar es el dedos[0]
+        _nextDedo = 0; // El prï¿½ximo dedo a cortar es el dedos[0]
 
         Debug.Log(dedos.Length);
 
@@ -202,10 +208,10 @@ public class GameManager : MonoBehaviour
     // borra del array el nextDedo que debe de actualizarse siempre
     public void QuitaDedo()
     {
-        // Siempre y cuando el índice sea menor que dedos.Length...
+        // Siempre y cuando el ï¿½ndice sea menor que dedos.Length...
         if (_nextDedo < dedos.Length)
         {
-            // Se desactiva el dedo actual (de momento, luego hará lo del ragdoll y al salir de pantalla DESACTIVAR).
+            // Se desactiva el dedo actual (de momento, luego harï¿½ lo del ragdoll y al salir de pantalla DESACTIVAR).
             //dedos[_nextDedo].SetActive(false);
 
             if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
@@ -272,12 +278,17 @@ public class GameManager : MonoBehaviour
         {
             _currentPage++; // siguiente runa
 
-            // aquí habría que cambiar la pista de fondo
+            // aquï¿½ habrï¿½a que cambiar la pista de fondo
 
             // cambia la runa a comprobar
-            int nextRune = Random.Range(0, runas.Length);
-            _ShapeDetector.ChangeRune(runas[nextRune]);
+            int nextRune = Random.Range(0, runausAUsar.Length);
+
+            _ShapeDetector.ChangeRune(runausAUsar[nextRune]);
+
             _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
+
+            UsarRuna(nextRune);
+
 
             if (_currentPage >= 3) // si ya ha llegado al final
             {
@@ -285,14 +296,28 @@ public class GameManager : MonoBehaviour
                 ISWIN = true; // gana ! gloria ! orbe catatonico
             }
         }
-        else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo válide
+        else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo vï¿½lide
         {
             QuitaDedo();
             isDead();
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
     }
+    void UsarRuna(int idRuna)
+    {
+        ShapeSO[] newRunasAUsar = new ShapeSO[runausAUsar.Length - 1];
+        int j = 0;
+        for (int i = 0; i < runausAUsar.Length; i++)
+        {
+            if (i != idRuna)
+            {
+                newRunasAUsar[i] = runausAUsar[j];
+                j++;
+            }
+        }
 
+        runausAUsar = newRunasAUsar;
+    }
     public void LastPage() { _currentPage--; }
     #endregion
 
@@ -319,11 +344,24 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (_fadeComponent != null) _fadeComponent.Transicion();
 
 
         _bGMComponent.StopAll();
         SFXComponent.Instance.StopAll();
+
+        _bGMComponent.StopAll();
+        SFXComponent.Instance.StopAll();
+
+        // Inicialmente no hay animacion de fade.
+
+        if (_fadeComponent != null)
+        {
+            _fadeComponent.Transicion();
+        }
+
+
         // Se inicializa los dedos.
         InicializaDedos();
         ISDEAD = false;
@@ -338,9 +376,10 @@ public class GameManager : MonoBehaviour
 
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
-        _nextGameState = GameStates.MAINMENU; // valor real inicial
 
-        
+        _nextGameState = GameStates.MAINMENU; // valor real inicial. 
+
+
     }
 
     // Update is called once per frame
