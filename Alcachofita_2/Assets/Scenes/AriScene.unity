@@ -974,34 +974,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2184634641128481167, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5122404333417809068, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _bgm.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5122404333417809068, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _bgm.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: e7f17bd47696c0146bfba0b936891168, type: 3}
-    - target: {fileID: 5122404333417809068, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _bgm.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1cd91b8f8c41e5d4da974d6ffb51e8b5, type: 3}
-    - target: {fileID: 5122404333417809068, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _bgm.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: a3e1bc14ff47b2045b60233bf51f670a, type: 3}
-    - target: {fileID: 5122404333417809068, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _bgm.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1f09c18644aab0e48aaf8a60b3572130, type: 3}
-    - target: {fileID: 5122404333417809068, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _bgm.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: fc3fab5287ef02246860c5f625c3d9ee, type: 3}
     - target: {fileID: 5257968911820295168, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.2051854
@@ -1042,47 +1014,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5799992540230223684, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _sfx.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5799992540230223684, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _sfx.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: aa373185dd78ce645a4ac48d5c529975, type: 3}
-    - target: {fileID: 5799992540230223684, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _sfx.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: c7244d2b520ed804db3a5c489114e787, type: 3}
-    - target: {fileID: 5799992540230223684, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _sfx.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 107acab1891a2a142a070eb4463ebacb, type: 3}
-    - target: {fileID: 5799992540230223684, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _sfx.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: a2730a3de537f394e8e87dbb42259560, type: 3}
-    - target: {fileID: 5799992540230223684, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _sfx.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0aac0d4cbcea99d499e8be2e4db2c06f, type: 3}
-    - target: {fileID: 5799992540230223684, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: _sfx.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0e572ade9cf2eda4fb11b128da6cfd2e, type: 3}
-    - target: {fileID: 7747764209916309396, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8660692114737653171, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8238168219150843367, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-    - {fileID: 1210625386160638446, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-    - {fileID: 6692331961077124512, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
-    - {fileID: 4200350014209471140, guid: 85ca4b299cc0e1d4a9c0970d32d4207e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
