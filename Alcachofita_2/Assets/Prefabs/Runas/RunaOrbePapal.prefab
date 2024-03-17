@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7543476269600438246}
   - component: {fileID: 3297868420199586370}
   - component: {fileID: 4461833900830333844}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RunaOrbePapal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.88, y: 0, z: 0.07115284}
-  m_LocalScale: {x: 372499, y: 372499, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.98, y: 3.98, z: 0.91023463}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ac0f5038154f31540aa04e2ba5365c6c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

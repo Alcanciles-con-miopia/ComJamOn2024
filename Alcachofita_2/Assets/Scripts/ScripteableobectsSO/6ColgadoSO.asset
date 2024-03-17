@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d0891fce04814f8b2e593e4f95661, type: 3}
   m_Name: 6ColgadoSO
   m_EditorClassIdentifier: 
-  nAcertijo: 0
-  runa: {fileID: 0}
-  probabilidadExito: 0
+  nAcertijo: 6
+  runa: {fileID: 2110911627758629380, guid: f3bc2e46de7b5e34ea15e3d22e3631eb, type: 3}
+  probabilidadExito: 0.7

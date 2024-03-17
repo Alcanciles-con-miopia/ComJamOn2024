@@ -4,33 +4,27 @@ using static GameManager;
 public class BGMComponent : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource[] _bgm;
-
-    #region properties
-    private int _currentBGM;
-    private int _nextBGM;
-    
-    [SerializeField]
-    private bool _canPlay;
-    public bool CanPlay { get { return _canPlay; } set { _canPlay = value; } }
-
-    #endregion
+    private AudioClip[] _bgm;
+    private AudioSource _audioSource;
 
     /// <summary>
     /// Indice
     /// 
-    /// 0 --> enricoCaputo (gameplay)
-    /// 1 --> mainMenu
-    /// 2 --> Quiero ser libre (sin voces)
+    /// 0 --> radio (intro)
+    /// 1 --> mainMenu 
+    /// 2 --> enricocaputo
+    /// 3 --> Quiero ser libre
+    /// 4 --> Quiero ser libre (con voces) creditos
     /// </summary>
 
     #region methods
     public void PlayBGM(int i)
     {
         // si existe en el array lo pone
-        if (_bgm[i] != null)
+        if (i < _bgm.Length && _bgm[i] != null)
         {
-            _bgm[i].Play();
+            _audioSource.clip = _bgm[i];
+            _audioSource.Play();
         }
     }
 
@@ -38,64 +32,37 @@ public class BGMComponent : MonoBehaviour
     {
         for (int i = 0; i < _bgm.Length; i++)
         {
-            _bgm[i].Stop();
+            if(_audioSource != null)
+            {
+                _audioSource.Stop();
+            }
         }
     }
 
     public bool IsBGMPlaying(int i)
     {
-        return _bgm[i].isPlaying;
+        return _audioSource.isPlaying;
     }
     public void StopBGM(int i)
     {
         // si esta sonando lo para
         if (i < _bgm.Length)
-        if (_bgm[i].isPlaying)
+        if (_audioSource.isPlaying)
         {
-            _bgm[i].Stop();
+            _audioSource.Stop();
         }
     }
 
     #endregion
 
-    private void BGMManager()
-    {
-        if (Instance != null)
-        {   
-            switch (Instance.CurrentState) // Diferentes comportamientos según estado al que se entra
-            {
-            case GameStates.MAINMENU:                    //      *MENU INICIAL*
-                _nextBGM = 1;
-                break;
-            case GameStates.GAME:                       //       *JUEGO*
-                _nextBGM = 0;
-                break;
-            case GameStates.END:                        //       *FINAL DEMONIO*
-                _nextBGM = 2; 
-                break;
-            }
-        }
-    }
-
-
     private void Start()
     {
-        _currentBGM = 1;
+        _audioSource = GetComponent<AudioSource>();
         GameManager.Instance.RegisterBGM(this);
     }
 
     private void Update()
     {
-        BGMManager();
-        
-        if (_currentBGM != _nextBGM)
-        {
-            StopBGM(_currentBGM);
-            _currentBGM = _nextBGM;
-            if (_currentBGM >= 0)
-            {
-                PlayBGM(_currentBGM);
-            }
-        }
+
     }
 }

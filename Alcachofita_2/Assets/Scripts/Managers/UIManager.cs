@@ -10,8 +10,6 @@ public class UIManager : MonoBehaviour
     private GameObject[] menus;
     [SerializeField]
     private TMP_Text acertijo_number;
-    [SerializeField]
-    private Image runa;
 
 
     [SerializeField]
@@ -85,10 +83,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    public void ChangeRuna(Sprite _runa)
-    {
-        runa.sprite = _runa;
-    }
+   
 
     public void ChangeAcertijoNumber(int acertijo)
     {
@@ -111,10 +106,6 @@ public class UIManager : MonoBehaviour
         acertijo_number.text = romano;
     }
 
-    public void DisableRune()
-    {
-        runa.enabled = false;
-    }
 
     public void SetMenu(GameManager.GameStates newMenu)
     {
