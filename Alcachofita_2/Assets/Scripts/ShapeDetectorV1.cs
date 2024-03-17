@@ -179,8 +179,18 @@ public class ShapeDetectorV1 : MonoBehaviour
     {
         shape = newRune.runa;
         guessPercent = newRune.probabilidadExito;
-        if (GameManager.Instance != null && shape != null && shape.GetComponent<SpriteRenderer>() != null)
-            GameManager.Instance.ChangeRuneSprite(shape.GetComponent<SpriteRenderer>().sprite);
+        if (GameManager.Instance != null && shape != null)
+        {
+            if (shape.GetComponent<SpriteRenderer>() != null)
+            {
+                if (shape.GetComponent<SpriteRenderer>().sprite != null)
+                {
+                    GameManager.Instance.ChangeRuneSprite(shape.GetComponent<SpriteRenderer>().sprite);
+
+                }
+            }
+        }
+            
         //Debug.Log("AAAAAAaa");
     }
 

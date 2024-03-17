@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private AudioClip _escribeSound;
     private Vector3 mousePos = Vector3.zero;
     private AudioSource _audioSource;
+    public AudioSource aSource { get { return _audioSource; } }
 
     private int LEFT_OFFSET = Screen.width / 2 + Screen.width / 100;
     private int RIGHT_OFFSET = Screen.width / 5;
@@ -60,7 +61,7 @@ public class InputManager : MonoBehaviour
             // CCAMBIAR ANTES DE COMMITEAR !!!!!!!
 
             //Cada vez que se pulsa, empieza o termina el trazo
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 mousePos = Input.mousePosition;
                 if (_drawingComponent != null
@@ -69,7 +70,7 @@ public class InputManager : MonoBehaviour
                     && mousePos.y < Screen.height - UP_OFFSET
                     && mousePos.y > DOWN_OFFSET)
                 {
-                    if (_drawingComponent != null) _drawingComponent.Paint(newPoint);
+                    if (_drawingComponent != null && newPoint != null ) _drawingComponent.Paint(newPoint);
                     if (_audioSource != null && !_audioSource.isPlaying) _audioSource.Play();
 
                 }

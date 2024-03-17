@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     // ShapeDetector
     private ShapeDetectorV1 _ShapeDetector;
     private DrawingComponent _drawingComp;
+    private PistaComponent _pistaComp;
 
     // VignetteComponent
     private VignetteComponent _VignetteComponent;
@@ -66,8 +67,9 @@ public class GameManager : MonoBehaviour
     public void requestSateChange(GameStates newState)
     {
         // guarda el estado correspondiente en next
+        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }  
+        if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
-        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
     }
 
     // ---- onStateEnter ----
@@ -88,6 +90,8 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
+                Debug.Log("COJONES");
+                if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN)
                 {
                     // uimanager.... para setear lo que sea del gameover
@@ -216,6 +220,11 @@ public class GameManager : MonoBehaviour
         _drawingComp = drawComp;
     }
 
+    public void RegisterPistaComponent(PistaComponent pistaComp)
+    {
+        _pistaComp = pistaComp;
+    }
+
     public float GetPercent()
     {
         if (_ShapeDetector != null)
@@ -247,13 +256,8 @@ public class GameManager : MonoBehaviour
         else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo válide
         {
             QuitaDedo();
-            if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
             isDead();
-            if (ISDEAD)
-            {
-                if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
-                //requestSateChange(GameStates.END);
-            }
+            if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
     }
 

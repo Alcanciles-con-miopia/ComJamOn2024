@@ -79,6 +79,11 @@ public class UIManager : MonoBehaviour
         runa.sprite = _runa;
     }
 
+    public void DisableRune()
+    {
+        runa.enabled = false;
+    }
+
     public void SetMenu(GameManager.GameStates newMenu)
     {
         menus[(int)_activeMenu].SetActive(false);
