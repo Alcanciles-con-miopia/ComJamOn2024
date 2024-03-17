@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject mano;
 
+    [SerializeField]
+    private GameObject cursor;
+
     private UIManager _UIManager;
     [SerializeField]
     private ShapeDetectorV1 _ShapeDetector;
