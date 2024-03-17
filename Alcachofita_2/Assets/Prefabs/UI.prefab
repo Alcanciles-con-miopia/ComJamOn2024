@@ -626,9 +626,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseColor: {r: 0, g: 0, b: 0, a: 0}
-  _badPercentage: {r: 0.49019608, g: 0.039215688, b: 0.039215688, a: 0}
-  _mediumPercentage: {r: 0.48235294, g: 0.33333334, b: 0.09411765, a: 0}
-  _goodPercentage: {r: 0.08627451, g: 0.28235295, b: 0.023529412, a: 0}
+  _badPercentage: {r: 0.49019608, g: 0.039215688, b: 0.039215688, a: 1}
+  _mediumPercentage: {r: 0.48235294, g: 0.33333334, b: 0.09411765, a: 1}
+  _goodPercentage: {r: 0.08627451, g: 0.28235295, b: 0.023529412, a: 1}
   _shapeDetector: {fileID: 0}
 --- !u!1 &1626012784467664709
 GameObject:
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5a86dbfdcd6fa4b43af87892fbfb76f8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2495,7 +2495,6 @@ GameObject:
   - component: {fileID: 2717072560132734706}
   - component: {fileID: 1931590222325041962}
   - component: {fileID: 4585512871481241857}
-  - component: {fileID: 6571017726989102692}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -2591,18 +2590,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6571017726989102692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560286067465875454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba0727372d3122b4a84985d437342797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6102455505169773972
 GameObject:
   m_ObjectHideFlags: 0
@@ -3577,7 +3564,6 @@ GameObject:
   - component: {fileID: 4771422996100404025}
   - component: {fileID: 4493867557426190759}
   - component: {fileID: 2106429871328508491}
-  - component: {fileID: 6300681143473055693}
   m_Layer: 0
   m_Name: Bichito
   m_TagString: Untagged
@@ -3613,7 +3599,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 47c33eeb604658e48afbe3952b0cee6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -3673,18 +3659,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6300681143473055693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116529143869534200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba0727372d3122b4a84985d437342797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8234844272541386416
 GameObject:
   m_ObjectHideFlags: 0

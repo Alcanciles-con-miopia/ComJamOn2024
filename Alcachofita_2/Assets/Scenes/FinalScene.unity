@@ -369,6 +369,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 764851310}
     - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
+      propertyPath: _eyeComponent
+      value: 
+      objectReference: {fileID: 2000630258}
+    - target: {fileID: 6926416740698701063, guid: 697c883d12ccbe347b6563bc20c790e6, type: 3}
       propertyPath: _ShapeDetector
       value: 
       objectReference: {fileID: 1909808744}
@@ -713,6 +717,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb18391dc47372d4e88820e88dcac3f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2000630258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9005522248198209268, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+  m_PrefabInstance: {fileID: 8427735500004882000}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fbf30a61deaf4b468ee1514ffd77f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2100344048 stripped
