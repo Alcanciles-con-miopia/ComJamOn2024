@@ -90,13 +90,17 @@ public class GameManager : MonoBehaviour
         {
             // ---- INTRO ----
             case GameStates.INTRO:
+                if (_bGMComponent != null) _bGMComponent.PlayBGM(0);
                 break;
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
+                if (_bGMComponent != null) _bGMComponent.PlayBGM(1);
                 break;
 
             // ---- GAME ----
             case GameStates.GAME:
+                if (_bGMComponent != null) _bGMComponent.PlayBGM(2);
+
                 // Poner todas las runas a usar como todas las runas
                 runasUsadas = new int[runas.Length];
                 for (int i = 0; i < runasUsadas.Length; i++)
@@ -120,14 +124,14 @@ public class GameManager : MonoBehaviour
             // ---- END ----
             case GameStates.END:
                 //if (_UIManager != null) { _UIManager.DisableRune(); }
-                if (ISWIN)
-                {
-                    if (_UIManager != null) _UIManager.SetWin();
-                }
+                if (_bGMComponent != null) _bGMComponent.PlayBGM(3);
+                if (_UIManager != null) { _UIManager.DisableRune(); }
+                if (ISWIN) { if (_UIManager != null) _UIManager.SetWin(); }
                 break;
 
             // ---- CREDITS ----
             case GameStates.CREDITS:
+                if (_bGMComponent != null) _bGMComponent.PlayBGM(4);
                 break;
         }
 
@@ -136,7 +140,7 @@ public class GameManager : MonoBehaviour
         if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
         if (_fadeComponent != null) _fadeComponent.Transicion();
-
+        if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
 
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
@@ -214,7 +218,7 @@ public class GameManager : MonoBehaviour
     {
         _nextDedo = 0; // El pr�ximo dedo a cortar es el dedos[0]
 
-        Debug.Log(dedos.Length);
+        //Debug.Log(dedos.Length);
 
         // Set active todos los dedalos.
         for (int i = 0; i < dedos.Length; i++)
