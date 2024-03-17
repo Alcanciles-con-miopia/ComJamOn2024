@@ -9,7 +9,7 @@ public class BrilloComponent : MonoBehaviour
 
     void OnMouseOver()
     {
-        Debug.Log("pis");
+        //Debug.Log("pis");
         if (trapo.color.a < 1)
         {
             trapo.color = new Color(trapo.color.r, trapo.color.g, trapo.color.b, 1);
@@ -18,7 +18,7 @@ public class BrilloComponent : MonoBehaviour
 
     void OnMouseExit()
     {
-        Debug.Log("caca");
+        //Debug.Log("caca");
         if (trapo != null)
         {
             trapo.color = new Color(trapo.color.r, trapo.color.g, trapo.color.b, 0);
