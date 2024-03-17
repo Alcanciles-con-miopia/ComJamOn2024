@@ -27,9 +27,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PistaComponent _pistaComp;
 
-    // VignetteComponent
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
+    private FadeComponent _fadeComponent;
 
     // Array de runas
     [SerializeField]
@@ -135,6 +135,13 @@ public class GameManager : MonoBehaviour
 
                 break;
         }
+    }
+    #endregion
+
+    #region METODOS DE OSCURECEDOR
+    public void RegisterOscurecedor(FadeComponent fade)
+    {
+        _fadeComponent = fade;
     }
     #endregion
 
@@ -293,6 +300,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Inicialmente no hay animacion de fade.
+        _fadeComponent.Transicion();
+
         // Se inicializa los dedos.
         InicializaDedos();
         ISDEAD = false;
@@ -307,9 +317,7 @@ public class GameManager : MonoBehaviour
 
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
-        _nextGameState = GameStates.MAINMENU; // valor real inicial
-
-        
+        _nextGameState = GameStates.MAINMENU; // valor real inicial. 
     }
 
     // Update is called once per frame
@@ -318,7 +326,8 @@ public class GameManager : MonoBehaviour
         // si se debe cambiar de estado (next y current difieren)
         if (_nextGameState != _currentGameState)
         {
-            // se cambia
+            // se cambia y transiciona.
+            _fadeComponent.Transicion();
             onStateEnter(_nextGameState);
         }
 
