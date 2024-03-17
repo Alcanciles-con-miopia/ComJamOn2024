@@ -316,11 +316,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _bGMComponent.StopAll();
+        SFXComponent.Instance.StopAll();
+
         // Inicialmente no hay animacion de fade.
         if (_fadeComponent != null) _fadeComponent.Transicion();
 
-        _bGMComponent.StopAll();
-        SFXComponent.Instance.StopAll();
         // Se inicializa los dedos.
         InicializaDedos();
         ISDEAD = false;
