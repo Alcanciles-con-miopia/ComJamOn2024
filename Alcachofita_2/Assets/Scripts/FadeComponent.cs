@@ -23,7 +23,7 @@ public class FadeComponent : MonoBehaviour
         OnAnimationEnd();
     }
 
-    public void OnAnimationEnd()
+    private void OnAnimationEnd()
     {
         _oscurecedorAnimator.ResetTrigger("Fadea");
         Debug.Log("Detransiciono");
