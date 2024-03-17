@@ -50,8 +50,8 @@ public class ShapeDetectorV1 : MonoBehaviour
 
             /*
             Debug.Log("Puntos en la forma: " + cantDentro);
-            Debug.Log("Puntos totales: " + cantPuntos);
-            Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));*/
+            Debug.Log("Puntos totales: " + cantPuntos);*/
+            Debug.Log("porcentaje de acertados: " + (cantDentro / cantPuntos));
 
             drawingComponent.EraseDrawing();
 
@@ -136,12 +136,16 @@ public class ShapeDetectorV1 : MonoBehaviour
 
 
         Debug.Log("Ancho sprite: " + ancho);
-        Vector2 scale = new Vector2(
+        Vector3 scale = new Vector3(
             (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
-            (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho);
+            (drawingComponent.XSize() - (ancho - magicosidadDeLaEscala)) / ancho,
+            0);
         //(drawingComponent.YSize() - (alto - magicosidadDeLaEscala)) / alto);
         //ancho = (runaSPR.bounds.center.x + runaSPR.bounds.extents.x) - (runaSPR.bounds.center.x - runaSPR.bounds.extents.x);
 
+        Debug.Log("Ancho dibujo: " + drawingComponent.XSize());
+        #region modificacion de puntos
+        /*
         //shapeInst.transform.localScale = scale;
 
         Vector2[] colliderPoints = shapeInst.GetComponent<PolygonCollider2D>().points;
@@ -157,10 +161,10 @@ public class ShapeDetectorV1 : MonoBehaviour
                     (drawingComponent.XSize()/ colliderPoints[i].x)
                 );
         }
-
+        */
         // Asignamos los puntos escalados al collider
+        #endregion
 
-        Debug.Log("Ancho dibujo: " + drawingComponent.XSize());
 
         shapeInst.transform.localScale = scale;
         //shapeInst.GetComponent<PolygonCollider2D>().points = puntosEscalados;
@@ -175,6 +179,7 @@ public class ShapeDetectorV1 : MonoBehaviour
     {
         shape = newRune.runa;
         guessPercent = newRune.probabilidadExito;
+        GameManager.Instance.ChangeRuneSprite(shape.GetComponent<SpriteRenderer>().sprite);
         //Debug.Log("AAAAAAaa");
     }
 
