@@ -15,11 +15,18 @@ public class GameManager : MonoBehaviour
     // inicialmente se tienen 5 dedos.
     [SerializeField]
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
+
+    [SerializeField]
+    GameObject[] maquinademoore = new GameObject[NUM_DEDOS];
+
     [SerializeField]
     private GameObject mano;
 
     [SerializeField]
     private GameObject cursor;
+
+    [SerializeField]
+    private SpreadComponent _spread;
 
     private UIManager _UIManager;
     [SerializeField]
@@ -223,6 +230,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region METODOS DE DEDOS
+
     // ---- InicializaDedos ----
     // settea cada indice del array con su dedo correspondiente
     // en orden de cortado
@@ -252,6 +260,7 @@ public class GameManager : MonoBehaviour
 
             if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
+            maquinademoore[_nextDedo].GetComponent<SpreadComponent>().MariaDoloresDeCospedal();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
             cursor.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
