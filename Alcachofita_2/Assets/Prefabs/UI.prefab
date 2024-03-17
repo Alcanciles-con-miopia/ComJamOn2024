@@ -6208,9 +6208,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Busca el .txt en los archivos del juego <3 Busca el .txt en los archivos
-    del juego <3 Busca el .txt en los archivos del juego <3 Busca el .txt en los
-    archivos del juego <3  '
+  m_text: "Si deseas ejecutar el ritual de forma exitosa has de buscar en los archivos
+    de juego una gu\xEDa para poder dibujar las runas.\n- t\xEDa  Sagrario."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 335703ac1fda48f4b8750a3992b339ee, type: 2}
   m_sharedMaterial: {fileID: -8796799071272533902, guid: 335703ac1fda48f4b8750a3992b339ee, type: 2}
