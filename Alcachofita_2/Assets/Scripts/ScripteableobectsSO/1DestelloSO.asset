@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nAcertijo: 1
   runa: {fileID: 3250739253562580648, guid: 3bedb58310e66b14b82009fd317eafd3, type: 3}
-  probabilidadExito: 0.5
+  probabilidadExito: 0.1

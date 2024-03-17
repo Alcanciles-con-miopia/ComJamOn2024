@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour
     private GameObject[] menus;
     [SerializeField]
     private TMP_Text percent;
+    [SerializeField]
+    private Image runa;
 
     // Properties
     private GameManager.GameStates _activeMenu;
@@ -70,6 +73,11 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
     #endregion
+
+    public void ChangeRuna(Sprite _runa)
+    {
+        runa.sprite = _runa;
+    }
 
     public void SetMenu(GameManager.GameStates newMenu)
     {

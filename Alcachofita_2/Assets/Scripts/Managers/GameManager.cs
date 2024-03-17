@@ -275,6 +275,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ChangeRuneSprite(Sprite sprite)
+    {
+        _UIManager.ChangeRuna(sprite);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -293,6 +298,9 @@ public class GameManager : MonoBehaviour
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
         _nextGameState = GameStates.MAINMENU; // valor real inicial
+
+        // cambia la runa a comprobar
+        _ShapeDetector.ChangeRune(runas[Random.Range(0, runas.Length)]);
     }
 
     // Update is called once per frame
