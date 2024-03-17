@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     EyeComponent _eyeComponent;
+    [SerializeField]
+    Animator _paginas;
 
     #endregion
 
@@ -331,6 +333,7 @@ public class GameManager : MonoBehaviour
                 requestSateChange(GameStates.END);
                 ISWIN = true; // gana ! gloria ! orbe catatonico
             }
+            _paginas.SetTrigger("PasarPaginas");
         }
         else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo v�lide
         {
