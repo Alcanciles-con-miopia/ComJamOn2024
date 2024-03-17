@@ -110,7 +110,8 @@ namespace BBX.Dialogue.GUI
         /// <param name="value"></param>
         private void Alpha(TMP_TextInfo textInfo, int index, byte value)
         {
-            if (index < textInfo.characterInfo.Length && !textInfo.characterInfo[index].isVisible) return;
+            if (index >= textInfo.characterInfo.Length) return;
+                if (!textInfo.characterInfo[index].isVisible) return;
 
             // Get the index of the material used by the current character.
             var materialIndex = textInfo.characterInfo[index].materialReferenceIndex;
