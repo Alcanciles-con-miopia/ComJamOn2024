@@ -12,6 +12,7 @@ public class AnimationController : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+
         if (_animator == null ||
             _animator.enabled == false)
         {
