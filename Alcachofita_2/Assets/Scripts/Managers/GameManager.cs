@@ -3,7 +3,7 @@ using static Unity.Collections.Unicode;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameStates { MAINMENU, GAME, END };
+    public enum GameStates { INTRO, MAINMENU, GAME, END, CREDITS };
     const int NUM_DEDOS = 5;
 
     // variable a actualizar cada vez que se corte un dedo
@@ -87,6 +87,9 @@ public class GameManager : MonoBehaviour
     {
         switch (newState)
         {
+            // ---- INTRO ----
+            case GameStates.INTRO:
+                break;
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
                 break;
@@ -113,12 +116,18 @@ public class GameManager : MonoBehaviour
                     if (_UIManager != null) _UIManager.SetWin();
                 }
                 break;
+
+            // ---- CREDITS ----
+            case GameStates.CREDITS:
+                break;
         }
 
         // guarda el estado correspondiente en current
         _currentGameState = newState;
         if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
+        if (_fadeComponent != null) _fadeComponent.Transicion();
+
 
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
@@ -129,8 +138,13 @@ public class GameManager : MonoBehaviour
     {
         switch (state)
         {
+            // ---- INTRO ----
+            case GameStates.INTRO:
+                break;
+
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
+                
 
                 break;
 
@@ -142,6 +156,10 @@ public class GameManager : MonoBehaviour
             // ---- END ----
             case GameStates.END:
 
+                break;
+
+            // ---- CREDITS ----
+            case GameStates.CREDITS:
                 break;
         }
     }
@@ -178,7 +196,6 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-
 
     #region METODOS DE DEDOS
     // ---- InicializaDedos ----
@@ -338,8 +355,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _bGMComponent.StopAll();
-        SFXComponent.Instance.StopAll();
+        if (_bGMComponent != null)   _bGMComponent.StopAll();
+        if (SFXComponent.Instance != null) SFXComponent.Instance.StopAll();
 
         // Inicialmente no hay animacion de fade.
 
@@ -347,6 +364,7 @@ public class GameManager : MonoBehaviour
         {
             _fadeComponent.Transicion();
         }
+
 
         // Se inicializa los dedos.
         InicializaDedos();
@@ -374,8 +392,7 @@ public class GameManager : MonoBehaviour
         // si se debe cambiar de estado (next y current difieren)
         if (_nextGameState != _currentGameState)
         {
-            // se cambia y transiciona.
-            _fadeComponent.Transicion();
+            // se cambia
             onStateEnter(_nextGameState);
         }
 

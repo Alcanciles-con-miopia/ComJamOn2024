@@ -4,9 +4,7 @@ using static GameManager;
 public class BGMComponent : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip[] _bgm;
-
-    private AudioSource _audioSource;
+    private AudioSource[] _bgm;
 
     #region properties
     private int _currentBGM;
@@ -32,29 +30,28 @@ public class BGMComponent : MonoBehaviour
         // si existe en el array lo pone
         if (_bgm[i] != null)
         {
-            _audioSource.clip = _bgm[i];
-            _audioSource.Play();
+            _bgm[i].Play();
         }
     }
 
     public void StopAll()
     {
-        
-        _audioSource.Stop();
-        
+        for (int i = 0; i < _bgm.Length; i++)
+        {
+            _bgm[i].Stop();
+        }
     }
 
     public bool IsBGMPlaying(int i)
     {
-        return _audioSource.isPlaying;
+        return _bgm[i].isPlaying;
     }
     public void StopBGM(int i)
     {
         // si esta sonando lo para
-        if (_audioSource.isPlaying)
+        if (_bgm[i].isPlaying)
         {
-            _audioSource.clip = _bgm[i];
-            _audioSource.Stop();
+            _bgm[i].Stop();
         }
     }
 
@@ -63,7 +60,8 @@ public class BGMComponent : MonoBehaviour
     private void BGMManager()
     {
         if (Instance != null)
-        {            switch (Instance.CurrentState) // Diferentes comportamientos según estado al que se entra
+        {   
+            switch (Instance.CurrentState) // Diferentes comportamientos según estado al que se entra
             {
             case GameStates.MAINMENU:                    //      *MENU INICIAL*
                 _nextBGM = 1;
@@ -78,15 +76,11 @@ public class BGMComponent : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        GameManager.Instance.RegisterBGM(this);
-    }
 
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
         _currentBGM = 1;
+        GameManager.Instance.RegisterBGM(this);
     }
 
     private void Update()
@@ -95,12 +89,6 @@ public class BGMComponent : MonoBehaviour
         
         if (_currentBGM != _nextBGM)
         {
-
-            for(int i = 0; i < _bgm.Length - 1; i++)
-            {
-                _audioSource.clip = _bgm[i];
-                _audioSource.Stop();
-            }
             StopBGM(_currentBGM);
             _currentBGM = _nextBGM;
             if (_currentBGM >= 0)
