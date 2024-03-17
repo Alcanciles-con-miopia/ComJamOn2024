@@ -78,7 +78,6 @@ public class GameManager : MonoBehaviour
         if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
-        if (_bGMComponent != null) _bGMComponent.CanPlay = true;
     }
 
     // ---- onStateEnter ----

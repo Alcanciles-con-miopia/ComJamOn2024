@@ -7,16 +7,6 @@ public class BGMComponent : MonoBehaviour
     private AudioClip[] _bgm;
     private AudioSource _audioSource;
 
-    #region properties
-    private int _currentBGM;
-    private int _nextBGM;
-    
-    [SerializeField]
-    private bool _canPlay;
-    public bool CanPlay { get { return _canPlay; } set { _canPlay = value; } }
-
-    #endregion
-
     /// <summary>
     /// Indice
     /// 
@@ -64,7 +54,6 @@ public class BGMComponent : MonoBehaviour
 
     private void Start()
     {
-        _currentBGM = 1;
         _audioSource = GetComponent<AudioSource>();
         GameManager.Instance.RegisterBGM(this);
     }
