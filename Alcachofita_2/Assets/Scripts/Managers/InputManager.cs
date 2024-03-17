@@ -61,7 +61,7 @@ public class InputManager : MonoBehaviour
             // CCAMBIAR ANTES DE COMMITEAR !!!!!!!
 
             //Cada vez que se pulsa, empieza o termina el trazo
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 mousePos = Input.mousePosition;
                 if (_drawingComponent != null

@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class PistaComponent : MonoBehaviour
 {
+    public enum Acertijo
+    {
+        Teta,
+        Amanecer,
+        Piramides,
+        Eclipse,
+        Orbe,
+        Flecha,
+        Colgado,
+        Pentagrama
+    }
+
     [SerializeField] 
     private Sprite[] pistas;
     private SpriteRenderer _spriteRenderer; 
@@ -12,16 +24,11 @@ public class PistaComponent : MonoBehaviour
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (GameManager.Instance != null) { GameManager.Instance.RegisterPistaComponent(this);}
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setPista(Acertijo index)
     {
-        
-    }
-
-    void setPista(int index)
-    {
-        _spriteRenderer.sprite = pistas[index];
+        _spriteRenderer.sprite = pistas[(int)index];
     }
 }

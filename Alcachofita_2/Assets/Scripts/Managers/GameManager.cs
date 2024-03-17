@@ -245,7 +245,9 @@ public class GameManager : MonoBehaviour
             // aquí habría que cambiar la pista de fondo
 
             // cambia la runa a comprobar
-            _ShapeDetector.ChangeRune(runas[Random.Range(0, runas.Length)]);
+            int nextRune = Random.Range(0, runas.Length);
+            _ShapeDetector.ChangeRune(runas[nextRune]);
+            _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
 
             if (_currentPage >= 3) // si ya ha llegado al final
             {
