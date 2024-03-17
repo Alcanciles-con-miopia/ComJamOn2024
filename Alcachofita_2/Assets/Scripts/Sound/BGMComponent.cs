@@ -11,10 +11,11 @@ public class BGMComponent : MonoBehaviour
     /// Indice
     /// 
     /// 0 --> radio (intro)
-    /// 1 --> mainMenu 
-    /// 2 --> enricocaputo
-    /// 3 --> Quiero ser libre
-    /// 4 --> Quiero ser libre (con voces) creditos
+    /// 1 --> Lore (Carmen narra lore)
+    /// 2 --> mainMenu 
+    /// 3 --> enricocaputo
+    /// 4 --> Quiero ser libre
+    /// 5 --> Quiero ser libre (con voces) creditos
     /// </summary>
 
     #region methods
