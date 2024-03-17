@@ -57,7 +57,6 @@ public class BGMComponent : MonoBehaviour
 
     #endregion
 
-
     private void BGMManager()
     {
         if (Instance != null)

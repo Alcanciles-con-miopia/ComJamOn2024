@@ -16,6 +16,7 @@ public class SFXComponent : MonoBehaviour
     /// 1 --> boing
     /// 2 --> cabagge rip (arrancar dedo)
     /// 3 --> guts dragging (pintar)
+    /// 3 --> paper (pasar pagina)
     /// </summary>
 
     void Awake()

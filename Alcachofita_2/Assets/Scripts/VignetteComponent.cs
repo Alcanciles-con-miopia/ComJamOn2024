@@ -7,6 +7,7 @@ public class VignetteComponent : MonoBehaviour
     private float _increaseFactor;
 
     [SerializeField] private AudioClip _arrancaDedo;
+    [SerializeField] private AudioClip _pasaPagina;
     private AudioSource _audioSource;
 
     void Start()
@@ -30,6 +31,8 @@ public class VignetteComponent : MonoBehaviour
 
             _audioSource.clip = _arrancaDedo;
             _audioSource.Play();
+            
+            
         }
     }
 
