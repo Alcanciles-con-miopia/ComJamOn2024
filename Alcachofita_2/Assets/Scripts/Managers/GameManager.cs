@@ -85,10 +85,9 @@ public class GameManager : MonoBehaviour
 
             // ---- GAME ----
             case GameStates.GAME:
-                Debug.Log("COOOOOOOOOOOOJONES");
                 // cambia la runa a comprobar
                 int nextRune = Random.Range(0, runas.Length);
-                Debug.Log(nextRune);
+                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
                 if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)   nextRune);
                 if (runas.Length > 0 && _ShapeDetector != null) { _ShapeDetector.ChangeRune(runas[nextRune]); }
 
@@ -96,7 +95,6 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
-                Debug.Log("COJONES");
                 if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN)
                 {

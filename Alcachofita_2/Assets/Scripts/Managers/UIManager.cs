@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] // sigue el orden de los estados del gamemanager
     private GameObject[] menus;
     [SerializeField]
-    private TMP_Text percent;
+    private TMP_Text acertijo_number;
     [SerializeField]
     private Image runa;
 
@@ -88,6 +88,27 @@ public class UIManager : MonoBehaviour
     public void ChangeRuna(Sprite _runa)
     {
         runa.sprite = _runa;
+    }
+
+    public void ChangeAcertijoNumber(int acertijo)
+    {
+        string romano = "";
+        switch (acertijo)
+        { // XDDDDDDDDDDDDDDDDDDDDDDDDD
+            case 0: romano = "I"; break;
+            case 1: romano = "II"; break;
+            case 2: romano = "III"; break;
+            case 3: romano = "IV"; break;
+            case 4: romano = "V"; break;
+            case 5: romano = "VI"; break;
+            case 6: romano = "VII"; break;
+            case 7: romano = "VIII"; break;
+            case 8: romano = "IX"; break;
+            case 9: romano = "X"; break;
+            case 10: romano = "XI"; break;
+            default: break;
+        }
+        acertijo_number.text = romano;
     }
 
     public void DisableRune()
