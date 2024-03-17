@@ -4,7 +4,9 @@ using static GameManager;
 public class BGMComponent : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource[] _bgm;
+    private AudioClip[] _bgm;
+
+    private AudioSource _audioSource;
 
     #region properties
     private int _currentBGM;
@@ -30,28 +32,29 @@ public class BGMComponent : MonoBehaviour
         // si existe en el array lo pone
         if (_bgm[i] != null)
         {
-            _bgm[i].Play();
+            _audioSource.clip = _bgm[i];
+            _audioSource.Play();
         }
     }
 
     public void StopAll()
     {
-        for (int i = 0; i < _bgm.Length; i++)
-        {
-            _bgm[i].Stop();
-        }
+        
+        _audioSource.Stop();
+        
     }
 
     public bool IsBGMPlaying(int i)
     {
-        return _bgm[i].isPlaying;
+        return _audioSource.isPlaying;
     }
     public void StopBGM(int i)
     {
         // si esta sonando lo para
-        if (_bgm[i].isPlaying)
+        if (_audioSource.isPlaying)
         {
-            _bgm[i].Stop();
+            _audioSource.clip = _bgm[i];
+            _audioSource.Stop();
         }
     }
 
@@ -75,11 +78,15 @@ public class BGMComponent : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        GameManager.Instance.RegisterBGM(this);
+    }
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _currentBGM = 1;
-        GameManager.Instance.RegisterBGM(this);
     }
 
     private void Update()
@@ -89,9 +96,10 @@ public class BGMComponent : MonoBehaviour
         if (_currentBGM != _nextBGM)
         {
 
-            for(int i = 0; i < _bgm.Length; i++)
+            for(int i = 0; i < _bgm.Length - 1; i++)
             {
-                _bgm[i].Stop();
+                _audioSource.clip = _bgm[i];
+                _audioSource.Stop();
             }
             StopBGM(_currentBGM);
             _currentBGM = _nextBGM;

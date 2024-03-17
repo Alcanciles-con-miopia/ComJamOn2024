@@ -40,9 +40,6 @@ public class GameManager : MonoBehaviour
     //musica
     private BGMComponent _bGMComponent;
 
-    [SerializeField]
-    private bool _canPlay;
-
     #endregion
 
     #region properties
