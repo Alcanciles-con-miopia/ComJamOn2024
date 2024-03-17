@@ -2025,7 +2025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1169508517592523241
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3414,7 +3414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1045, y: 94}
+  m_AnchoredPosition: {x: 1590, y: 79}
   m_SizeDelta: {x: 475.82, y: 73.333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8119545588939719312
@@ -4078,7 +4078,7 @@ Transform:
   m_GameObject: {fileID: 6177196034309515222}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.00009155272, z: 0}
+  m_LocalPosition: {x: -40.86, y: -0.00009155272, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4711,14 +4711,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Do\xF1a Encarna ha heredado la \nantigua casa de su t\xEDa tras su defunci\xF3n,\noteando
-    las viejas estanter\xEDas\nencuentra un extra\xF1o libro, \nel Ars Encarnatio.
-    \nEn la primera p\xE1gina del libro hay una nota con indicaciones acerca del
-    \ndibujado de unas runas... con sangre.\r\n\r\nSe sienta sobre una mesa, enciende
-    una radio cl\xE1sica y\n comienza un macabro ritual. \nUna vez el conjuro comienza,
-    no debe ser interrumpido, \ny cualquier fallo, por peque\xF1o que sea, \nser\xE1
-    pagado con el dolor de su carne.\r\n\r\nComplace al Pr\xEDncipe de las Tinieblas
-    y obtendr\xE1s un grandioso obsequio."
+  m_text: "<shake=0.1> Do\xF1a Encarna ha heredado la \nantigua casa de su t\xEDa
+    tras su defunci\xF3n,\noteando las viejas estanter\xEDas\nencuentra un extra\xF1o
+    libro, \nel Ars Encarnatio. \nEn la primera p\xE1gina del libro hay una nota
+    con indicaciones acerca del \ndibujado de unas runas... con sangre.\r\n\r\nSe
+    sienta sobre una mesa, enciende una radio cl\xE1sica y\n comienza un macabro
+    ritual. \nUna vez el conjuro comienza, no debe ser interrumpido, \ny cualquier
+    fallo, por peque\xF1o que sea, \nser\xE1 pagado con el dolor de su carne.\r\n\r\nComplace
+    al Pr\xEDncipe de las Tinieblas y obtendr\xE1s un grandioso obsequio. </shake>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47e45944ef17d0f429fcf09e8324d79f, type: 2}
   m_sharedMaterial: {fileID: 3793805038524089453, guid: 47e45944ef17d0f429fcf09e8324d79f, type: 2}
