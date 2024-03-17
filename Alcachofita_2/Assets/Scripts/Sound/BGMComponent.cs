@@ -49,6 +49,7 @@ public class BGMComponent : MonoBehaviour
     public void StopBGM(int i)
     {
         // si esta sonando lo para
+        if (i < _bgm.Length)
         if (_bgm[i].isPlaying)
         {
             _bgm[i].Stop();
