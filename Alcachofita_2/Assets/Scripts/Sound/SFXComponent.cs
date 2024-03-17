@@ -8,7 +8,8 @@ public class SFXComponent : MonoBehaviour
 
 
     [SerializeField]
-    private AudioSource[] _sfx;
+    private AudioClip[] _sfx;
+    private AudioSource _audioSource;
 
     /// <summary>
     /// ----ARRAY DE SFX--- 
@@ -16,12 +17,14 @@ public class SFXComponent : MonoBehaviour
     /// 1 --> boing
     /// 2 --> cabagge rip (arrancar dedo)
     /// 3 --> guts dragging (pintar)
-    /// 3 --> paper (pasar pagina)
+    /// 4 --> paper (pasar pagina)
+    /// 5 --> paperwipe (borrar)
     /// </summary>
 
     void Awake()
     {
         _instance = this;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // metodos generales player
@@ -30,7 +33,10 @@ public class SFXComponent : MonoBehaviour
     {
         for(int i = 0; i < _sfx.Length; i++)
         {
-            _sfx[i].Stop();
+            if (_audioSource != null)
+            {
+                _audioSource.Stop();
+            }
         }
     }
 
@@ -38,21 +44,22 @@ public class SFXComponent : MonoBehaviour
     {
         if (_sfx[i] != null)
         {
-            _sfx[i].Play();
+            _audioSource.clip = _sfx[(i)];
+            _audioSource.Play();
         }
     }
     public void SFXPlayerStop(int i)
     {
         if (_sfx[i] != null)
         {
-            _sfx[i].Stop();
+            _audioSource.Stop();
         }
     }
 
     // te dice si el sonido esta sonando o no en el player
     public bool isPlayingSFX(int i)
     {
-        return _sfx[i].isPlaying;
+        return _audioSource.isPlaying;
     }
     
 }

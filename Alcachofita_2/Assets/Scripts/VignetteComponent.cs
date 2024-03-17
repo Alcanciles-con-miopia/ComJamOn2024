@@ -31,8 +31,9 @@ public class VignetteComponent : MonoBehaviour
 
             _audioSource.clip = _arrancaDedo;
             _audioSource.Play();
-            
-            
+
+            _audioSource.clip = _pasaPagina;
+            _audioSource.Play();
         }
     }
 
