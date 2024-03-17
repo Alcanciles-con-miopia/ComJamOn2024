@@ -3,7 +3,7 @@ using static Unity.Collections.Unicode;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameStates { INTRO, MAINMENU, GAME, END, CREDITS };
+    public enum GameStates { INTRO, LORE, MAINMENU, GAME, END, CREDITS };
     const int NUM_DEDOS = 5;
 
     // variable a actualizar cada vez que se corte un dedo
@@ -87,17 +87,27 @@ public class GameManager : MonoBehaviour
     // decide que hacer en cada estado
     public void onStateEnter(GameStates newState)
     {
+        Cursor.visible = false;
         switch (newState)
         {
             // ---- INTRO ----
             case GameStates.INTRO:
+                cursor.SetActive(false);
                 break;
+
+            // ---- LORE ----
+            case GameStates.LORE:
+                cursor.SetActive(false);
+            break;
+
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
+                cursor.SetActive(true);
                 break;
 
             // ---- GAME ----
             case GameStates.GAME:
+                cursor.SetActive(true);
 
                 // Poner todas las runas a usar como todas las runas
                 runasUsadas = new int[runas.Length];
@@ -121,14 +131,15 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
-                //if (_UIManager != null) { _UIManager.DisableRune(); }
+                cursor.SetActive(false);
+
                 if (_bGMComponent != null) _bGMComponent.PlayBGM(3);
-                //if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN) { if (_UIManager != null) _UIManager.SetWin(); }
                 break;
 
             // ---- CREDITS ----
             case GameStates.CREDITS:
+                cursor.SetActive(false);
                 break;
         }
 
@@ -136,7 +147,6 @@ public class GameManager : MonoBehaviour
         _currentGameState = newState;
         if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
-        
         if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
 
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
@@ -151,6 +161,9 @@ public class GameManager : MonoBehaviour
             // ---- INTRO ----
             case GameStates.INTRO:
                 break;
+
+            case GameStates.LORE:
+            break;
 
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
