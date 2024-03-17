@@ -318,8 +318,6 @@ public class GameManager : MonoBehaviour
         {
             _currentPage++; // siguiente runa
 
-            // aqu� habr�a que cambiar la pista de fondo
-
             // cambia la runa a comprobar
             int nextRune = UsarRuna();
 
@@ -327,8 +325,7 @@ public class GameManager : MonoBehaviour
 
             _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
 
-
-            if (_currentPage >= 3) // si ya ha llegado al final
+            if (_currentPage >= 4) // si ya ha llegado al final
             {
                 requestSateChange(GameStates.END);
                 ISWIN = true; // gana ! gloria ! orbe catatonico
