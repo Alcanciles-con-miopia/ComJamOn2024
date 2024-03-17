@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PistaComponent : MonoBehaviour
 {
@@ -16,19 +15,23 @@ public class PistaComponent : MonoBehaviour
         Pentagrama
     }
 
-    [SerializeField] 
+    [SerializeField]
     private Sprite[] pistas;
-    private SpriteRenderer _spriteRenderer; 
+    private Image _imageRenderer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        if (GameManager.Instance != null) { GameManager.Instance.RegisterPistaComponent(this);}
+        _imageRenderer = GetComponent<Image>();
+        if (GameManager.Instance != null) { GameManager.Instance.RegisterPistaComponent(this); }
     }
 
     public void setPista(Acertijo index)
     {
-        _spriteRenderer.sprite = pistas[(int)index];
+        if (_imageRenderer == null)
+        {
+            _imageRenderer = GetComponent<Image>();
+        }
+        _imageRenderer.sprite = pistas[(int)index];
+        _imageRenderer.SetNativeSize();
     }
 }

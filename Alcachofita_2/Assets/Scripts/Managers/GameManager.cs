@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
     const int NUM_DEDOS = 5;
 
     // variable a actualizar cada vez que se corte un dedo
-    public bool ISDEAD = false;
-    public bool ISWIN = false;
+    public bool ISDEAD;
+    public bool ISWIN;
 
     #region references
     // ARRAY DE DEDALOS
@@ -17,11 +17,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject mano;
 
-    // UIManager
     private UIManager _UIManager;
-    // ShapeDetector
+    [SerializeField]
     private ShapeDetectorV1 _ShapeDetector;
     private DrawingComponent _drawingComp;
+    [SerializeField]
     private PistaComponent _pistaComp;
 
     // VignetteComponent
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     public void requestSateChange(GameStates newState)
     {
         // guarda el estado correspondiente en next
-        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }  
+        if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
     }
@@ -85,6 +85,12 @@ public class GameManager : MonoBehaviour
 
             // ---- GAME ----
             case GameStates.GAME:
+                Debug.Log("COOOOOOOOOOOOJONES");
+                // cambia la runa a comprobar
+                int nextRune = Random.Range(0, runas.Length);
+                Debug.Log(nextRune);
+                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)   nextRune);
+                if (runas.Length > 0 && _ShapeDetector != null) { _ShapeDetector.ChangeRune(runas[nextRune]); }
 
                 break;
 
@@ -94,11 +100,7 @@ public class GameManager : MonoBehaviour
                 if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN)
                 {
-                    // uimanager.... para setear lo que sea del gameover
-                }
-                else
-                {
-                    // uimanager.... para setear lo que sea del gameover
+                    if (_UIManager != null) _UIManager.SetWin();
                 }
                 break;
         }
@@ -305,8 +307,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameStates.END;
         _nextGameState = GameStates.MAINMENU; // valor real inicial
 
-        // cambia la runa a comprobar
-        _ShapeDetector.ChangeRune(runas[Random.Range(0, runas.Length)]);
+        
     }
 
     // Update is called once per frame

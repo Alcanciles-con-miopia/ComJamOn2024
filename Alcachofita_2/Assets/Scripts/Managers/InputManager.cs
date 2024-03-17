@@ -70,7 +70,7 @@ public class InputManager : MonoBehaviour
                     && mousePos.y < Screen.height - UP_OFFSET
                     && mousePos.y > DOWN_OFFSET)
                 {
-                    if (_drawingComponent != null && newPoint != null ) _drawingComponent.Paint(newPoint);
+                    if (_drawingComponent != null && newPoint != null) _drawingComponent.Paint(newPoint);
                     if (_audioSource != null && !_audioSource.isPlaying) _audioSource.Play();
 
                 }

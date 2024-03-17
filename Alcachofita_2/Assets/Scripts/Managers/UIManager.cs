@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +12,17 @@ public class UIManager : MonoBehaviour
     private TMP_Text percent;
     [SerializeField]
     private Image runa;
+
+
+    [SerializeField]
+    private GameObject winScreen;
+    [SerializeField]
+    private GameObject winText;
+
+    [SerializeField]
+    private GameObject overText;
+    [SerializeField]
+    private GameObject retryButton;
 
     // Properties
     private GameManager.GameStates _activeMenu;
@@ -89,6 +100,13 @@ public class UIManager : MonoBehaviour
         menus[(int)_activeMenu].SetActive(false);
         _activeMenu = newMenu;
         menus[(int)_activeMenu].SetActive(true);
+    }
+
+    public void SetWin()
+    {
+        winScreen.SetActive(true);
+        winText.SetActive(true);
+        overText.SetActive(false);
     }
 
     // Start is called before the first frame update

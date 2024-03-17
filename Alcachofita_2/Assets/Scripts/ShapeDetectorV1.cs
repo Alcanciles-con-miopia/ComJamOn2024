@@ -190,7 +190,7 @@ public class ShapeDetectorV1 : MonoBehaviour
                 }
             }
         }
-            
+
         //Debug.Log("AAAAAAaa");
     }
 
