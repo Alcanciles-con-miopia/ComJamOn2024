@@ -879,13 +879,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1333080414165027619, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 57.990005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001214504376825543, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3070724939167163620, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4277667060002781070, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6347681779372078105, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
       propertyPath: m_Camera
@@ -979,6 +987,10 @@ PrefabInstance:
       propertyPath: _shapeDetector
       value: 
       objectReference: {fileID: 1909808744}
+    - target: {fileID: 9178167454948288870, guid: ecb24488ac345c842b36cc38381c55f1, type: 3}
+      propertyPath: shakeFactor
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
