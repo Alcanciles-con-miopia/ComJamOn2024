@@ -118,7 +118,10 @@ public class UIManager : MonoBehaviour
 
     public void SetMenu(GameManager.GameStates newMenu)
     {
-        menus[(int)_activeMenu].SetActive(false);
+        foreach(GameObject menu in menus)
+        {
+            menu.SetActive(false);
+        }
         _activeMenu = newMenu;
         menus[(int)_activeMenu].SetActive(true);
     }

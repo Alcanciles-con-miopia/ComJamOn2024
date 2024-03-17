@@ -625,6 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fbf30a61deaf4b468ee1514ffd77f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _baseColor: {r: 0, g: 0, b: 0, a: 0}
   _badPercentage: {r: 0.49019608, g: 0.039215688, b: 0.039215688, a: 0}
   _mediumPercentage: {r: 0.48235294, g: 0.33333334, b: 0.09411765, a: 0}
   _goodPercentage: {r: 0.08627451, g: 0.28235295, b: 0.023529412, a: 0}
@@ -3957,9 +3958,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menus:
+  - {fileID: 2001214504376825543}
   - {fileID: 6701516394607480130}
   - {fileID: 3070724939167163620}
   - {fileID: 454660484167045055}
+  - {fileID: 3886157608989344145}
   acertijo_number: {fileID: 7292396680051333993}
   runa: {fileID: 7108108527811922745}
   winScreen: {fileID: 7811981256393013581}
