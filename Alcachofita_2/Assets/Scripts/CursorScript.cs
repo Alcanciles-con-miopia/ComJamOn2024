@@ -13,5 +13,10 @@ public class CursorScript : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 10;
         transform.position = mousePosition;
+
+        if (GetComponent<ShakeComponent>() != null )
+        {
+            transform.position = GetComponent<ShakeComponent>().Shake(mousePosition);
+        }
     }
 }
