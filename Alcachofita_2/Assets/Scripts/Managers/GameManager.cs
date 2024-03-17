@@ -344,10 +344,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        if (_fadeComponent != null) _fadeComponent.Transicion();
-
-
         _bGMComponent.StopAll();
         SFXComponent.Instance.StopAll();
 
