@@ -1,16 +1,27 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    
 
+    // probando singleton
+    private static AudioManager _instance;
+    public static AudioManager Instance { get { return _instance; } }
+
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
     }
 }

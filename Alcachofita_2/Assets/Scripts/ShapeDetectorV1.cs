@@ -18,6 +18,7 @@ public class ShapeDetectorV1 : MonoBehaviour
     // Runa a comprobar
     [SerializeField] GameObject shape;
     [SerializeField] DrawingComponent drawingComponent;
+    GameObject shapeInst;
 
     // Para ampliar el collider si hace falta
     [SerializeField] float magicosidadDeLaEscala = 1;
@@ -35,14 +36,17 @@ public class ShapeDetectorV1 : MonoBehaviour
         if (cantPuntos > 0)
         {
             // Elimina hijos
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                Destroy(transform.GetChild(i).gameObject);
-            }
+            Destroy(shapeInst);
+
 
 
             // Adapta el collider
-            AdaptShape();
+            // AdaptShape();
+
+            // Crea el collider
+            shapeInst = Instantiate(shape);
+            //shapeInst.transform.parent = transform;
+            //shapeInst.transform.position = transform.position;
 
 
 

@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject mano;
 
+    [SerializeField]
+    private GameObject cursor;
+
     private UIManager _UIManager;
     [SerializeField]
     private ShapeDetectorV1 _ShapeDetector;
@@ -24,13 +27,19 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PistaComponent _pistaComp;
 
-    // VignetteComponent
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
+    private FadeComponent _fadeComponent;
 
     // Array de runas
     [SerializeField]
     private ShapeSO[] runas;
+
+    //musica
+    private BGMComponent _bGMComponent;
+
+    [SerializeField]
+    private bool _canPlay;
 
     #endregion
 
@@ -70,6 +79,7 @@ public class GameManager : MonoBehaviour
         if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
+        if (_bGMComponent != null) _bGMComponent.CanPlay = true;
     }
 
     // ---- onStateEnter ----
@@ -80,7 +90,6 @@ public class GameManager : MonoBehaviour
         {
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
-
                 break;
 
             // ---- GAME ----
@@ -135,6 +144,13 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region METODOS DE OSCURECEDOR
+    public void RegisterOscurecedor(FadeComponent fade)
+    {
+        _fadeComponent = fade;
+    }
+    #endregion
+
     #region METODOS DE VIGNETTE
     public void RegisterVignette(VignetteComponent vignette)
     {
@@ -150,6 +166,16 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    #region METODOS DE MUSICA
+
+    public void RegisterBGM(BGMComponent bgm)
+    {
+        _bGMComponent = bgm;
+    }
+
+    #endregion
+
 
     #region METODOS DE DEDOS
     // ---- InicializaDedos ----
@@ -182,6 +208,7 @@ public class GameManager : MonoBehaviour
             if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
+            cursor.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
             // Siguiente dedo a cortar.
             _nextDedo++;
@@ -289,6 +316,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Inicialmente no hay animacion de fade.
+        if (_fadeComponent != null) _fadeComponent.Transicion();
+
+        _bGMComponent.StopAll();
+        SFXComponent.Instance.StopAll();
         // Se inicializa los dedos.
         InicializaDedos();
         ISDEAD = false;
@@ -314,7 +346,8 @@ public class GameManager : MonoBehaviour
         // si se debe cambiar de estado (next y current difieren)
         if (_nextGameState != _currentGameState)
         {
-            // se cambia
+            // se cambia y transiciona.
+            _fadeComponent.Transicion();
             onStateEnter(_nextGameState);
         }
 
