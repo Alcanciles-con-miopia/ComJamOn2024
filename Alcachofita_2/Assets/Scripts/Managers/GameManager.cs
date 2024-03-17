@@ -35,6 +35,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ShapeSO[] runas;
 
+    //musica
+    private BGMComponent _bGMComponent;
+
+    [SerializeField]
+    private bool _canPlay;
+
     #endregion
 
     #region properties
@@ -73,6 +79,7 @@ public class GameManager : MonoBehaviour
         if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
+        if (_bGMComponent != null) _bGMComponent.CanPlay = true;
     }
 
     // ---- onStateEnter ----
@@ -83,7 +90,6 @@ public class GameManager : MonoBehaviour
         {
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
-
                 break;
 
             // ---- GAME ----
@@ -160,6 +166,16 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    #region METODOS DE MUSICA
+
+    public void RegisterBGM(BGMComponent bgm)
+    {
+        _bGMComponent = bgm;
+    }
+
+    #endregion
+
 
     #region METODOS DE DEDOS
     // ---- InicializaDedos ----
@@ -301,12 +317,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Inicialmente no hay animacion de fade.
+
         if(_fadeComponent != null)
         {
             _fadeComponent.Transicion();
         }
         
 
+        if (_fadeComponent != null) _fadeComponent.Transicion();
+
+
+        _bGMComponent.StopAll();
+        SFXComponent.Instance.StopAll();
         // Se inicializa los dedos.
         InicializaDedos();
         ISDEAD = false;
@@ -321,7 +343,9 @@ public class GameManager : MonoBehaviour
 
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
-        _nextGameState = GameStates.MAINMENU; // valor real inicial. 
+        _nextGameState = GameStates.MAINMENU; // valor real inicial
+
+        
     }
 
     // Update is called once per frame
