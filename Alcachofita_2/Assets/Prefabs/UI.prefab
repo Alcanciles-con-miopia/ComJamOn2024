@@ -30,7 +30,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1412315069449823454}
   m_Father: {fileID: 5914582366433889618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1100,7 +1101,6 @@ RectTransform:
   m_Children:
   - {fileID: 4845814658497267282}
   - {fileID: 71493761853842431}
-  - {fileID: 1412315069449823454}
   m_Father: {fileID: 8450930322544901374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3408,16 +3408,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5636762993164594195}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2195123, y: 1.2195122, z: 1.2195123}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5914582366433889618}
+  m_Father: {fileID: 71493761853842431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.9, y: -40.4}
+  m_AnchoredPosition: {x: 13.292691, y: -60.451218}
   m_SizeDelta: {x: 176.7151, y: 42.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2969541987759688629
@@ -3660,6 +3660,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5756885434079686290}
+  - component: {fileID: 6349185223400085526}
   m_Layer: 0
   m_Name: Texto
   m_TagString: Untagged
@@ -3683,6 +3684,19 @@ Transform:
   - {fileID: 8889718624481047286}
   m_Father: {fileID: 3659013313586578711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6349185223400085526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177196034309515222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e0b09729d408a498b7d25fd025eed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMProText: {fileID: 906611879161132949}
 --- !u!1 &6532028432884679313
 GameObject:
   m_ObjectHideFlags: 0
