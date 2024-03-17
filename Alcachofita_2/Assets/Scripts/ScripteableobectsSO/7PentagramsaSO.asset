@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d0891fce04814f8b2e593e4f95661, type: 3}
   m_Name: 7PentagramsaSO
   m_EditorClassIdentifier: 
-  nAcertijo: 0
-  runa: {fileID: 0}
-  probabilidadExito: 0
+  nAcertijo: 7
+  runa: {fileID: 2348229271714127209, guid: e56f68cdaccbb194caf08043c48bfc40, type: 3}
+  probabilidadExito: 0.7

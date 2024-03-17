@@ -35,16 +35,12 @@ public class ShapeDetectorV1 : MonoBehaviour
 
         if (cantPuntos > 0)
         {
-            // Elimina hijos
-            Destroy(shapeInst);
 
 
 
             // Adapta el collider
             // AdaptShape();
 
-            // Crea el collider
-            shapeInst = Instantiate(shape);
             //shapeInst.transform.parent = transform;
             //shapeInst.transform.position = transform.position;
 
@@ -181,8 +177,20 @@ public class ShapeDetectorV1 : MonoBehaviour
     /// <param name="newRune"></param>
     public void ChangeRune(ShapeSO newRune)
     {
+
+        if (newRune == null)
+        {
+            Debug.Log("PUTAMENTE NULO");
+            return;
+        }
+        //Debug.Log(newRune);
         shape = newRune.runa;
         guessPercent = newRune.probabilidadExito;
+        // Elimina hijos
+        Destroy(shapeInst);
+        // Crea el collider
+        shapeInst = Instantiate(shape);
+        /*
         if (GameManager.Instance != null && shape != null)
         {
             if (shape.GetComponent<SpriteRenderer>() != null)
@@ -193,7 +201,7 @@ public class ShapeDetectorV1 : MonoBehaviour
 
                 }
             }
-        }
+        }*/
 
         //Debug.Log("AAAAAAaa");
     }
