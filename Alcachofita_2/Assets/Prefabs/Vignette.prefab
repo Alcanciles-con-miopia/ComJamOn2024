@@ -107,7 +107,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 999
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!114 &929039366224029890
 MonoBehaviour:
@@ -194,9 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bgm: []
-  _ambience: {fileID: 0}
-  _playAmbience: 0
-  _canPlay: 0
 --- !u!1 &9086403884425527927
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 4446203736596607839}
   _arrancaDedo: {fileID: 8300000, guid: 107acab1891a2a142a070eb4463ebacb, type: 3}
+  _pasaPagina: {fileID: 0}
 --- !u!82 &1279003864617887326
 AudioSource:
   m_ObjectHideFlags: 0
@@ -428,3 +426,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4049ea6584379084191fe4d8c7224061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfx: []

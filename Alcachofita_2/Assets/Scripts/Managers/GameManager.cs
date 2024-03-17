@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour
             if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
-            //cursor.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
+            cursor.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
             // Siguiente dedo a cortar.
             _nextDedo++;
@@ -277,15 +277,6 @@ public class GameManager : MonoBehaviour
     public void RegisterPistaComponent(PistaComponent pistaComp)
     {
         _pistaComp = pistaComp;
-    }
-
-    public float GetPercent()
-    {
-        if (_ShapeDetector != null)
-        {
-            return _ShapeDetector.PorcentajeAcierto();
-        }
-        return 0;
     }
 
     public void SetPage(int page) { _currentPage = page; }

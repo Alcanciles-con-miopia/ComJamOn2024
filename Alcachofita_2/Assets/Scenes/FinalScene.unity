@@ -481,6 +481,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 21369294}
+    - target: {fileID: 501689820489757264, guid: edef9447c4bbb9e47adb564420e34961, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3086891868043066001, guid: edef9447c4bbb9e47adb564420e34961, type: 3}
       propertyPath: m_Name
       value: Vignette
