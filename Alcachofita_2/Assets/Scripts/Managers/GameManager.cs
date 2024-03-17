@@ -15,11 +15,18 @@ public class GameManager : MonoBehaviour
     // inicialmente se tienen 5 dedos.
     [SerializeField]
     private GameObject[] dedos = new GameObject[NUM_DEDOS];
+
+    [SerializeField]
+    GameObject[] maquinademoore = new GameObject[NUM_DEDOS];
+
     [SerializeField]
     private GameObject mano;
 
     [SerializeField]
     private GameObject cursor;
+
+    [SerializeField]
+    private SpreadComponent _spread;
 
     private UIManager _UIManager;
     [SerializeField]
@@ -151,7 +158,7 @@ public class GameManager : MonoBehaviour
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
         if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
 
-        Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
+        //Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
 
     // ---- updateState ----
@@ -223,6 +230,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region METODOS DE DEDOS
+
     // ---- InicializaDedos ----
     // settea cada indice del array con su dedo correspondiente
     // en orden de cortado
@@ -252,6 +260,7 @@ public class GameManager : MonoBehaviour
 
             if (_VignetteComponent != null) _VignetteComponent.ChangeIntensity();
             dedos[NextDedo].GetComponent<RagdollComponent>().SeparaDedo();
+            maquinademoore[_nextDedo].GetComponent<SpreadComponent>().MariaDoloresDeCospedal();
             mano.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
             cursor.GetComponent<ShakeComponent>().ShakeSpeedChanger(3);
 
@@ -407,7 +416,7 @@ public class GameManager : MonoBehaviour
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
 
-        _nextGameState = GameStates.LORE; // valor real inicial. 
+        _nextGameState = GameStates.INTRO; // valor real inicial. 
 
 
     }

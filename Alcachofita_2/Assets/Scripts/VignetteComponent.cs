@@ -6,6 +6,7 @@ public class VignetteComponent : MonoBehaviour
     public Image _image;
     private float _increaseFactor;
 
+
     [SerializeField] private AudioClip _arrancaDedo;
     [SerializeField] private AudioClip _pasaPagina;
     private AudioSource _audioSource;
