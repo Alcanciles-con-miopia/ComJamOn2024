@@ -86,6 +86,11 @@ public class UIManager : MonoBehaviour
         RequestStateChange(GameManager.GameStates.INTRO); // referenciando al gamemanager (importante! si no no cambia de estado)
     }
 
+    public void GoToMainMenu()
+    {
+        RequestStateChange(GameManager.GameStates.MAINMENU); // referenciando al gamemanager (importante! si no no cambia de estado)
+    }
+
     /// Metodo para el onClick de los botones, para salir del juego
     public void ExitGame()
     {

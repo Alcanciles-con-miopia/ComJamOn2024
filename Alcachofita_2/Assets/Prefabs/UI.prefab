@@ -571,8 +571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 57.990005, y: 0}
+  m_SizeDelta: {x: 115.98, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5195494400259114421
 CanvasRenderer:
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: COMENZAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47e45944ef17d0f429fcf09e8324d79f, type: 2}
   m_sharedMaterial: {fileID: 3793805038524089453, guid: 47e45944ef17d0f429fcf09e8324d79f, type: 2}
@@ -629,8 +629,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1013,11 +1013,11 @@ Transform:
   m_GameObject: {fileID: 2001214504376825543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -639.5282, y: -359.87982, z: -0.10287716}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_LocalPosition: {x: 0.00009155272, y: 0.00009155272, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8450930322544901374}
+  m_Father: {fileID: 3659013313586578711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2604205456872045114
 GameObject:
@@ -2094,12 +2094,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3659013313586578711}
   m_Layer: 0
-  m_Name: Lore
+  m_Name: Intro/Lore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3659013313586578711
 Transform:
   m_ObjectHideFlags: 0
@@ -2116,6 +2116,7 @@ Transform:
   - {fileID: 7855088510309091876}
   - {fileID: 5756885434079686290}
   - {fileID: 1564233865035049642}
+  - {fileID: 5392160649957136816}
   m_Father: {fileID: 8450930322544901374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4864889121267020921
@@ -2634,8 +2635,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 937.334, y: 60.334}
-  m_SizeDelta: {x: 333.331, y: 73.333}
+  m_AnchoredPosition: {x: 1045, y: 94}
+  m_SizeDelta: {x: 475.82, y: 73.333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8119545588939719312
 CanvasRenderer:
@@ -2697,10 +2698,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2718,7 +2719,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1832435349516713472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1692661337112685473}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5545893643809404159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,6 +2742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945593659793145391}
   - component: {fileID: 9069536186795784167}
+  - component: {fileID: 3771895532679943300}
   m_Layer: 0
   m_Name: CreditsText
   m_TagString: Untagged
@@ -2773,6 +2787,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3771895532679943300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5545893643809404159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52b6d19b2d817a4baf4d5d21b065b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5560286067465875454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,7 +3548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Encarna ha heredado la \nantigua casa de su t\xEDa tras su defunci\xF3n,\noteando
+  m_text: "Do\xF1a Encarna ha heredado la \nantigua casa de su t\xEDa tras su defunci\xF3n,\noteando
     las viejas estanter\xEDas\nencuentra un extra\xF1o libro, \nel Ars Encarnatio.
     \nEn la primera p\xE1gina del libro hay una nota con indicaciones acerca del
     \ndibujado de unas runas... con sangre.\r\n\r\nSe sienta sobre una mesa, enciende
@@ -4229,7 +4255,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1941566171870005415}
-  - {fileID: 5392160649957136816}
   - {fileID: 3659013313586578711}
   - {fileID: 578550415163213471}
   - {fileID: 1169508517592523241}
@@ -4319,7 +4344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menus:
-  - {fileID: 2001214504376825543}
+  - {fileID: 4277667060002781070}
   - {fileID: 6701516394607480130}
   - {fileID: 3070724939167163620}
   - {fileID: 454660484167045055}
