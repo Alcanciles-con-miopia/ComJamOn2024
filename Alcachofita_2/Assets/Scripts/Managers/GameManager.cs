@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private DrawingComponent _drawingComp;
     [SerializeField]
     private PistaComponent _pistaComp;
+    [SerializeField]
+    private BGMComponent _bGMComponent;
 
     private VignetteComponent _VignetteComponent;
     private RagdollComponent _ragdollComponent;
@@ -37,9 +39,6 @@ public class GameManager : MonoBehaviour
     private ShapeSO[] runas;
     [SerializeField]
     private int[] runasUsadas;
-
-    //musica
-    private BGMComponent _bGMComponent;
 
     #endregion
 
@@ -79,7 +78,6 @@ public class GameManager : MonoBehaviour
         if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
-        if (_bGMComponent != null) _bGMComponent.CanPlay = true;
     }
 
     // ---- onStateEnter ----
@@ -90,16 +88,13 @@ public class GameManager : MonoBehaviour
         {
             // ---- INTRO ----
             case GameStates.INTRO:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(0);
                 break;
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(1);
                 break;
 
             // ---- GAME ----
             case GameStates.GAME:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(2);
 
                 // Poner todas las runas a usar como todas las runas
                 runasUsadas = new int[runas.Length];
@@ -131,7 +126,6 @@ public class GameManager : MonoBehaviour
 
             // ---- CREDITS ----
             case GameStates.CREDITS:
-                if (_bGMComponent != null) _bGMComponent.PlayBGM(4);
                 break;
         }
 
@@ -205,7 +199,7 @@ public class GameManager : MonoBehaviour
 
     public void RegisterBGM(BGMComponent bgm)
     {
-        _bGMComponent = bgm;
+        //_bGMComponent = bgm;
     }
 
     #endregion

@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bgm:
-  - {fileID: 8300000, guid: a3e1bc14ff47b2045b60233bf51f670a, type: 3}
+  - {fileID: 8300000, guid: e7f17bd47696c0146bfba0b936891168, type: 3}
   - {fileID: 8300000, guid: 1cd91b8f8c41e5d4da974d6ffb51e8b5, type: 3}
+  - {fileID: 8300000, guid: a3e1bc14ff47b2045b60233bf51f670a, type: 3}
   - {fileID: 8300000, guid: 1f09c18644aab0e48aaf8a60b3572130, type: 3}
+  - {fileID: 8300000, guid: fc3fab5287ef02246860c5f625c3d9ee, type: 3}
   _canPlay: 0
 --- !u!82 &7747764209916309396
 AudioSource:
