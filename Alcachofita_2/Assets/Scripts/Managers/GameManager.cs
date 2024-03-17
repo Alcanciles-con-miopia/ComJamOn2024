@@ -301,7 +301,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Inicialmente no hay animacion de fade.
-        _fadeComponent.Transicion();
+        if(_fadeComponent != null)
+        {
+            _fadeComponent.Transicion();
+        }
+        
 
         // Se inicializa los dedos.
         InicializaDedos();

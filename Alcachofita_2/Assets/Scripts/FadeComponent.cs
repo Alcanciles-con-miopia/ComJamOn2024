@@ -18,6 +18,14 @@ public class FadeComponent : MonoBehaviour
 
     public void Transicion()
     {
-        _oscurecedorAnimator.SetBool("Fade", true);
+        _oscurecedorAnimator.SetTrigger("Fadea");
+        Debug.Log("Transiciono");
+        OnAnimationEnd();
+    }
+
+    public void OnAnimationEnd()
+    {
+        _oscurecedorAnimator.ResetTrigger("Fadea");
+        Debug.Log("Detransiciono");
     }
 }
