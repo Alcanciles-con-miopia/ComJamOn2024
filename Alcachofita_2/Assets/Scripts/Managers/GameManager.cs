@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = newState;
         if (_VignetteComponent != null) _VignetteComponent.ResetIntensity();
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
-        if (_fadeComponent != null) _fadeComponent.Transicion();
+        
         if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
 
         Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
