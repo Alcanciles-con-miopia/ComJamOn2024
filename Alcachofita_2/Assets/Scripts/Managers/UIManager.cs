@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     private GameObject overText;
     [SerializeField]
     private GameObject retryButton;
+    [SerializeField]
+    private GameObject continueButton;
 
     // Properties
     private GameManager.GameStates _activeMenu;
@@ -136,6 +138,8 @@ public class UIManager : MonoBehaviour
         winScreen.SetActive(true);
         winText.SetActive(true);
         overText.SetActive(false);
+        retryButton.SetActive(false);
+        continueButton.SetActive(true);
     }
 
     // Start is called before the first frame update
