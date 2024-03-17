@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xBF Reintentar ...?"
+  m_text: "\xBF Continuar ...?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 335703ac1fda48f4b8750a3992b339ee, type: 2}
   m_sharedMaterial: {fileID: -8796799071272533902, guid: 335703ac1fda48f4b8750a3992b339ee, type: 2}
@@ -1830,7 +1830,7 @@ GameObject:
   - component: {fileID: 973707508188039285}
   - component: {fileID: 728650197968167116}
   m_Layer: 5
-  m_Name: BTN_Retry
+  m_Name: BTN_Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1940,7 +1940,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1692661337112685473}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Retry
+        m_MethodName: GoToCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

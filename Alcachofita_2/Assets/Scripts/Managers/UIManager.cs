@@ -76,6 +76,16 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void GoToCredits()
+    {
+        RequestStateChange(GameManager.GameStates.CREDITS); // referenciando al gamemanager (importante! si no no cambia de estado)
+    }
+
+    public void GoToIntro()
+    {
+        RequestStateChange(GameManager.GameStates.INTRO); // referenciando al gamemanager (importante! si no no cambia de estado)
+    }
+
     /// Metodo para el onClick de los botones, para salir del juego
     public void ExitGame()
     {
@@ -105,7 +115,6 @@ public class UIManager : MonoBehaviour
         }
         acertijo_number.text = romano;
     }
-
 
     public void SetMenu(GameManager.GameStates newMenu)
     {
