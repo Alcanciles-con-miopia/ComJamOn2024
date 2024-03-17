@@ -134,7 +134,6 @@ public class GameManager : MonoBehaviour
                 if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
                 if (runas.Length > 0 && _ShapeDetector != null && nextRune <= runas.Length)
                 {
-                    
                     Debug.Log(runas[nextRune]);
                     _ShapeDetector.ChangeRune(runas[nextRune]);
                 }
@@ -320,9 +319,10 @@ public class GameManager : MonoBehaviour
 
             // cambia la runa a comprobar
             int nextRune = UsarRuna();
+            Debug.Log(nextRune);
 
             _ShapeDetector.ChangeRune(runas[nextRune]);
-
+            if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
             _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
 
             if (_currentPage >= 5) // si ya ha llegado al final
@@ -351,7 +351,7 @@ public class GameManager : MonoBehaviour
         bool usable = true;
         int i = 0;
 
-        int nextId = Random.Range(0, 5);
+        int nextId = Random.Range(0, runas.Length);
 
         while (i < runas.Length && usable)
         {
