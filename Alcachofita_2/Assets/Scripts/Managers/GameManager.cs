@@ -90,15 +90,16 @@ public class GameManager : MonoBehaviour
         if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         if (_input != null && _input.aSource != null) { _input.aSource.Stop(); }
         _nextGameState = newState;
-        
+
+
     }
 
     // ---- onStateEnter ----
     // decide que hacer en cada estado
     public void onStateEnter(GameStates newState)
     {
-        Cursor.visible = false;
         _animator.SetTrigger("Fade");
+        Cursor.visible = false;
         switch (newState)
         {
             // ---- INTRO ----
