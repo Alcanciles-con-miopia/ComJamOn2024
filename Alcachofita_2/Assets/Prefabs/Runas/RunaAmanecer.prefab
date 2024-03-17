@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2307272398043239432}
   - component: {fileID: 2375888771001747460}
   - component: {fileID: 8061008640263191743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RunaAmanecer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.88, y: 0, z: 0.07115284}
-  m_LocalScale: {x: 372499, y: 372499, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5.69, y: 5.69, z: 0.000015275209}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

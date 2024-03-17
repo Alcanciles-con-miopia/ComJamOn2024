@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
             // ---- END ----
             case GameStates.END:
-                if (_UIManager != null) { _UIManager.DisableRune(); }
+                //if (_UIManager != null) { _UIManager.DisableRune(); }
                 if (ISWIN)
                 {
                     if (_UIManager != null) _UIManager.SetWin();
@@ -368,10 +368,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ChangeRuneSprite(Sprite sprite)
-    {
-        _UIManager.ChangeRuna(sprite);
-    }
 
     // Start is called before the first frame update
     void Start()

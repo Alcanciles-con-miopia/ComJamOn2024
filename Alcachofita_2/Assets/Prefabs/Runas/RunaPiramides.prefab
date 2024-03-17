@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1458330201544822107}
   - component: {fileID: 5853208651569604939}
   - component: {fileID: 5776532749846812606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RunaPiramides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
