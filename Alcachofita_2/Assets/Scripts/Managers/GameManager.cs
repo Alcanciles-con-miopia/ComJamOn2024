@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
         if (_UIManager != null) { _UIManager.SetMenu(newState); }
         if (_bGMComponent != null) _bGMComponent.PlayBGM((int)_currentGameState);
 
-        Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
+        //Debug.Log("Nosss encontramoS en el eStado: " + _currentGameState);
     }
 
     // ---- updateState ----
@@ -416,7 +416,7 @@ public class GameManager : MonoBehaviour
         // inducimos primer onEnter con valor dummy del estado
         _currentGameState = GameStates.END;
 
-        _nextGameState = GameStates.LORE; // valor real inicial. 
+        _nextGameState = GameStates.INTRO; // valor real inicial. 
 
 
     }
