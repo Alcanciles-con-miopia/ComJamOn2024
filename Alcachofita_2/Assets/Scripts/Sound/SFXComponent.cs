@@ -31,7 +31,7 @@ public class SFXComponent : MonoBehaviour
 
     public void StopAll()
     {
-        for(int i = 0; i < _sfx.Length; i++)
+        for (int i = 0; i < _sfx.Length; i++)
         {
             if (_audioSource != null)
             {
@@ -61,5 +61,5 @@ public class SFXComponent : MonoBehaviour
     {
         return _audioSource.isPlaying;
     }
-    
+
 }

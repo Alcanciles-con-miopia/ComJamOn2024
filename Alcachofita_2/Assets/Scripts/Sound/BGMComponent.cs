@@ -1,5 +1,4 @@
 using UnityEngine;
-using static GameManager;
 
 public class BGMComponent : MonoBehaviour
 {
@@ -33,7 +32,7 @@ public class BGMComponent : MonoBehaviour
     {
         for (int i = 0; i < _bgm.Length; i++)
         {
-            if(_audioSource != null)
+            if (_audioSource != null)
             {
                 _audioSource.Stop();
             }
@@ -48,10 +47,10 @@ public class BGMComponent : MonoBehaviour
     {
         // si esta sonando lo para
         if (i < _bgm.Length)
-        if (_audioSource.isPlaying)
-        {
-            _audioSource.Stop();
-        }
+            if (_audioSource.isPlaying)
+            {
+                _audioSource.Stop();
+            }
     }
 
     #endregion

@@ -14,7 +14,7 @@ public class CursorScript : MonoBehaviour
         mousePosition.z = 10;
         transform.position = mousePosition;
 
-        if (GetComponent<ShakeComponent>() != null )
+        if (GetComponent<ShakeComponent>() != null)
         {
             transform.position = GetComponent<ShakeComponent>().Shake(mousePosition);
         }

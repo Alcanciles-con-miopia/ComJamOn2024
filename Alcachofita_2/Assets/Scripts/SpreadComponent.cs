@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpreadComponent : MonoBehaviour
@@ -20,7 +19,7 @@ public class SpreadComponent : MonoBehaviour
 
     private IEnumerator Grow()
     {
-        Vector2 startScale  = transform.localScale;
+        Vector2 startScale = transform.localScale;
         Vector2 maxScale = new Vector2(maxsize, maxsize);
 
         do

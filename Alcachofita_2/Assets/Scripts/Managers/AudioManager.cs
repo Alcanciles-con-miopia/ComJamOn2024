@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    
+
 
     // probando singleton
     private static AudioManager _instance;
@@ -16,6 +15,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-using static Unity.Collections.Unicode;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     private DrawingComponent _drawingComp;
     [SerializeField]
     private PistaComponent _pistaComp;
+    [SerializeField]
+    private GameObject _pista;
+    public GameObject Pista { get { return _pista; } }
+
     [SerializeField]
     private BGMComponent _bGMComponent;
     [SerializeField]
@@ -81,6 +85,9 @@ public class GameManager : MonoBehaviour
     // no. de pagina actual
     private int _currentPage;
     public int CurrentPage { get { return _currentPage; } }
+
+    private int _nextRune;
+    public int NextRune { get { return _nextRune; } }
     #endregion
 
     #region METODOS DE ESTADOS
@@ -113,7 +120,7 @@ public class GameManager : MonoBehaviour
             case GameStates.LORE:
                 Cursor.visible = true;
                 cursor.GetComponent<SpriteRenderer>().enabled = false;
-            break;
+                break;
 
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
@@ -132,13 +139,13 @@ public class GameManager : MonoBehaviour
                 }
 
                 // cambia la runa a comprobar
-                int nextRune = UsarRuna();
-                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
-                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
-                if (runas.Length > 0 && _ShapeDetector != null && nextRune <= runas.Length)
+                _nextRune = UsarRuna();
+                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(_nextRune);
+                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)_nextRune);
+                if (runas.Length > 0 && _ShapeDetector != null && _nextRune <= runas.Length)
                 {
-                    Debug.Log(runas[nextRune]);
-                    _ShapeDetector.ChangeRune(runas[nextRune]);
+                    Debug.Log(runas[_nextRune]);
+                    _ShapeDetector.ChangeRune(runas[_nextRune]);
                 }
 
                 break;
@@ -178,7 +185,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameStates.LORE:
-            break;
+                break;
 
             // ---- MAIN MENU ----
             case GameStates.MAINMENU:
@@ -314,6 +321,13 @@ public class GameManager : MonoBehaviour
 
     public void SetPage(int page) { _currentPage = page; }
 
+    public void SetPista()
+    {
+        _pista.GetComponent<Image>().enabled = true; 
+        _pistaComp.setPista((PistaComponent.Acertijo)_nextRune);
+        if (_UIManager != null) _UIManager.ChangeAcertijoNumber(_nextRune);
+    }
+
     public void NextPage()
     {
         if (_ShapeDetector != null && _ShapeDetector.shapeDetected()) // si es valide
@@ -321,12 +335,10 @@ public class GameManager : MonoBehaviour
             _currentPage++; // siguiente runa
 
             // cambia la runa a comprobar
-            int nextRune = UsarRuna();
-            Debug.Log(nextRune);
+            _nextRune = UsarRuna();
+            Debug.Log(_nextRune);
 
-            _ShapeDetector.ChangeRune(runas[nextRune]);
-            if (_UIManager != null) _UIManager.ChangeAcertijoNumber(nextRune);
-            _pistaComp.setPista((PistaComponent.Acertijo)nextRune);
+            _ShapeDetector.ChangeRune(runas[_nextRune]);
 
             if (_currentPage >= 5) // si ya ha llegado al final
             {
@@ -342,7 +354,7 @@ public class GameManager : MonoBehaviour
             if (_drawingComp != null) { _drawingComp.EraseDrawing(); }
         }
 
-        
+
     }
 
     public void ChangeEyeColor(float percentage, float guess)
@@ -359,7 +371,7 @@ public class GameManager : MonoBehaviour
 
         while (i < runas.Length && usable)
         {
-            if(nextId==runasUsadas[i])
+            if (nextId == runasUsadas[i])
             {
                 usable = false;
                 nextId = Random.Range(0, runas.Length);
@@ -371,7 +383,7 @@ public class GameManager : MonoBehaviour
 
         while (i < runas.Length && runasUsadas[i] != -1)
         {
-            
+
             i++;
         }
 
