@@ -1,12 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class AlcancilAnimationScript : StateMachineBehaviour
+public class OnPageEnd : StateMachineBehaviour
 {
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameManager.Instance.requestSateChange(GameManager.GameStates.LORE);
-        Debug.Log("CAMBIO A LOREEEEEE LORE LORE MACU MACU");
+        GameManager.Instance.SetPista();
     }
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        GameManager.Instance.Pista.GetComponent<Image>().enabled = false; 
+    }   
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

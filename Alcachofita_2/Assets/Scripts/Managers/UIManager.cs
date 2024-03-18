@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -100,7 +99,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-   
+
 
     public void ChangeAcertijoNumber(int acertijo)
     {
@@ -125,7 +124,7 @@ public class UIManager : MonoBehaviour
 
     public void SetMenu(GameManager.GameStates newMenu)
     {
-        foreach(GameObject menu in menus)
+        foreach (GameObject menu in menus)
         {
             menu.SetActive(false);
         }

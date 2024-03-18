@@ -33,7 +33,7 @@ namespace BBX.Dialogue.GUI
             StartCoroutine(RunText());
         }
 
-        
+
         /// <summary>
         /// Parse the custom tags into links
         /// </summary>
@@ -56,7 +56,7 @@ namespace BBX.Dialogue.GUI
             TMProText.ForceMeshUpdate();
         }
 
-        
+
         /// <summary>
         /// Run the text, this increases the visible characters and maxes their alpha one by one
         /// </summary>
@@ -85,7 +85,7 @@ namespace BBX.Dialogue.GUI
             }
         }
 
-        
+
         /// <summary>
         /// Runs once a frame
         /// </summary>
@@ -101,7 +101,7 @@ namespace BBX.Dialogue.GUI
             _frameCount++;
         }
 
-        
+
         /// <summary>
         /// This sets the alpha of a character, it's used for the ticker effect
         /// </summary>
@@ -111,7 +111,7 @@ namespace BBX.Dialogue.GUI
         private void Alpha(TMP_TextInfo textInfo, int index, byte value)
         {
             if (index >= textInfo.characterInfo.Length) return;
-                if (!textInfo.characterInfo[index].isVisible) return;
+            if (!textInfo.characterInfo[index].isVisible) return;
 
             // Get the index of the material used by the current character.
             var materialIndex = textInfo.characterInfo[index].materialReferenceIndex;
@@ -131,7 +131,7 @@ namespace BBX.Dialogue.GUI
             TMProText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
         }
 
-        
+
         /// <summary>
         /// Animate a group of characters
         /// </summary>
@@ -171,7 +171,7 @@ namespace BBX.Dialogue.GUI
             }
         }
 
-        
+
         /// <summary>
         /// Animate a group of characters in a wave
         /// </summary>
@@ -186,7 +186,7 @@ namespace BBX.Dialogue.GUI
             }
         }
 
-        
+
         /// <summary>
         /// Shake a group of characters
         /// First save a copy of their original positions then add a random offset
@@ -208,7 +208,7 @@ namespace BBX.Dialogue.GUI
             }
         }
 
-        
+
         /// <summary>
         /// Parse a shake amount from the tag if it exists return default if not
         /// </summary>
@@ -229,7 +229,7 @@ namespace BBX.Dialogue.GUI
             return !hasInt ? DefaultShakeAmount : number;
         }
 
-        
+
         /// <summary>
         /// Calculate the wave movement position
         /// </summary>
@@ -241,7 +241,7 @@ namespace BBX.Dialogue.GUI
             return new Vector3(0, Mathf.Sin(time) * amount);
         }
 
-        
+
         /// <summary>
         /// Calculate the shake movement position
         /// </summary>
