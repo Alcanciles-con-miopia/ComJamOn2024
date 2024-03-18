@@ -4660,7 +4660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5055172267266827795
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6482,6 +6482,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1169508517592523241}
     m_Modifications:
+    - target: {fileID: 77200829488791807, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2815825511955530358, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -6494,6 +6498,10 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3214901884588942639, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3326286017874252019, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       propertyPath: m_Name
       value: MANO
@@ -6502,7 +6510,15 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4083780981850615638, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4596990649977244784, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358755627881586042, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
@@ -6511,6 +6527,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256299940041440645, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204325550672271684, guid: a2befef1c91bd66469d87d4371d955cc, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
