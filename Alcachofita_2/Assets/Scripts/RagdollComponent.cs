@@ -8,6 +8,7 @@ public class RagdollComponent : MonoBehaviour
     [SerializeField] Collider2D colision;
 
     [SerializeField] private float fuerzaDedalo = 100f;
+    [SerializeField] private ParticleSystem particleSystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,8 @@ public class RagdollComponent : MonoBehaviour
 
     public void SeparaDedo()
     {
+        particleSystem.gameObject.SetActive(true);
+        particleSystem.Play();
         _myRigidBody.bodyType = RigidbodyType2D.Dynamic;
         _myRigidBody.AddForce(transform.up * fuerzaDedalo);
 
