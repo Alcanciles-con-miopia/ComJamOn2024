@@ -6,7 +6,7 @@ public class SpreadComponent : MonoBehaviour
     private float timer = 0f;
     public float growTime = 6f;
     public float maxsize = 1.5f;
-    public bool isMaxSize = false;
+    private bool isMaxSize = false;
 
 
     public void MariaDoloresDeCospedal()
@@ -28,10 +28,7 @@ public class SpreadComponent : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        while (timer < growTime);
+        while (timer < growTime);   
         isMaxSize = true;
     }
-
-
-
 }

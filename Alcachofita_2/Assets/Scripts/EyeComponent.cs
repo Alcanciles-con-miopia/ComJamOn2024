@@ -18,14 +18,14 @@ public class EyeComponent : MonoBehaviour
 
     #region Reference
 
-    private Image _image;
+    private SpriteRenderer _image;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        _image = GetComponent<Image>();
+        _image = GetComponent<SpriteRenderer>();
 
         _image.color = _baseColor;
     }

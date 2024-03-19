@@ -25,9 +25,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject cursor;
 
-    [SerializeField]
-    private SpreadComponent _spread;
-
     private UIManager _UIManager;
     [SerializeField]
     private ShapeDetectorV1 _ShapeDetector;
@@ -336,7 +333,7 @@ public class GameManager : MonoBehaviour
 
             // cambia la runa a comprobar
             _nextRune = UsarRuna();
-            Debug.Log(_nextRune);
+            //Debug.Log(_nextRune);
 
             _ShapeDetector.ChangeRune(runas[_nextRune]);
 

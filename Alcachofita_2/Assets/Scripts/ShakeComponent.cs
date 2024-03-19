@@ -17,7 +17,7 @@ public class ShakeComponent : MonoBehaviour
         var xOffset = Mathf.PerlinNoise(Time.time * shakeSpeed, 0);
         var yOffset = Mathf.PerlinNoise(0, Time.time * shakeSpeed);
 
-        transform.position = originalPosition + new Vector3(xOffset, yOffset, 0) * shakeFactor;
+        transform.position = originalPosition + new Vector3(xOffset * shakeFactor, yOffset * shakeFactor, 0);
     }
 
     public Vector3 Shake(Vector3 og)
@@ -26,7 +26,7 @@ public class ShakeComponent : MonoBehaviour
         var yOffset = Mathf.PerlinNoise(0, Time.time * shakeSpeed);
 
 
-        return og + new Vector3(yOffset, xOffset, 0) * shakeFactor;
+        return og + new Vector3(yOffset * shakeFactor, xOffset *  shakeFactor, 0);
     }
 
     // este metodo esta heho para que el "resta vida" lo llame y aumente la velocidad de temblor
