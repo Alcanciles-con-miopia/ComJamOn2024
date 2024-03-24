@@ -38,23 +38,23 @@ public class EyeComponent : MonoBehaviour
 
     }
 
-    public void ChangeColor(float porcentaje, float guessPercent)
+    public void ChangeColor(float porcentaje, float maxGuessPercent, float minGuessPercent = 0f)
     {
         Debug.Log("Porcentaje ojete: " + porcentaje);
         if (GameManager.Instance.CurrentState == GameManager.GameStates.GAME && _image != null && _shapeDetector != null)
         {
-            //Bad Ending
-            if (porcentaje > guessPercent)
+            //Good Ending
+            if (porcentaje > maxGuessPercent)
             {
                 _image.color = _goodPercentage;
             }
             //Medium Ending
-            else if (porcentaje > (guessPercent / 2))
+            else if (porcentaje > minGuessPercent)
             {
                 _image.color = _mediumPercentage;
             }
             else
-            //Good Ending
+            //Bad Ending
             {
                 _image.color = _badPercentage;
             }

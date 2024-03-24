@@ -212,7 +212,7 @@ public class ShapeDetectorV1 : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.RegisterShapeDetector(this);
+            GameManager.Instance.RegisterShapeDetector1(this);
         }
     }
 }

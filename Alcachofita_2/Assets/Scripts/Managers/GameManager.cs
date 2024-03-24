@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
 
     private UIManager _UIManager;
     [SerializeField]
-    private ShapeDetectorV1 _ShapeDetector;
+    private ShapeDetectorV1 _ShapeDetectorV1;
+    [SerializeField]
+    private ShapeDetectorV2 _ShapeDetectorV2;
     private DrawingComponent _drawingComp;
     [SerializeField]
     private PistaComponent _pistaComp;
@@ -137,12 +139,12 @@ public class GameManager : MonoBehaviour
 
                 // cambia la runa a comprobar
                 _nextRune = UsarRuna();
-                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(_nextRune);
+                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(2);
                 if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)_nextRune);
-                if (runas.Length > 0 && _ShapeDetector != null && _nextRune <= runas.Length)
+                if (runas.Length > 0 && _ShapeDetectorV2 != null && _nextRune <= runas.Length)
                 {
-                    Debug.Log(runas[_nextRune]);
-                    _ShapeDetector.ChangeRune(runas[_nextRune]);
+                    //Debug.Log(runas[_nextRune]);
+                    _ShapeDetectorV2.ChangeRune(runas[_nextRune]);
                 }
 
                 break;
@@ -301,9 +303,14 @@ public class GameManager : MonoBehaviour
         _UIManager = uiManager;
     }
 
-    public void RegisterShapeDetector(ShapeDetectorV1 shapeDetector)
+    public void RegisterShapeDetector1(ShapeDetectorV1 shapeDetector)
     {
-        _ShapeDetector = shapeDetector;
+        _ShapeDetectorV1 = shapeDetector;
+    }
+
+    public void RegisterShapeDetector2(ShapeDetectorV2 shapeDetector)
+    {
+        _ShapeDetectorV2 = shapeDetector;
     }
 
     public void RegisterDrawingComponent(DrawingComponent drawComp)
@@ -327,7 +334,7 @@ public class GameManager : MonoBehaviour
 
     public void NextPage()
     {
-        if (_ShapeDetector != null && _ShapeDetector.shapeDetected()) // si es valide
+        if (_ShapeDetectorV2 != null && _ShapeDetectorV2.CheckShape()) // si es valide
         {
             _currentPage++; // siguiente runa
 
@@ -335,7 +342,7 @@ public class GameManager : MonoBehaviour
             _nextRune = UsarRuna();
             //Debug.Log(_nextRune);
 
-            _ShapeDetector.ChangeRune(runas[_nextRune]);
+            _ShapeDetectorV2.ChangeRune(runas[_nextRune]);
 
             if (_currentPage >= 5) // si ya ha llegado al final
             {
@@ -344,7 +351,7 @@ public class GameManager : MonoBehaviour
             }
             _paginas.SetTrigger("PasarPaginas");
         }
-        else if (_ShapeDetector.CantidadPuntosDibujados() > 0) // si no es dibujo v�lide
+        else if (_ShapeDetectorV2.CantidadPuntosDibujados() > 0) // si no es dibujo v�lide 
         {
             QuitaDedo();
             isDead();
@@ -354,9 +361,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void ChangeEyeColor(float percentage, float guess)
+    public void ChangeEyeColor(float percentage, float maxGuess, float minGuess = 0)
     {
-        _eyeComponent.ChangeColor(percentage, guess);
+        _eyeComponent.ChangeColor(percentage, maxGuess, minGuess);
     }
 
     int UsarRuna()
