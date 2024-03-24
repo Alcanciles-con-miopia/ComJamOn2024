@@ -11,7 +11,7 @@ public class ShapeColliderGenerator : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     public bool AllPointsCollided(Vector3[][] puntillismo)
@@ -25,17 +25,31 @@ public class ShapeColliderGenerator : MonoBehaviour
             for (int j = 0; j < puntillismo[i].Length; j++)
             {
                 Collider2D pColl = Raycast(puntillismo[i][j]);
+                if (lastCollider != null)
+                {
 
-                if (lastCollider != null && pColl != null && pColl != lastCollider)
+                    if (pColl != null && pColl != lastCollider)
+                    {
+                        collidersDiferentes++;
+                        lastCollider = pColl;
+                        Debug.Log("Collider Nuevo");
+                    }
+                }
+                else if(pColl != null)
                 {
                     collidersDiferentes++;
                     lastCollider = pColl;
-
                 }
+
+                Debug.Log("i: " + i + " j: " + j);
+                Debug.Log("\nlastCollider: " + lastCollider);
+                Debug.Log("\npColl: " + pColl);
             }
         }
+        Debug.Log("Collider con los que colisiona" + collidersDiferentes);
 
-        return collidersDiferentes == polygonColliders.Length;
+
+        return collidersDiferentes > polygonColliders.Length;
     }
 
     private Collider2D Raycast(Vector2 pos)
@@ -57,14 +71,19 @@ public class ShapeColliderGenerator : MonoBehaviour
 
     public void GenerateShape(ShapeSO _shape)
     {
-        Debug.Log(_shape);
+        //Debug.Log(_shape);
         shape = _shape.runa;
 
-        GameObject sasda =  Instantiate(shape);
+        GameObject sasda = Instantiate(shape);
 
+        //Debug.Log(sasda.transform.GetChild(0).GetComponent<PolygonCollider2D>());
+
+        polygonColliders = new PolygonCollider2D[sasda.transform.childCount];
+
+        polygonColliders[0] = sasda.transform.GetChild(0).GetComponent<PolygonCollider2D>();
         for (int i = 0; i < sasda.transform.childCount; i++)
         {
-            polygonColliders[i] = sasda.transform.GetChild(i).GetComponent<PolygonCollider2D>();
+            Debug.Log(i);
         }
     }
 

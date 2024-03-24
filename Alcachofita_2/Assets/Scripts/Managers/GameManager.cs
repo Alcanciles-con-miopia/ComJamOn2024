@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ShapeSO[] runas;
     [SerializeField]
-    private int[] runasUsadas;
+    private ShapeSO[] runasAUsar;
 
     [SerializeField]
     EyeComponent _eyeComponent;
@@ -85,8 +85,9 @@ public class GameManager : MonoBehaviour
     private int _currentPage;
     public int CurrentPage { get { return _currentPage; } }
 
-    private int _nextRune;
-    public int NextRune { get { return _nextRune; } }
+    private ShapeSO _nextRune;
+    private int _nextRuneID;
+    public int NextRune { get { return _nextRuneID; } }
     #endregion
 
     #region METODOS DE ESTADOS
@@ -131,20 +132,16 @@ public class GameManager : MonoBehaviour
                 cursor.GetComponent<SpriteRenderer>().enabled = true;
 
                 // Poner todas las runas a usar como todas las runas
-                runasUsadas = new int[runas.Length];
-                for (int i = 0; i < runasUsadas.Length; i++)
-                {
-                    runasUsadas[i] = -1;
-                }
+                runasAUsar = runas;
 
                 // cambia la runa a comprobar
-                _nextRune = UsarRuna();
-                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(2);
-                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)_nextRune);
-                if (runas.Length > 0 && _ShapeDetectorV2 != null && _nextRune <= runas.Length)
+                _nextRuneID = UsarRuna();
+                if (_UIManager != null) _UIManager.ChangeAcertijoNumber(_nextRuneID);
+                if (_pistaComp != null) _pistaComp.setPista((PistaComponent.Acertijo)_nextRuneID);
+                if (runas.Length > 0 && _ShapeDetectorV2 != null && _nextRuneID <= runas.Length)
                 {
                     //Debug.Log(runas[_nextRune]);
-                    _ShapeDetectorV2.ChangeRune(runas[_nextRune]);
+                    _ShapeDetectorV2.ChangeRune(_nextRune);
                 }
 
                 break;
@@ -327,9 +324,9 @@ public class GameManager : MonoBehaviour
 
     public void SetPista()
     {
-        _pista.GetComponent<Image>().enabled = true; 
-        _pistaComp.setPista((PistaComponent.Acertijo)_nextRune);
-        if (_UIManager != null) _UIManager.ChangeAcertijoNumber(_nextRune);
+        _pista.GetComponent<Image>().enabled = true;
+        _pistaComp.setPista((PistaComponent.Acertijo)_nextRuneID);
+        if (_UIManager != null) _UIManager.ChangeAcertijoNumber(_nextRuneID);
     }
 
     public void NextPage()
@@ -339,10 +336,10 @@ public class GameManager : MonoBehaviour
             _currentPage++; // siguiente runa
 
             // cambia la runa a comprobar
-            _nextRune = UsarRuna();
+            _nextRuneID = UsarRuna();
             //Debug.Log(_nextRune);
 
-            _ShapeDetectorV2.ChangeRune(runas[_nextRune]);
+            _ShapeDetectorV2.ChangeRune(_nextRune);
 
             if (_currentPage >= 5) // si ya ha llegado al final
             {
@@ -371,29 +368,44 @@ public class GameManager : MonoBehaviour
         bool usable = true;
         int i = 0;
 
-        int nextId = Random.Range(0, runas.Length);
+        int nextId = Random.Range(0, runasAUsar.Length);
 
-        while (i < runas.Length && usable)
+        while (i < runasAUsar.Length)
         {
-            if (nextId == runasUsadas[i])
+            if (_nextRune == runasAUsar[nextId])
             {
                 usable = false;
-                nextId = Random.Range(0, runas.Length);
+                nextId = Random.Range(0, runasAUsar.Length);
+                i = 0;
             }
-            i++;
+            else
+            {
+                usable = true;
+                i++;
+            }
         }
 
-        i = 0;
-
-        while (i < runas.Length && runasUsadas[i] != -1)
+        if (usable)
         {
+            _nextRune = runasAUsar[nextId];
+            ShapeSO[] newRunasAUsar = new ShapeSO[runasAUsar.Length - 1];
+            i = 0;
+            for (int j = 0; j < runasAUsar.Length; j++)
+            {
+                if (runasAUsar[j] != null && runasAUsar[j] != _nextRune)
+                {
+                    Debug.Log(j);
+                    newRunasAUsar[i] = runasAUsar[j];
+                    i++;
+                }
+            }
 
-            i++;
+            runasAUsar = newRunasAUsar;
+            return nextId;
         }
 
-        runasUsadas[i] = nextId;
+        return 0;
 
-        return nextId;
     }
     public void LastPage() { _currentPage--; }
     #endregion

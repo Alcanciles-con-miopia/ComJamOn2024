@@ -11,6 +11,7 @@ public class ShapeDetectorV2 : MonoBehaviour
 
     [SerializeField] public float maxGuessPercent = 0.7f;
     [SerializeField] public float minGuessPercent = 0.2f;
+    public float percentaje;
 
     [SerializeField]
     ShapeSO shape;
@@ -36,18 +37,23 @@ public class ShapeDetectorV2 : MonoBehaviour
         //shapeCollider.GenerateShape(shape);
 
         CantidadPuntosDibujados();
+        CheckCollisions();
         // Comprueba las cosas
-        float percentaje = cantDentro / cantPuntos;
 
-        Debug.Log("CanrDentro: " + cantDentro);
-        Debug.Log("CantPuntos: " + cantPuntos);
-        Debug.Log("Porcentaje: " + percentaje);
-        acceptShape = percentaje < maxGuessPercent && percentaje > minGuessPercent;
+        //Debug.Log("CanrDentro: " + cantDentro);
+        //Debug.Log("CantPuntos: " + cantPuntos);
+
+        percentaje = (float)cantDentro / (float)cantPuntos;
+        //Debug.Log("Porcentaje: " + percentaje);
+
+        acceptShape = percentaje > maxGuessPercent && percentaje > minGuessPercent;
         acceptShape = acceptShape && shapeCollider.AllPointsCollided(punteles);
 
+        Debug.Log(acceptShape);
         drawingComponent.EraseDrawing();
 
         GameManager.Instance.ChangeEyeColor(percentaje, maxGuessPercent, minGuessPercent);
+
 
         // Return de la comprobacion
         return acceptShape;
@@ -112,7 +118,7 @@ public class ShapeDetectorV2 : MonoBehaviour
             return;
         }
         maxGuessPercent = newRune.probabilidadExito;
-        Debug.Log(newRune); 
+        //Debug.Log(newRune);
         // Crea el collider
         shapeCollider.GenerateShape(newRune);
     }
